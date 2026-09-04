@@ -1,0 +1,12 @@
+# Render Blueprint for the WinScope model server (FastAPI + XGBoost).
+# Free tier sleeps after ~15 min idle (~50s cold start) — fine for weekend use.
+services:
+  - type: web
+    name: winscope-model
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"

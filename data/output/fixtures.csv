@@ -1,0 +1,89 @@
+kickoff_utc,status,minute,league,country,season,home_team,away_team,home_score,away_score,venue,source,source_match_id,fetched_at
+2026-09-03 18:45:00+00:00,TIMED,,Ligue 1,France,2026/27,Toulouse,Lille,,,,football-data.org,559696,2026-09-02T22:37:58+00:00
+2026-09-03 18:45:00+00:00,NS,,Scottish Premiership,Scotland,2026/27,Hibernian,Heart of Midlothian,,,Easter Road,API-Football,1556655,2026-09-02T22:37:55+00:00
+2026-09-03 18:45:00+00:00,NS,,Ligue 1,France,2026/27,Toulouse,Lille,,,Stadium de Toulouse,API-Football,1552754,2026-09-02T22:37:55+00:00
+2026-09-03 19:00:00+00:00,NS,,La Liga,Spain,2026/27,Real Sociedad,Celta Vigo,,,Anoeta,API-Football,1570392,2026-09-02T22:37:55+00:00
+2026-09-04 17:30:00+00:00,NS,,Betway Premiership,South Africa,2026/27,Marumo Gallants,Polokwane City,,,Dr. Petrus Molemela Stadium,TheSportsDB,2545612,2026-09-02T22:38:02+00:00
+2026-09-04 18:00:00+00:00,NS,,Eredivisie,Netherlands,2026/27,Sparta Rotterdam,Zwolle,,,Spartastadion,TheSportsDB,2489100,2026-09-02T22:38:02+00:00
+2026-09-04 18:30:00+00:00,NS,,Bundesliga,Germany,2026/27,VfB Stuttgart,1. FC Koln,,,MHP Arena,TheSportsDB,2508347,2026-09-02T22:38:02+00:00
+2026-09-04 18:45:00+00:00,NS,,Serie A,Italy,2026/27,Genoa,Como,,,Stadio Luigi Ferraris,TheSportsDB,2482160,2026-09-02T22:38:02+00:00
+2026-09-04 19:00:00+00:00,NS,,Premier League,England,2026/27,Ipswich Town,Liverpool,,,Portman Road,TheSportsDB,2494027,2026-09-02T22:38:02+00:00
+2026-09-04 19:15:00+00:00,NS,,Liga Portugal,Portugal,2026/27,FC Porto,Moreirense,,,Estádio do Dragão,TheSportsDB,2513970,2026-09-02T22:38:02+00:00
+2026-09-05 11:30:00+00:00,NS,,League One,England,2026/27,Wigan Athletic,Stockport County,,,The Brick Community Stadium,TheSportsDB,2500748,2026-09-02T22:38:02+00:00
+2026-09-05 11:30:00+00:00,TIMED,,Championship,England,2026/27,Lincoln City,Southampton,,,,football-data.org,561820,2026-09-02T22:37:58+00:00
+2026-09-05 11:30:00+00:00,TIMED,,Championship,England,2026/27,Stoke City,Charlton Athletic,,,,football-data.org,561815,2026-09-02T22:37:58+00:00
+2026-09-05 11:30:00+00:00,TIMED,,Premier League,England,2026/27,Newcastle United,Bournemouth,,,,football-data.org,560571,2026-09-02T22:37:58+00:00
+2026-09-05 11:30:00+00:00,TIMED,,Championship,England,2026/27,Preston North End,Blackburn Rovers,,,,football-data.org,561813,2026-09-02T22:37:58+00:00
+2026-09-05 13:00:00+00:00,TIMED,,Serie A,Italy,2026/27,Fiorentina,Torino,,,,football-data.org,558616,2026-09-02T22:37:58+00:00
+2026-09-05 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,1899 Hoffenheim,Borussia Dortmund,,,,football-data.org,565787,2026-09-02T22:37:58+00:00
+2026-09-05 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Paderborn,SC Freiburg,,,,football-data.org,565793,2026-09-02T22:37:58+00:00
+2026-09-05 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Borussia Monchengladbach,Elversberg,,,,football-data.org,565792,2026-09-02T22:37:58+00:00
+2026-09-05 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Werder Bremen,RB Leipzig,,,,football-data.org,565785,2026-09-02T22:37:58+00:00
+2026-09-05 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Bayer Leverkusen,Union Berlin,,,,football-data.org,565790,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,Millwall,Bolton Wanderers,,,,football-data.org,561818,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Premier League,England,2026/27,Fulham,Crystal Palace,,,,football-data.org,560568,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Premier League,England,2026/27,Brighton & Hove Albion,Leeds United,,,,football-data.org,560564,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,Queens Park Rangers,Middlesbrough,,,,football-data.org,561809,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,Sheffield United,Norwich City,,,,football-data.org,561810,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,Burnley,Bristol City,,,,football-data.org,561817,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Premier League,England,2026/27,Brentford,Sunderland,,,,football-data.org,560565,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Premier League,England,2026/27,Nottingham Forest,Tottenham Hotspur,,,,football-data.org,560562,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,Portsmouth,Cardiff City,,,,football-data.org,561812,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Premier League,England,2026/27,Manchester City,Coventry City,,,,football-data.org,560563,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,West Ham United,Derby County,,,,football-data.org,561816,2026-09-02T22:37:58+00:00
+2026-09-05 14:00:00+00:00,TIMED,,Championship,England,2026/27,West Bromwich Albion,Watford,,,,football-data.org,561814,2026-09-02T22:37:58+00:00
+2026-09-05 14:15:00+00:00,TIMED,,La Liga,Spain,2026/27,Athletic Club,Atletico Madrid,,,,football-data.org,564663,2026-09-02T22:37:58+00:00
+2026-09-05 14:30:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Estrela,Famalicao,,,,football-data.org,567297,2026-09-02T22:37:58+00:00
+2026-09-05 14:30:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,NEC,Feyenoord,,,,football-data.org,558251,2026-09-02T22:37:58+00:00
+2026-09-05 15:15:00+00:00,TIMED,,Ligue 1,France,2026/27,Lens,Lorient,,,,football-data.org,559695,2026-09-02T22:37:58+00:00
+2026-09-05 16:00:00+00:00,TIMED,,Serie A,Italy,2026/27,Inter Milan,Napoli,,,,football-data.org,558614,2026-09-02T22:37:58+00:00
+2026-09-05 16:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Schalke 04,Bayern Munchen,,,,football-data.org,565789,2026-09-02T22:37:58+00:00
+2026-09-05 16:30:00+00:00,TIMED,,Premier League,England,2026/27,Hull City,Aston Villa,,,,football-data.org,560569,2026-09-02T22:37:58+00:00
+2026-09-05 16:30:00+00:00,TIMED,,La Liga,Spain,2026/27,Rayo Vallecano,Santander,,,,football-data.org,564660,2026-09-02T22:37:58+00:00
+2026-09-05 16:45:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Utrecht,Go Ahead Eagles,,,,football-data.org,558252,2026-09-02T22:37:58+00:00
+2026-09-05 17:00:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Maritimo,Benfica,,,,football-data.org,567293,2026-09-02T22:37:58+00:00
+2026-09-05 17:00:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Alverca,Braga,,,,football-data.org,567296,2026-09-02T22:37:58+00:00
+2026-09-05 18:00:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Ajax,PSV,,,,football-data.org,558253,2026-09-02T22:37:58+00:00
+2026-09-05 18:45:00+00:00,TIMED,,Ligue 1,France,2026/27,Nice,Le Mans,,,,football-data.org,559701,2026-09-02T22:37:58+00:00
+2026-09-05 18:45:00+00:00,TIMED,,Ligue 1,France,2026/27,Le Havre,Brest,,,,football-data.org,559693,2026-09-02T22:37:58+00:00
+2026-09-05 18:45:00+00:00,TIMED,,Serie A,Italy,2026/27,AS Roma,Atalanta,,,,football-data.org,558611,2026-09-02T22:37:58+00:00
+2026-09-05 19:00:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Willem II,Excelsior,,,,football-data.org,558254,2026-09-02T22:37:58+00:00
+2026-09-05 19:00:00+00:00,TIMED,,Championship,England,2026/27,Swansea City,Wrexham,,,,football-data.org,561811,2026-09-02T22:37:58+00:00
+2026-09-05 19:00:00+00:00,TIMED,,La Liga,Spain,2026/27,Villarreal,Deportivo La Coruna,,,,football-data.org,564662,2026-09-02T22:37:58+00:00
+2026-09-05 19:30:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Sporting CP,Nacional,,,,football-data.org,567298,2026-09-02T22:37:58+00:00
+2026-09-06 10:15:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Groningen,Twente,,,,football-data.org,558255,2026-09-02T22:37:58+00:00
+2026-09-06 11:00:00+00:00,TIMED,,Championship,England,2026/27,Birmingham City,Wolverhampton Wanderers,,,,football-data.org,561819,2026-09-02T22:37:58+00:00
+2026-09-06 12:30:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Heerenveen,AZ Alkmaar,,,,football-data.org,558256,2026-09-02T22:37:58+00:00
+2026-09-06 12:30:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,Telstar,Cambuur,,,,football-data.org,558257,2026-09-02T22:37:58+00:00
+2026-09-06 13:00:00+00:00,TIMED,,Serie A,Italy,2026/27,Frosinone,Venezia,,,,football-data.org,558615,2026-09-02T22:37:58+00:00
+2026-09-06 13:00:00+00:00,TIMED,,Ligue 1,France,2026/27,Troyes,Strasbourg,,,,football-data.org,559700,2026-09-02T22:37:58+00:00
+2026-09-06 13:00:00+00:00,TIMED,,Premier League,England,2026/27,Everton,Manchester United,,,,football-data.org,560567,2026-09-02T22:37:58+00:00
+2026-09-06 13:00:00+00:00,TIMED,,Serie A,Italy,2026/27,Parma,Monza,,,,football-data.org,558612,2026-09-02T22:37:58+00:00
+2026-09-06 13:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Hamburg,Mainz 05,,,,football-data.org,565788,2026-09-02T22:37:58+00:00
+2026-09-06 14:15:00+00:00,TIMED,,La Liga,Spain,2026/27,Valencia,Barcelona,,,,football-data.org,564659,2026-09-02T22:37:58+00:00
+2026-09-06 14:30:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Santa Clara,Rio Ave,,,,football-data.org,567300,2026-09-02T22:37:58+00:00
+2026-09-06 14:45:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,ADO Den Haag,Fortuna Sittard,,,,football-data.org,558258,2026-09-02T22:37:58+00:00
+2026-09-06 15:15:00+00:00,TIMED,,Ligue 1,France,2026/27,Angers,Rennes,,,,football-data.org,559698,2026-09-02T22:37:58+00:00
+2026-09-06 15:30:00+00:00,TIMED,,Premier League,England,2026/27,Arsenal,Chelsea,,,,football-data.org,560570,2026-09-02T22:37:58+00:00
+2026-09-06 15:30:00+00:00,SCHEDULED,,Bundesliga,Germany,2026/27,Eintracht Frankfurt,FC Augsburg,,,,football-data.org,565786,2026-09-02T22:37:58+00:00
+2026-09-06 16:00:00+00:00,TIMED,,Serie A,Italy,2026/27,Bologna,Sassuolo,,,,football-data.org,558613,2026-09-02T22:37:58+00:00
+2026-09-06 16:30:00+00:00,TIMED,,La Liga,Spain,2026/27,Malaga,Levante,,,,football-data.org,564666,2026-09-02T22:37:58+00:00
+2026-09-06 16:30:00+00:00,TIMED,,La Liga,Spain,2026/27,Deportivo Alaves,Osasuna,,,,football-data.org,564664,2026-09-02T22:37:58+00:00
+2026-09-06 17:00:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Vitoria Guimaraes,Casa Pia,,,,football-data.org,567294,2026-09-02T22:37:58+00:00
+2026-09-06 18:45:00+00:00,TIMED,,Ligue 1,France,2026/27,Olympique Marseille,Paris,,,,football-data.org,559694,2026-09-02T22:37:58+00:00
+2026-09-06 18:45:00+00:00,TIMED,,Serie A,Italy,2026/27,Juventus,AC Milan,,,,football-data.org,558618,2026-09-02T22:37:58+00:00
+2026-09-06 19:00:00+00:00,TIMED,,La Liga,Spain,2026/27,Espanyol,Sevilla,,,,football-data.org,564661,2026-09-02T22:37:58+00:00
+2026-09-06 19:30:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Gil Vicente,Academico Viseu,,,,football-data.org,567301,2026-09-02T22:37:58+00:00
+2026-09-07 16:30:00+00:00,SCHEDULED,,Serie A,Italy,2026/27,Cagliari,Lecce,,,,football-data.org,558610,2026-09-02T22:37:58+00:00
+2026-09-07 17:00:00+00:00,TIMED,,La Liga,Spain,2026/27,Getafe,Celta Vigo,,,,football-data.org,564665,2026-09-02T22:37:58+00:00
+2026-09-07 18:45:00+00:00,TIMED,,Serie A,Italy,2026/27,Udinese,Lazio,,,,football-data.org,558617,2026-09-02T22:37:58+00:00
+2026-09-07 19:15:00+00:00,SCHEDULED,,Liga Portugal,Portugal,2026/27,Estoril,Arouca,,,,football-data.org,567295,2026-09-02T22:37:58+00:00
+2026-09-07 19:30:00+00:00,TIMED,,La Liga,Spain,2026/27,Elche,Real Sociedad,,,,football-data.org,564658,2026-09-02T22:37:58+00:00
+2026-09-08 16:45:00+00:00,SCHEDULED,,Eredivisie,Netherlands,2026/27,NEC,Excelsior,,,,football-data.org,558233,2026-09-02T22:37:58+00:00
+2026-09-08 18:45:00+00:00,TIMED,,Championship,England,2026/27,Southampton,Swansea City,,,,football-data.org,561822,2026-09-02T22:37:58+00:00
+2026-09-08 18:45:00+00:00,TIMED,,Championship,England,2026/27,Watford,Preston North End,,,,football-data.org,561823,2026-09-02T22:37:58+00:00
+2026-09-08 18:45:00+00:00,TIMED,,Championship,England,2026/27,Wrexham,Burnley,,,,football-data.org,561830,2026-09-02T22:37:58+00:00
+2026-09-08 18:45:00+00:00,TIMED,,Championship,England,2026/27,Blackburn Rovers,Sheffield United,,,,football-data.org,561821,2026-09-02T22:37:58+00:00
+2026-09-08 18:45:00+00:00,TIMED,,Championship,England,2026/27,Cardiff City,Stoke City,,,,football-data.org,561824,2026-09-02T22:37:58+00:00
+2026-09-08 19:00:00+00:00,TIMED,,Championship,England,2026/27,Bolton Wanderers,West Ham United,,,,football-data.org,561827,2026-09-02T22:37:58+00:00
+2026-09-09 00:00:00+00:00,POSTPONED,,Championship,England,2026/27,Wolverhampton Wanderers,Portsmouth,,,,football-data.org,561826,2026-09-02T22:37:58+00:00

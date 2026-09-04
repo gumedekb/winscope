@@ -1,0 +1,98 @@
+name: WinScope ETL
+
+# What the cron actually does: fetch new/live matches and upsert them into Turso.
+# It commits NOTHING. model_data.csv is the static history — committed once, and
+# refreshed by hand only when you are about to retrain.
+#
+# Measured runtimes (cold cache, real API calls): tests 2s, `--live` 75s.
+# ~2 min per run x 2/day x 30 = ~120 min/month, against a free allowance of
+# 2,000 min/month on private repos (unlimited on public). See data/README.md.
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'      # twice a day: new + live matches -> Turso
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: >
+          live = fetch matches into Turso (no commit).
+          refresh-dataset = rescan unsorted/ + APIs + fold Turso results back in,
+          then commit model_data.csv. Run this before a retrain.
+        default: live
+        type: choice
+        options: [live, refresh-dataset]
+
+concurrency:
+  # Never let two runs spend the API budget at the same time.
+  group: winscope-etl
+  cancel-in-progress: false
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: data/requirements.txt
+
+      - run: pip install -r requirements.txt
+
+      # Cached, not committed: API responses + the daily quota counter, kept
+      # across runs without growing the repo. A cache miss is harmless — the
+      # daily budget re-syncs from API-Football's own reported usage.
+      - name: Restore API cache and quota counter
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/output/cache
+            data/output/.quota.json
+          key: winscope-api-${{ github.run_id }}
+          restore-keys: winscope-api-
+
+      # Offline — needs no key and cannot spend a request. Runs first so a broken
+      # parser is caught before we touch anyone's rate limit.
+      - name: Tests (offline, cannot reach an API)
+        run: python -m unittest discover -s tests -t .
+
+      - name: Remaining API budget
+        run: python pipeline.py --quota
+
+      # ---- the everyday job: new + live matches into Turso, nothing committed
+      - name: Fetch matches into Turso
+        if: inputs.mode != 'refresh-dataset'
+        run: python pipeline.py --live
+        env:
+          API_SPORTS_KEY:        ${{ secrets.API_SPORTS_KEY }}
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          THESPORTSDB_KEY:       ${{ secrets.THESPORTSDB_KEY }}
+          TURSO_FIXTURES_URL:    ${{ secrets.TURSO_FIXTURES_URL }}
+          TURSO_FIXTURES_TOKEN:  ${{ secrets.TURSO_FIXTURES_TOKEN }}
+
+      # ---- manual only: rebuild the training set before a retrain
+      - name: Refresh the training dataset
+        if: inputs.mode == 'refresh-dataset'
+        run: |
+          python pipeline.py --with-api --openfootball
+          python pipeline.py --from-turso     # fold in results collected since
+        env:
+          API_SPORTS_KEY:        ${{ secrets.API_SPORTS_KEY }}
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          THESPORTSDB_KEY:       ${{ secrets.THESPORTSDB_KEY }}
+          TURSO_FIXTURES_URL:    ${{ secrets.TURSO_FIXTURES_URL }}
+          TURSO_FIXTURES_TOKEN:  ${{ secrets.TURSO_FIXTURES_TOKEN }}
+
+      - name: Commit refreshed dataset
+        if: inputs.mode == 'refresh-dataset'
+        run: |
+          git config user.name  "winscope-bot"
+          git config user.email "bot@winscope.local"
+          git add output/model_data.csv output/.manifest.json output/conflicts.csv || true
+          git commit -m "chore: refresh training dataset [skip ci]" || echo "no changes"
+          git push || echo "nothing to push"

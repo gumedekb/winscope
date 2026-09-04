@@ -1,0 +1,76 @@
+# ---------------------------------------------------------------------------
+# WinScope — repo-wide ignores.
+#
+# Each sub-project keeps its own .gitignore for the things only it produces:
+#   data/.gitignore    ETL response cache + the daily quota counter
+#   model/.gitignore   the duplicate/oversized model exports
+#   web/.gitignore     node_modules + the Next.js build
+#
+# This file is the safety net underneath all three: it applies at every depth,
+# so a secret or a machine-local file cannot slip in through a folder that has
+# no rules of its own.
+# ---------------------------------------------------------------------------
+
+# --- secrets ---------------------------------------------------------------
+# Belt and braces. data/.env holds live API-Football / football-data keys and
+# web/.env.local holds the Turso token — one accidental `git add -A` before
+# this file existed would have published both. The .env.example files ARE the
+# setup documentation, so they must stay tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets.json
+service-account*.json
+credentials.json
+
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- node ------------------------------------------------------------------
+node_modules/
+.npm/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- editors ---------------------------------------------------------------
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*~
+
+# --- OS --------------------------------------------------------------------
+# Windows first: this repo lives on an NTFS drive reached from WSL, so both
+# families of junk file show up.
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# --- scratch ---------------------------------------------------------------
+*.log
+tmp/
+.tmp/
+*.bak
+*.orig

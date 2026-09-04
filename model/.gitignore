@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+# model/ — the FastAPI server + training script. See the root .gitignore for
+# secrets, __pycache__ and OS junk.
+# ---------------------------------------------------------------------------
+
+# The original Colab export. Everything in it is already unpacked alongside, so
+# it is 3.5 MB of duplicate that would ship to Render for no reason.
+artifacts/winscope_model_artifacts.zip
+
+# The exported VotingClassifier (6.8 MB). The server averages the five .ubj
+# boosters instead, which is bit-identical and does not pin an sklearn version.
+# Un-ignore it if you ever want to load it directly.
+artifacts/xgboost_tuned.pkl
+
+# Colab/notebook leftovers from a training run.
+train/*.ipynb_checkpoints/
+train/runs/
+*.joblib
+
+# --- deliberately NOT ignored ----------------------------------------------
+# artifacts/xgboost_seed*.ubj  the five boosters the server actually loads
+#                              (~7 MB total). Render builds from the repo and
+#                              does not retrain, so these MUST be committed.
+# artifacts/*.json             elo/pi ratings, form, h2h, tables, feature
+#                              defaults and label maps — all serving inputs.

@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------------------
+# data/ — the ETL. See the root .gitignore for secrets, __pycache__ and OS junk.
+# What follows is only what this folder generates.
+# ---------------------------------------------------------------------------
+
+# Regenerable and per-machine. In CI these are restored with actions/cache
+# instead of being committed, so the repo does not grow twice a day.
+# A cache miss is harmless: API-Football's own reported usage re-syncs the
+# daily counter on the next run, and that is the authoritative number anyway.
+# (33 MB locally at the time of writing — this is the rule that matters most.)
+output/cache/
+output/.quota.json
+
+# Legacy Mode A output (collectors/ + run.py). pipeline.py supersedes it and
+# writes model_data.csv instead; training.csv is a rebuildable leftover.
+output/training.csv
+
+# Half-written files if a run is interrupted mid-flush.
+output/*.tmp
+output/*.partial
+
+# --- deliberately NOT ignored, so do not "tidy" these away -----------------
+# output/model_data.csv   the training set. Committed once and refreshed by
+#                         hand before a retrain (workflow_dispatch ->
+#                         refresh-dataset commits it).
+# output/.manifest.json   which sources produced the rows above.
+# output/fixtures.csv     the last --live snapshot; small, and useful as a
+#                         reference of the exact column shape.
+# output/conflicts.csv    the data-quality report the workflow commits.
+# unsorted/               16 MB of raw season CSVs. They are the *input* to
+#                         `pipeline.py --with-api`, so refresh-dataset in CI
+#                         cannot rebuild the dataset without them.

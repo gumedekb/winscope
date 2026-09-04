@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/*
+ * Tailwind v4 design tokens. `accent` is referenced across the components
+ * (text-accent, bg-accent) and had no definition, so those classes silently
+ * rendered with no colour — defining it here fixes every usage at once.
+ */
+@theme {
+  --color-accent: #FFD700;   /* WinScope gold */
+  --color-brand-red: #E30613;
+  --color-brand-green: #00A651;
+  --color-surface: #2d2d2d;
+  --color-surface-line: #404040;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  /*
+   * Column, not row. This was `display: flex` with no direction — a leftover
+   * from the Vite template, where the single child was `#root { width: 100% }`.
+   * In a ROW flex container a child with no width is sized to its content and
+   * sits against the left edge, which is why the splash wordmark was pinned to
+   * the side of the screen. In a COLUMN container the cross axis is horizontal,
+   * so children stretch to full width by default and cannot collapse like that.
+   */
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0F0F0F 0%, #1A1410 100%);
+  background-attachment: fixed;
+}
+
+/* Fill the viewport height so a short page still paints the gradient. */
+body > * {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+
+.card-glow {
+  background: #2d2d2d;
+  border: 1px solid #404040;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.card-glow:hover {
+  /* Yellow on top/right, red on left/bottom */
+  transform: translateY(-8px);
+  box-shadow:
+    5px -5px 15px rgba(255, 215, 0, 0.3),
+    -5px 5px 15px rgba(227, 6, 19, 0.3);
+  border-color: #FFD700;
+}
+
+.btn-glow {
+  background: linear-gradient(135deg, #E30613 0%, #FFD700 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  color: #fff;
+}
+
+.btn-glow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* --- splash crest ----------------------------------------------------- */
+/* Breathing scale plus a gold halo, so the badge feels alive while waiting. */
+.splash-crest {
+  animation: crest-breathe 2.8s ease-in-out infinite;
+  /* Own stacking context, so the halo's negative z-index stays inside it. */
+  isolation: isolate;
+}
+
+.splash-crest::after {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  border-radius: 9999px;
+  pointer-events: none;
+  /* Behind the crest. A pseudo-element paints after its host by default, so
+     without this the gold glow washes over the badge instead of haloing it. */
+  z-index: -1;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.22) 0%, rgba(255, 215, 0, 0) 68%);
+  animation: crest-halo 2.8s ease-in-out infinite;
+}
+
+@keyframes crest-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+
+@keyframes crest-halo {
+  0%, 100% { opacity: 0.45; transform: scale(0.96); }
+  50%      { opacity: 1;    transform: scale(1.06); }
+}
+
+/* --- live match indicators ------------------------------------------- */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #00A651;
+  display: inline-block;
+  flex: none;
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+/* A soft green halo so a live card is findable at a glance in a full grid. */
+.live-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 0.75rem;
+  pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(0, 166, 81, 0.5), 0 0 18px rgba(0, 166, 81, 0.25);
+  animation: live-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.85); }
+}
+
+@keyframes live-glow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  .live-ring,
+  .splash-crest,
+  .splash-crest::after,
+  .card-glow,
+  .btn-glow {
+    animation: none;
+    transition: none;
+  }
+  .card-glow:hover,
+  .btn-glow:hover { transform: none; }
+}
+
+/* Slim horizontal scrollbar for the league filter row. */
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: #404040 transparent; }
+.scrollbar-thin::-webkit-scrollbar { height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #404040; border-radius: 9999px; }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #FFD700; }

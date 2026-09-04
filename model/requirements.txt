@@ -1,0 +1,11 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pandas==2.2.3
+numpy==1.26.4
+xgboost==2.1.1
+pydantic==2.9.2
+# joblib + scikit-learn are NOT needed: the server averages the five .ubj
+# boosters, which is bit-identical to the exported VotingClassifier. Add them
+# back only if you want to load artifacts/xgboost_tuned.pkl directly — that
+# also re-introduces a hard dependency on the exact sklearn version it was
+# pickled with, which is the usual cause of a deploy that builds but won't boot.
