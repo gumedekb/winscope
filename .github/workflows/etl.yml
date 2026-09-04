@@ -30,6 +30,14 @@ concurrency:
 jobs:
   etl:
     runs-on: ubuntu-latest
+
+    # Only the refresh-dataset path needs this: it commits model_data.csv and
+    # pushes. Since 2023 the default GITHUB_TOKEN is read-only, so without this
+    # that step builds, fetches, and then dies on the push with a 403.
+    # The everyday `live` run commits nothing and does not need it.
+    permissions:
+      contents: write
+
     defaults:
       run:
         working-directory: data

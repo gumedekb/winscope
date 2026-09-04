@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------------------
+# WinScope — line-ending and diff rules.
+#
+# Edited on Windows (core.autocrlf=true), but every consumer is Linux: GitHub
+# Actions runs ubuntu-latest, Render builds the model server, Vercel builds the
+# web app. Without this file, each file's handling depends on git's per-file
+# guess. This makes it explicit and identical on every machine.
+# ---------------------------------------------------------------------------
+
+# Default: store text as LF in the repo, check out native on Windows.
+* text=auto
+
+# --- never transform -------------------------------------------------------
+# Git's heuristic already gets these right today (the committed xgboost_seed*.ubj
+# blobs are byte-identical to disk — checked). But that heuristic only inspects
+# the first 8 KB: a booster that happened to open with clean ASCII would be
+# "corrected" into an unloadable file, and it would fail at model load on Render
+# rather than at build time. Not worth leaving to a guess.
+*.ubj      binary
+*.pkl      binary
+*.joblib   binary
+*.npy      binary
+*.npz      binary
+*.zip      binary
+*.db       binary
+*.sqlite   binary
+*.sqlite3  binary
+
+# Media
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.mp4   binary
+*.webm  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+
+# --- must be LF even when checked out on Windows ---------------------------
+# Procfile is the one that actually bites: Render reads it on Linux, and a
+# trailing CR turns the start command into `...$PORT\r`, which fails to parse.
+Procfile      text eol=lf
+*.sh          text eol=lf
+*.yml         text eol=lf
+*.yaml        text eol=lf
+*.py          text eol=lf
+.env.example  text eol=lf
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+
+# --- GitHub presentation ---------------------------------------------------
+# Collapse bulk data in diffs and keep it out of the repo's language stats.
+# 16 MB of season CSVs would otherwise dominate every PR view.
+data/unsorted/*.csv        linguist-generated=true
+data/output/model_data.csv linguist-generated=true
+web/package-lock.json      linguist-generated=true
