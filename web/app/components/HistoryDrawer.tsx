@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Check, History as HistoryIcon, Loader2, Minus, Target, X } from 'lucide-react';
 import { api } from '../api-client';
 import type { History, ScoredMatch } from '../types';
+import { PredictionBar } from './PredictionBar';
 
 interface Props {
   isOpen: boolean;
@@ -291,6 +292,12 @@ export const HistoryDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
                         </span>
                       )}
                     </div>
+
+                    {m.probs && (
+                      <div className="mb-2">
+                        <PredictionBar h={m.probs.h} d={m.probs.d} a={m.probs.a} />
+                      </div>
+                    )}
 
                     <div className="flex items-center justify-between text-[11px] gap-2">
                       <div className="flex-1 min-w-0 truncate">
