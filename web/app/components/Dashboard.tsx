@@ -10,7 +10,7 @@ import { LeagueFilter } from './LeagueFilter';
 import { StatusBar } from './StatusBar';
 import { BetslipDrawer } from './BetslipDrawer';
 import { SearchBar, matchesQuery } from './SearchBar';
-import { Calendar, ClipboardList, Loader2, Radio, Trophy } from 'lucide-react';
+import { Calendar, ClipboardList, Loader2, PanelRightOpen, Radio, Trophy } from 'lucide-react';
 
 /** Live scores go stale fast; upcoming fixtures do not. */
 const LIVE_POLL_MS = 60_000;
@@ -25,6 +25,7 @@ export const Dashboard: React.FC = () => {
 
   const [league, setLeague] = useState('all');
   const [liveOnly, setLiveOnly] = useState(false);
+  const [slipOnly, setSlipOnly] = useState(false);
   const [query, setQuery] = useState('');
 
   const [isBetslipOpen, setIsBetslipOpen] = useState(false);
@@ -135,6 +136,12 @@ export const Dashboard: React.FC = () => {
     await loadDetail(match, false);
   };
 
+  // An empty slip disables the toggle, so clear it first — otherwise the filter
+  // stays on with nothing to show and no enabled control to switch it off.
+  useEffect(() => {
+    if (slipKeys.size === 0) setSlipOnly(false);
+  }, [slipKeys]);
+
   const leagues = useMemo(
     () => Array.from(new Set(matches.map((m) => m.competition))).sort(),
     [matches]
@@ -149,6 +156,7 @@ export const Dashboard: React.FC = () => {
     let list = matches;
     if (league !== 'all') list = list.filter((m) => m.competition === league);
     if (liveOnly) list = list.filter((m) => m.statusGroup === 'in_play');
+    if (slipOnly) list = list.filter((m) => slipKeys.has(m.matchKey ?? m.id));
     if (query.trim()) {
       list = list.filter((m) =>
         matchesQuery(
@@ -158,7 +166,7 @@ export const Dashboard: React.FC = () => {
       );
     }
     return list;
-  }, [matches, league, liveOnly, query]);
+  }, [matches, league, liveOnly, slipOnly, slipKeys, query]);
 
   // Live matches sit in their own group at the top; the rest group by date.
   const { live, byDate } = useMemo(() => {
@@ -224,21 +232,38 @@ export const Dashboard: React.FC = () => {
               <Radio className="w-4 h-4" />
               Live{liveCount > 0 ? ` (${liveCount})` : ''}
             </button>
-            <button
-              onClick={() => setIsBetslipOpen(true)}
-              className={`font-bold py-2 px-5 rounded-full flex items-center gap-2 transition-all text-sm border
-                ${slipKeys.size > 0
-                  ? 'bg-[#FFD700] text-black border-[#FFD700]'
-                  : 'bg-[#2d2d2d] text-gray-300 border-[#404040] hover:border-[#FFD700]'}`}
-            >
-              <ClipboardList className="w-4 h-4" />
-              Betslip
-              {slipKeys.size > 0 && (
-                <span className="bg-black/20 text-[10px] font-black px-1.5 py-0.5 rounded-full tabular-nums">
-                  {slipKeys.size}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center">
+              <button
+                onClick={() => setSlipOnly((v) => !v)}
+                aria-pressed={slipOnly}
+                disabled={slipKeys.size === 0}
+                title={slipKeys.size === 0 ? 'Add matches to the slip first' : 'Show only matches on the slip'}
+                className={`font-bold py-2 pl-5 pr-4 rounded-l-full flex items-center gap-2 transition-all text-sm border
+                  ${slipOnly
+                    ? 'bg-[#FFD700] text-black border-[#FFD700]'
+                    : 'bg-[#2d2d2d] text-gray-300 border-[#404040] hover:border-[#FFD700]'}
+                  ${slipKeys.size === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
+              >
+                <ClipboardList className="w-4 h-4" />
+                Betslip
+                {slipKeys.size > 0 && (
+                  <span className="bg-black/20 text-[10px] font-black px-1.5 py-0.5 rounded-full tabular-nums">
+                    {slipKeys.size}
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={() => setIsBetslipOpen(true)}
+                title="Open the slip sheet"
+                aria-label="Open the slip sheet"
+                className={`py-2 px-3 rounded-r-full border border-l-0 transition-all
+                  ${slipOnly
+                    ? 'bg-[#FFD700] text-black border-[#FFD700] hover:bg-[#e6c200]'
+                    : 'bg-[#2d2d2d] text-gray-300 border-[#404040] hover:border-[#FFD700]'}`}
+              >
+                <PanelRightOpen className="w-4 h-4" />
+              </button>
+            </div>
             <button
               onClick={() => setIsHistoryOpen(true)}
               className="btn-glow font-bold py-2 px-5 rounded-full flex items-center gap-2 transition-all text-sm"
@@ -294,7 +319,7 @@ export const Dashboard: React.FC = () => {
               </p>
             ) : (
               <button
-                onClick={() => { setLeague('all'); setLiveOnly(false); setQuery(''); }}
+                onClick={() => { setLeague('all'); setLiveOnly(false); setSlipOnly(false); setQuery(''); }}
                 className="text-[#FFD700] mt-3 text-sm font-bold hover:underline"
               >
                 Clear filters
