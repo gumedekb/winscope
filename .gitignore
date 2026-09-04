@@ -35,7 +35,9 @@ dist/
 .venv/
 venv/
 env/
-.python-version
+# .python-version is deliberately NOT ignored: model/.python-version pins the
+# Render runtime and must be committed. Add a path-specific rule if you ever
+# need a machine-local one.
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
