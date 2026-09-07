@@ -13,6 +13,8 @@ export interface Match {
   utcDate: string;
   status: string;
   statusGroup: StatusGroup;
+  /** ISO time the ETL last wrote this row — drives the staleness check. */
+  updatedAt?: string;
   minute: number | null;
   competition: string;
   competitionId: string;
@@ -128,7 +130,10 @@ export interface Freshness {
   finished: number;
   leagues: string[];
   lastUpdated: string | null;
+  /** Earliest kickoff still in the future, or null if there is none. */
   nextKickoff: string | null;
+  /** Kicked off but never advanced by the ETL — see lib/fixtures getFreshness. */
+  stranded: number;
 }
 
 export interface FixturesResponse {

@@ -4,23 +4,47 @@ name: WinScope ETL
 # It commits NOTHING. model_data.csv is the static history — committed once, and
 # refreshed by hand only when you are about to retrain.
 #
-# Measured runtimes (cold cache, real API calls): tests 2s, `--live` 75s.
-# ~2 min per run x 2/day x 30 = ~120 min/month, against a free allowance of
-# 2,000 min/month on private repos (unlimited on public). See data/README.md.
+# Actions minutes are unlimited (public repo), so the only budget that constrains
+# the schedule is API-Football's 100 requests/day — and we stop at 90.
+#
+#   api-football      5 requests/run  (1 status + 1 live=all + 3 dates)  90/day CAP
+#   football-data.org 2 requests/run  (15-day window, 10-day max slice)  no daily cap
+#   thesportsdb      23 requests/run  (livescore + next/past x 11)       no daily cap
+#
+# TWO SPEEDS, because only one provider is capped.
+# Twice a day could not track a live match at all: a fixture kicking off at 18:45
+# was caught in play by the evening run and then not written again for ~12 hours,
+# so the dashboard showed finished matches as LIVE overnight.
+#
+#   fast  — every 20 min through the match window, on the UNCAPPED providers only.
+#           Costs API-Football nothing. football-data.org carries live scores for
+#           the big European leagues on a 5-minute cache TTL, and TheSportsDB's
+#           livescore.php is one global request that also reports a match clock.
+#   full  — hourly, adds API-Football: 14 runs x 5 = 70 of 90, leaving 20 for
+#           manual workflow_dispatch. It is the only source with SA PSL live cover
+#           and the only cross-check on the other two.
+#
+# The two jobs share `concurrency`, so a fast run never overlaps a full one.
 
 on:
   schedule:
-    - cron: '0 6,18 * * *'      # twice a day: new + live matches -> Turso
+    # full: hourly across the match window, plus a morning sweep. UTC.
+    - cron: '0 6 * * *'
+    - cron: '0 11-23 * * *'
+    # fast: every 20 min in between, uncapped providers only.
+    - cron: '20,40 11-23 * * *'
   workflow_dispatch:
     inputs:
       mode:
         description: >
-          live = fetch matches into Turso (no commit).
+          live = fetch matches into Turso from every provider (no commit).
+          live-uncapped = same, but skips API-Football so it spends none of the
+          100/day budget.
           refresh-dataset = rescan unsorted/ + APIs + fold Turso results back in,
           then commit model_data.csv. Run this before a retrain.
         default: live
         type: choice
-        options: [live, refresh-dataset]
+        options: [live, live-uncapped, refresh-dataset]
 
 concurrency:
   # Never let two runs spend the API budget at the same time.
@@ -73,15 +97,24 @@ jobs:
         run: python pipeline.py --quota
 
       # ---- the everyday job: new + live matches into Turso, nothing committed
+      #
+      # Which providers run depends on WHICH cron fired. The 20/40-past trigger is
+      # the fast lane and must not touch API-Football, or three runs an hour would
+      # burn the 90/day cap before the evening kickoffs. `github.event.schedule`
+      # is the cron string that fired; it is empty for workflow_dispatch, where
+      # the mode input decides instead.
       - name: Fetch matches into Turso
         if: inputs.mode != 'refresh-dataset'
-        run: python pipeline.py --live
         env:
+          PROVIDERS: ${{ (github.event.schedule == '20,40 11-23 * * *' || inputs.mode == 'live-uncapped') && 'football-data,thesportsdb' || 'all' }}
           API_SPORTS_KEY:        ${{ secrets.API_SPORTS_KEY }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
           THESPORTSDB_KEY:       ${{ secrets.THESPORTSDB_KEY }}
           TURSO_FIXTURES_URL:    ${{ secrets.TURSO_FIXTURES_URL }}
           TURSO_FIXTURES_TOKEN:  ${{ secrets.TURSO_FIXTURES_TOKEN }}
+        run: |
+          echo "providers: $PROVIDERS"
+          python pipeline.py --live --providers "$PROVIDERS"
 
       # ---- manual only: rebuild the training set before a retrain
       - name: Refresh the training dataset

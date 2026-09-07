@@ -12,6 +12,8 @@ every one of them is capped at 90% of its free tier — see apis/ratelimit.py.
     python pipeline.py                  # files only (free, no network)
     python pipeline.py --with-api       # + SA PSL history + live/upcoming fixtures
     python pipeline.py --live           # fixtures refresh only (+ push to Turso)
+    python pipeline.py --live --providers football-data,thesportsdb
+                                        # same, but spends no API-Football budget
     python pipeline.py --quota          # what's left of today's API budgets
     python pipeline.py --full-rescan    # ignore the manifest, reprocess everything
 """
@@ -98,7 +100,8 @@ def api_stage(args, have, verbose: bool = True):
                      openfootball_seasons=TARGET_SEASONS if use_of else None,
                      openfootball_mode="crosscheck" if args.cross_check else "gapfill",
                      have=have, all_leagues=args.all_leagues,
-                     force=args.force_refresh, verbose=verbose)
+                     force=args.force_refresh, verbose=verbose,
+                     providers=getattr(args, "providers", None))
 
 
 def write_fixtures(fixtures: pd.DataFrame) -> pd.DataFrame:
@@ -196,6 +199,12 @@ def main(argv=None) -> int:
                         help="fill missing league-seasons from openfootball (free, no key)")
     parser.add_argument("--cross-check", action="store_true",
                         help="diff openfootball against our data WITHOUT merging it")
+    parser.add_argument("--providers", default="all", metavar="LIST",
+                        help="comma-separated API stage providers to run: "
+                             "api-football, football-data, thesportsdb, "
+                             "openfootball (default: all). Naming only the "
+                             "uncapped ones lets a frequent cron run without "
+                             "spending API-Football's 100/day budget.")
     parser.add_argument("--all-leagues", action="store_true",
                         help="keep API fixtures for leagues outside leagues.py too")
     parser.add_argument("--force-refresh", action="store_true",

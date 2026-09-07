@@ -11,6 +11,7 @@ import { StatusBar } from './StatusBar';
 import { BetslipDrawer } from './BetslipDrawer';
 import { SearchBar, matchesQuery } from './SearchBar';
 import { Calendar, ClipboardList, Loader2, PanelRightOpen, Radio, Trophy } from 'lucide-react';
+import { isLiveNow } from '../../lib/liveness';
 
 /** Live scores go stale fast; upcoming fixtures do not. */
 const LIVE_POLL_MS = 60_000;
@@ -92,10 +93,10 @@ export const Dashboard: React.FC = () => {
 
   // Poll only while something is actually in play — no point hammering
   // the database to re-read a fixture list that changes twice a day.
-  const liveCount = useMemo(
-    () => matches.filter((m) => m.statusGroup === 'in_play').length,
-    [matches]
-  );
+  // Staleness matters here: a row stuck at `in_play` because the ETL missed a
+  // run would otherwise keep the 60s poll going forever, re-reading a value
+  // that cannot change until the next cron tick.
+  const liveCount = useMemo(() => matches.filter((m) => isLiveNow(m)).length, [matches]);
   useEffect(() => {
     if (liveCount === 0) return;
     const id = setInterval(() => void fetchData(true), LIVE_POLL_MS);
@@ -155,7 +156,7 @@ export const Dashboard: React.FC = () => {
   const visible = useMemo(() => {
     let list = matches;
     if (league !== 'all') list = list.filter((m) => m.competition === league);
-    if (liveOnly) list = list.filter((m) => m.statusGroup === 'in_play');
+    if (liveOnly) list = list.filter((m) => isLiveNow(m));
     if (slipOnly) list = list.filter((m) => slipKeys.has(m.matchKey ?? m.id));
     if (query.trim()) {
       list = list.filter((m) =>
@@ -170,8 +171,10 @@ export const Dashboard: React.FC = () => {
 
   // Live matches sit in their own group at the top; the rest group by date.
   const { live, byDate } = useMemo(() => {
-    const liveList = visible.filter((m) => m.statusGroup === 'in_play');
-    const rest = visible.filter((m) => m.statusGroup !== 'in_play');
+    // Stalled rows drop out of the live group and back into their date group,
+    // where their kickoff time makes it obvious they are not happening now.
+    const liveList = visible.filter((m) => isLiveNow(m));
+    const rest = visible.filter((m) => !isLiveNow(m));
     const groups: Record<string, Match[]> = {};
     for (const m of rest) {
       const label = new Date(m.utcDate).toLocaleDateString('en-GB', {
@@ -276,6 +279,7 @@ export const Dashboard: React.FC = () => {
 
         <StatusBar
           freshness={freshness}
+          liveCount={liveCount}
           onRefresh={() => void handleRefresh()}
           refreshing={refreshing}
           error={error}

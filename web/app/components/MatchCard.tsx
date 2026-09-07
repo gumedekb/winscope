@@ -4,6 +4,7 @@ import type { Match, Prediction } from '../types';
 import { PredictionBar } from './PredictionBar';
 import { TeamCrest } from './TeamCrest';
 import { Check, Plus, RefreshCw, TrendingUp } from 'lucide-react';
+import { agoLabel, isLiveNow, isStalled, staleFor } from '../../lib/liveness';
 
 interface Props {
   match: Match;
@@ -48,7 +49,11 @@ export const MatchCard: React.FC<Props> = ({
     hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Johannesburg',
   });
 
-  const isLive = match.statusGroup === 'in_play';
+  // `in_play` is only believed while the row is fresh — see lib/liveness.
+  // A stalled match still shows its last known score, labelled as not current.
+  const isLive = isLiveNow(match);
+  const stalled = isStalled(match);
+  const unwrittenFor = staleFor(match);
   const isOff = match.statusGroup === 'off';
   const hasScore = match.homeScore !== null && match.awayScore !== null;
 
@@ -56,7 +61,8 @@ export const MatchCard: React.FC<Props> = ({
     <div
       onClick={onClick}
       className={`card-glow rounded-xl p-4 cursor-pointer transition-all duration-300 group relative
-                  bg-[#2d2d2d] border ${isLive ? 'border-[#00A651]' : 'border-[#404040]'}`}
+                  bg-[#2d2d2d] border ${isLive ? 'border-[#00A651]'
+                    : stalled ? 'border-[#FFD700]/40' : 'border-[#404040]'}`}
     >
       {isLive && <span className="live-ring" aria-hidden />}
 
@@ -98,6 +104,14 @@ export const MatchCard: React.FC<Props> = ({
             <span className="text-[10px] font-black text-[#00A651] uppercase tracking-wider flex items-center gap-1.5">
               <span className="live-dot" />
               LIVE{match.minute ? ` · ${match.minute}'` : ''}
+            </span>
+          ) : stalled ? (
+            <span
+              className="text-[10px] font-bold text-[#FFD700] uppercase tracking-wider"
+              title={`The score feed last updated this match ${agoLabel(unwrittenFor)}. `
+                   + 'It has almost certainly finished — the result lands on the next data refresh.'}
+            >
+              Awaiting update · {agoLabel(unwrittenFor)}
             </span>
           ) : isOff ? (
             <span className="text-[10px] font-bold text-[#E30613] uppercase tracking-wider">

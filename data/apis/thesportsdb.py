@@ -9,6 +9,12 @@ lists with no other change.
 Its one genuinely unique contribution: it carries the South African Premier
 Soccer League (id 4802, "Betway Premiership") including the CURRENT season, which
 the API-Football free plan will not serve at all.
+
+It also serves `livescore.php` on the free key — every soccer match in progress
+worldwide for ONE request, carrying a match clock. That matters because it is the
+only free source here that has one: API-Football has a clock but a 100/day cap,
+and football-data.org has no daily cap but omits the minute field entirely. See
+`livescore()`.
 """
 from datetime import date, datetime, timezone
 
@@ -27,6 +33,24 @@ FREE_PER_MINUTE = 30
 
 FINISHED = {"FT", "AET", "PEN", "MATCH FINISHED"}
 IN_PLAY = {"1H", "2H", "HT", "ET", "LIVE"}
+
+
+def _minute(raw) -> int | None:
+    """`strProgress` -> an int the fixtures table can store.
+
+    The field is a scoreboard string, not a number: "41", "90+5" for stoppage
+    time, "HT" at the break, "" before kickoff. Stoppage collapses to the base
+    minute (90+5 -> 90) because the column is an INTEGER and "in the 90th plus
+    five" is not a distinction anything downstream acts on.
+    """
+    text = str(raw or "").strip()
+    if not text:
+        return None
+    head = text.split("+", 1)[0].strip().rstrip("'")
+    try:
+        return int(head)
+    except ValueError:
+        return None                              # "HT", "FT", anything unnumbered
 
 
 def base_url() -> str:
@@ -63,7 +87,7 @@ def _rows(events: list) -> pd.DataFrame:
         recs.append({
             "kickoff_utc": kickoff,
             "status": status,
-            "minute": (e.get("strProgress") or None),
+            "minute": _minute(e.get("strProgress")),
             "league": known.name if known else e.get("strLeague"),
             "country": known.country if known else e.get("strCountry"),
             "tsdb_id": str(e.get("idLeague")),
@@ -109,6 +133,40 @@ def _get(sess, key, ttl, path, params, force):
         return cache.fetch(sess, PROVIDER, key, ttl, path, params, force=force)
     except (QuotaExhausted, RuntimeError) as exc:
         return {"_error": str(exc)}, False
+
+
+def livescore(sess: BudgetedSession, all_leagues: bool = False,
+              force: bool = False):
+    """Every soccer match in progress worldwide — ONE request, no daily cap.
+
+    This is the cheapest live feed available to us and the only free one with a
+    match clock. `eventsnextleague`/`eventspastleague` are NOT live: they answer
+    with `strStatus="NS"` and no progress, which is why a fixture collected from
+    them alone can sit at "scheduled" straight through its own kickoff.
+
+    The endpoint is global, so the response covers every league TheSportsDB
+    tracks and we keep only ours — cheap, because the filtering happens after a
+    single request rather than costing one request per league.
+
+    NOTE the free/test key ("3") is not documented to cover every competition
+    here. A run that returns nothing for our leagues is therefore not proof of a
+    fault; it may just be that none of them are playing. The note this returns
+    reports both numbers so the distinction is visible in the log.
+    """
+    payload, cached = _get(sess, "livescore_soccer", cache.TTL_LIVE,
+                           "livescore.php", {"s": "Soccer"}, force)
+    if "_error" in payload:
+        return pd.DataFrame(), [f"livescore: {payload['_error']}"]
+
+    rows = _rows(payload.get("livescore") or [])
+    worldwide = len(rows)
+    if not rows.empty and not all_leagues:
+        rows = rows[rows["tsdb_id"].isin(BY_TSDB_ID)].reset_index(drop=True)
+    note = (f"livescore: {len(rows)} in our leagues of {worldwide} live worldwide"
+            + (" (cache)" if cached else ""))
+    if worldwide and rows.empty:
+        note += " — none of our leagues are playing right now"
+    return rows, [note]
 
 
 def next_events(sess: BudgetedSession, leagues=None, force: bool = False):

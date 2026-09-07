@@ -166,6 +166,9 @@ export async function GET(request: Request) {
           utcDate: f.kickoff_utc,
           status: f.status,
           statusGroup: f.status_group,
+          // When the ETL last wrote this row. The UI needs it to tell a
+          // genuinely live match from one frozen by a cron that fell behind.
+          updatedAt: f.updated_at,
           minute: f.minute,
           competition: f.league,
           competitionId: f.league,

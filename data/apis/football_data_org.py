@@ -126,7 +126,12 @@ def to_matches(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _slice(sess, start: date, end: date, all_leagues: bool, force: bool):
-    """One request for one <=10-day window."""
+    """One request for one <=10-day window, ACROSS all competitions.
+
+    Kept only for `all_leagues`, because it is the sole way to see a competition
+    we do not already name. On the free tier it is close to useless on its own —
+    see `_competition_slice` for why.
+    """
     key = f"matches_{start.isoformat()}_{end.isoformat()}"
     try:
         payload, cached = cache.fetch(
@@ -142,6 +147,33 @@ def _slice(sess, start: date, end: date, all_leagues: bool, force: bool):
                   + (" (cache)" if cached else "")]
 
 
+def _competition_slice(sess, code: str, start: date, end: date, force: bool):
+    """One request: ONE competition, one <=10-day window.
+
+    WHY PER COMPETITION, when /v4/matches would fetch them all in one request:
+    on the free tier (`filters.permission: TIER_ONE`) the cross-competition
+    endpoint answers a dated range with almost nothing — a query for 2026-09-06
+    returned a single Brazilian fixture while Serie A, Eredivisie and the rest
+    played a full card that day. Asking each competition directly returns the
+    complete list for exactly the same dates and the same free token.
+
+    That silent near-empty response is what left finished matches frozen at
+    `in_play` in Turso: the backfill window was running, finding nothing, and
+    reporting success. The extra requests are affordable because this provider
+    has no daily cap at all — only 10/minute, which BudgetedSession paces.
+    """
+    key = f"comp_{code}_{start.isoformat()}_{end.isoformat()}"
+    try:
+        payload, cached = cache.fetch(
+            sess, PROVIDER, key, cache.ttl_for_window(start, end),
+            f"competitions/{code}/matches",
+            {"dateFrom": start.isoformat(), "dateTo": end.isoformat()}, force=force)
+    except (QuotaExhausted, RuntimeError) as exc:
+        return pd.DataFrame(), [f"{code} {start}..{end}: {exc}"]
+    rows = _rows(payload.get("matches") or [])
+    return rows, [f"{code} {start}..{end}: {len(rows)}" + (" (cache)" if cached else "")]
+
+
 def windows(start: date, end: date, size: int = MAX_WINDOW_DAYS):
     """Split an arbitrary date range into consecutive <=`size`-day windows."""
     out, cursor = [], start
@@ -154,15 +186,33 @@ def windows(start: date, end: date, size: int = MAX_WINDOW_DAYS):
 
 def matches_between(sess: BudgetedSession, start: date, end: date,
                     all_leagues: bool = False, force: bool = False):
-    """Every match the token can see between two dates, chunked to fit the API's
-    10-day ceiling. One request per chunk, each cached separately."""
+    """Every match between two dates, chunked to fit the API's 10-day ceiling.
+
+    Walks our tracked competitions one at a time — the free tier will not serve a
+    dated range across all of them at once (see `_competition_slice`). That is
+    len(codes) x len(windows) requests, which this provider's budget absorbs:
+    no daily cap, 10/minute, paced by BudgetedSession.
+    """
+    codes = sorted(BY_FDO_CODE)
     frames, notes = [], []
     for win_start, win_end in windows(start, end):
-        rows, note = _slice(sess, win_start, win_end, all_leagues, force)
-        notes += note
-        if not rows.empty:
-            frames.append(rows)
-    return (pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()), notes
+        for code in codes:
+            rows, note = _competition_slice(sess, code, win_start, win_end, force)
+            notes += note
+            if not rows.empty:
+                frames.append(rows)
+        # Only a cross-competition sweep can surface a league we do not name.
+        if all_leagues:
+            rows, note = _slice(sess, win_start, win_end, True, force)
+            notes += note
+            if not rows.empty:
+                frames.append(rows)
+    if not frames:
+        return pd.DataFrame(), notes
+    out = pd.concat(frames, ignore_index=True)
+    # The two paths can overlap when all_leagues is on.
+    out = out.drop_duplicates(subset=["kickoff_utc", "home_team", "away_team"])
+    return out.reset_index(drop=True), notes
 
 
 def upcoming(sess: BudgetedSession, days: int = 7, all_leagues: bool = False,

@@ -8,6 +8,12 @@ interface Props {
   onRefresh: () => void;
   refreshing: boolean;
   error?: string | null;
+  /**
+   * Live matches as the cards actually count them — in play AND recently
+   * confirmed. `freshness.inPlay` is the raw database tally and includes rows
+   * frozen by a missed ETL run, so showing it here would contradict the grid.
+   */
+  liveCount?: number;
 }
 
 const ago = (iso: string | null) => {
@@ -26,7 +32,9 @@ const ago = (iso: string | null) => {
  * does, on a schedule — so "why is this match missing?" is nearly always
  * "the ETL has not run recently", and the answer should be on screen.
  */
-export const StatusBar: React.FC<Props> = ({ freshness, onRefresh, refreshing, error }) => {
+export const StatusBar: React.FC<Props> = ({
+  freshness, onRefresh, refreshing, error, liveCount,
+}) => {
   const stale = freshness?.lastUpdated
     ? Date.now() - new Date(freshness.lastUpdated).getTime() > 12 * 3600_000
     : true;
@@ -51,10 +59,21 @@ export const StatusBar: React.FC<Props> = ({ freshness, onRefresh, refreshing, e
         Turso
       </span>
 
-      {freshness?.inPlay ? (
+      {liveCount ? (
         <span className="flex items-center gap-1.5 font-bold text-[#00A651]">
           <Radio className="w-3.5 h-3.5" />
-          {freshness.inPlay} live
+          {liveCount} live
+        </span>
+      ) : null}
+
+      {freshness?.stranded ? (
+        <span
+          className="flex items-center gap-1.5 font-bold text-[#FFD700]"
+          title={'Matches whose kickoff has passed but which the ETL never advanced — '
+               + 'either it is behind, or no live source covers that league.'}
+        >
+          <TriangleAlert className="w-3.5 h-3.5" />
+          {freshness.stranded} awaiting update
         </span>
       ) : null}
 

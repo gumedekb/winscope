@@ -212,19 +212,29 @@ export interface Freshness {
   leagues: string[];
   lastUpdated: string | null;
   nextKickoff: string | null;
+  /** Rows whose kickoff has passed but which the ETL never advanced. */
+  stranded: number;
 }
 
 /** Header stats — one round trip, so the dashboard can show whether data is stale. */
 export async function getFreshness(): Promise<Freshness> {
+  // `next_kickoff` must be in the FUTURE. Some fixtures never advance past
+  // `scheduled` — a league no live source covers gets seeded once and is then
+  // never revisited — so the earliest scheduled kickoff drifts into the past and
+  // the header ends up advertising a match that started days ago. Ask only for
+  // kickoffs from now on, and the stat degrades to null instead of lying.
+  const now = new Date().toISOString();
   const [groups, meta] = await Promise.all([
     fixturesDb.execute(
       'SELECT status_group, COUNT(*) AS n FROM fixtures GROUP BY status_group'
     ),
-    fixturesDb.execute(
-      `SELECT MAX(updated_at) AS last_updated,
-              MIN(CASE WHEN status_group = 'scheduled' THEN kickoff_utc END) AS next_kickoff
-       FROM fixtures`
-    ),
+    fixturesDb.execute({
+      sql: `SELECT MAX(updated_at) AS last_updated,
+                   MIN(CASE WHEN status_group = 'scheduled' AND kickoff_utc >= ?
+                            THEN kickoff_utc END) AS next_kickoff
+            FROM fixtures`,
+      args: [now],
+    }),
   ]);
 
   const tally: Record<string, number> = {};
@@ -232,6 +242,14 @@ export async function getFreshness(): Promise<Freshness> {
     tally[String(row.status_group)] = Number(row.n);
   }
   const m = (meta.rows[0] ?? {}) as Record<string, unknown>;
+
+  // Kicked off, but still sitting at `scheduled` or `in_play`. A non-zero count
+  // means the ETL is behind or a league has no live source at all.
+  const strandedRs = await fixturesDb.execute({
+    sql: `SELECT COUNT(*) AS n FROM fixtures
+          WHERE status_group IN ('scheduled', 'in_play') AND kickoff_utc < ?`,
+    args: [now],
+  });
 
   const leagueRs = await fixturesDb.execute(
     `SELECT DISTINCT league FROM fixtures
@@ -246,6 +264,7 @@ export async function getFreshness(): Promise<Freshness> {
     leagues: (leagueRs.rows as unknown as Record<string, unknown>[]).map((r) => String(r.league)),
     lastUpdated: m.last_updated ? String(m.last_updated) : null,
     nextKickoff: m.next_kickoff ? String(m.next_kickoff) : null,
+    stranded: Number((strandedRs.rows[0] as unknown as Record<string, unknown>)?.n ?? 0),
   };
 }
 
