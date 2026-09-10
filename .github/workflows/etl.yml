@@ -7,32 +7,43 @@ name: WinScope ETL
 # Actions minutes are unlimited (public repo), so the only budget that constrains
 # the schedule is API-Football's 100 requests/day — and we stop at 90.
 #
-#   api-football      5 requests/run  (1 status + 1 live=all + 3 dates)  90/day CAP
-#   football-data.org 2 requests/run  (15-day window, 10-day max slice)  no daily cap
-#   thesportsdb      23 requests/run  (livescore + next/past x 11)       no daily cap
+#   api-football      5 requests/pass (1 status + 1 live=all + 3 dates)  90/day CAP
+#   football-data.org 2 requests/pass (15-day window, 10-day max slice)  no daily cap
+#   thesportsdb      23 requests/pass (livescore + next/past x 11)       no daily cap
 #
-# TWO SPEEDS, because only one provider is capped.
-# Twice a day could not track a live match at all: a fixture kicking off at 18:45
-# was caught in play by the evening run and then not written again for ~12 hours,
-# so the dashboard showed finished matches as LIVE overnight.
+# WHY ONE LONG JOB, AND NOT ONE JOB PER TICK
+# ------------------------------------------
+# GitHub does not deliver `schedule` events reliably on a public repo. With a
+# tick configured every 20 minutes, ~40 runs a day were due and 2-4 actually
+# started — hours late (a 06:00 UTC cron landing at 10:35). A pass that never
+# starts cannot refresh a live score, which is how a match ended up frozen
+# mid-play on the dashboard for four days.
 #
-#   fast  — every 20 min through the match window, on the UNCAPPED providers only.
-#           Costs API-Football nothing. football-data.org carries live scores for
-#           the big European leagues on a 5-minute cache TTL, and TheSportsDB's
-#           livescore.php is one global request that also reports a match clock.
-#   full  — hourly, adds API-Football: 14 runs x 5 = 70 of 90, leaving 20 for
-#           manual workflow_dispatch. It is the only source with SA PSL live cover
-#           and the only cross-check on the other two.
+# So the schedule no longer carries the cadence: the JOB does. Each run loops
+# internally, doing a pass every PASS_MINUTES for up to LOOP_MINUTES. The cron
+# entries below are a WATCHDOG — they restart the loop after one finishes, or
+# after a trigger was dropped. `concurrency` keeps exactly one loop alive, and a
+# queued run starts the moment the running one exits, so cover stays continuous
+# even when most triggers never arrive.
 #
-# The two jobs share `concurrency`, so a fast run never overlaps a full one.
+# TWO SPEEDS INSIDE THE LOOP, because only one provider is capped.
+#   fast — every pass, on the UNCAPPED providers. Costs API-Football nothing.
+#          football-data.org carries live scores for the big European leagues on
+#          a 5-minute cache TTL, and TheSportsDB's livescore.php is one global
+#          request that also reports a match clock.
+#   full — adds API-Football, at most once an hour and only from FULL_FROM_HOUR
+#          UTC on: 14 x 5 = 70 of the 90, leaving 20 for manual dispatch. The
+#          window is what keeps it inside the cap — round the clock it would be
+#          24 x 5 = 120 and would run dry by evening, which is exactly when the
+#          SA PSL kicks off and API-Football is the only source that covers it
+#          live. It is also the only cross-check on the other two.
 
 on:
   schedule:
-    # full: hourly across the match window, plus a morning sweep. UTC.
-    - cron: '0 6 * * *'
-    - cron: '0 11-23 * * *'
-    # fast: every 20 min in between, uncapped providers only.
-    - cron: '20,40 11-23 * * *'
+    # Watchdog only — NOT the cadence (see above). Deliberately off the hour:
+    # the top of the hour is when GitHub sheds the most scheduled events.
+    - cron: '13 * * * *'
+    - cron: '43 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -45,9 +56,17 @@ on:
         default: live
         type: choice
         options: [live, live-uncapped, refresh-dataset]
+      minutes:
+        description: >
+          How long to keep looping, in minutes. 0 = a single pass and stop.
+          Ignored by refresh-dataset.
+        default: '170'
+        type: string
 
 concurrency:
-  # Never let two runs spend the API budget at the same time.
+  # Never let two loops spend the API budget at the same time. A trigger that
+  # arrives while a loop is running waits and takes over when it ends — that
+  # handover is what makes the cover continuous.
   group: winscope-etl
   cancel-in-progress: false
 
@@ -55,12 +74,22 @@ jobs:
   etl:
     runs-on: ubuntu-latest
 
+    # Below the 6h hard ceiling, and above LOOP_MINUTES plus setup, so a wedged
+    # pass releases the concurrency group in good time instead of holding it.
+    timeout-minutes: 200
+
     # Only the refresh-dataset path needs this: it commits model_data.csv and
     # pushes. Since 2023 the default GITHUB_TOKEN is read-only, so without this
     # that step builds, fetches, and then dies on the push with a 403.
     # The everyday `live` run commits nothing and does not need it.
     permissions:
       contents: write
+
+    env:
+      PASS_MINUTES: 20                       # a pass every 20 minutes...
+      LOOP_MINUTES: ${{ inputs.minutes || '170' }}   # ...for just under 3 hours
+      FULL_EVERY_MINUTES: 60                 # how often a pass may spend API-Football
+      FULL_FROM_HOUR: 10                     # ...and not before this hour UTC (12:00 SAST)
 
     defaults:
       run:
@@ -78,7 +107,8 @@ jobs:
 
       # Cached, not committed: API responses + the daily quota counter, kept
       # across runs without growing the repo. A cache miss is harmless — the
-      # daily budget re-syncs from API-Football's own reported usage.
+      # daily budget re-syncs from API-Football's own reported usage. Within a
+      # loop the file simply stays on disk, so every pass shares one budget.
       - name: Restore API cache and quota counter
         uses: actions/cache@v6
         with:
@@ -98,23 +128,49 @@ jobs:
 
       # ---- the everyday job: new + live matches into Turso, nothing committed
       #
-      # Which providers run depends on WHICH cron fired. The 20/40-past trigger is
-      # the fast lane and must not touch API-Football, or three runs an hour would
-      # burn the 90/day cap before the evening kickoffs. `github.event.schedule`
-      # is the cron string that fired; it is empty for workflow_dispatch, where
-      # the mode input decides instead.
+      # One pass immediately, then another every PASS_MINUTES until LOOP_MINUTES
+      # is up. A pass is never allowed to take the loop down with it: a provider
+      # timing out or a Turso blip is logged and the next pass carries on.
       - name: Fetch matches into Turso
         if: inputs.mode != 'refresh-dataset'
         env:
-          PROVIDERS: ${{ (github.event.schedule == '20,40 11-23 * * *' || inputs.mode == 'live-uncapped') && 'football-data,thesportsdb' || 'all' }}
+          UNCAPPED:              ${{ inputs.mode == 'live-uncapped' && '1' || '0' }}
           API_SPORTS_KEY:        ${{ secrets.API_SPORTS_KEY }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
           THESPORTSDB_KEY:       ${{ secrets.THESPORTSDB_KEY }}
           TURSO_FIXTURES_URL:    ${{ secrets.TURSO_FIXTURES_URL }}
           TURSO_FIXTURES_TOKEN:  ${{ secrets.TURSO_FIXTURES_TOKEN }}
         run: |
-          echo "providers: $PROVIDERS"
-          python pipeline.py --live --providers "$PROVIDERS"
+          set -u
+          deadline=$(( LOOP_MINUTES * 60 ))
+          gap=$(( PASS_MINUTES * 60 ))
+          next_full=0            # $SECONDS at which API-Football may be spent again
+          pass=0
+          while : ; do
+            pass=$(( pass + 1 ))
+            # The fast lane runs every pass; the full one is rationed by the
+            # clock, not by which cron fired — the loop makes that unknowable.
+            # `10#` forces base 10: `08` is not a valid octal number and would
+            # otherwise abort the whole step.
+            hour=$(( 10#$(date -u +%H) ))
+            if [ "$UNCAPPED" = '1' ] || [ "$SECONDS" -lt "$next_full" ] \
+               || [ "$hour" -lt "$FULL_FROM_HOUR" ]; then
+              providers='football-data,thesportsdb'
+            else
+              providers='all'
+              next_full=$(( SECONDS + FULL_EVERY_MINUTES * 60 ))
+            fi
+            echo "::group::pass $pass · +$(( SECONDS / 60 ))m · providers: $providers"
+            timeout 600 python pipeline.py --live --providers "$providers" \
+              || echo "!! pass $pass failed (exit $?) — continuing"
+            echo "::endgroup::"
+            # Stop when the next pass would land past the deadline; the queued
+            # run takes over from here.
+            [ $(( SECONDS + gap )) -ge "$deadline" ] && break
+            sleep "$gap"
+          done
+          echo "ran $pass pass(es) over $(( SECONDS / 60 ))m"
+          python pipeline.py --quota
 
       # ---- manual only: rebuild the training set before a retrain
       - name: Refresh the training dataset

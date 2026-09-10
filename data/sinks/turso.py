@@ -21,7 +21,7 @@ so a prediction row can be joined to its result with a plain equality join.
 """
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pandas as pd
 import requests
@@ -327,6 +327,54 @@ def push(fixtures: pd.DataFrame, client: Turso | None = None, verbose: bool = Tr
         if gained:
             print(f"  {gained} new match(es) tracked")
     return {"pushed": written, **after}
+
+
+# A match is in a live feed only while it is being played. Six hours covers 90
+# minutes, stoppage, half time, extra time and a delayed restart with room to
+# spare, so anything still unfinished past it was missed, not ongoing.
+STALE_AFTER_HOURS = 6
+
+
+def reap_stranded(client: Turso | None = None, hours: int = STALE_AFTER_HOURS,
+                  verbose: bool = True) -> int:
+    """Retire rows the live feeds moved on from without us seeing the result.
+
+    A fixture is only quoted by a provider while it matters to that provider.
+    Miss the window it finished in — a skipped cron tick, or a league no free
+    source covers live — and the row keeps whatever it had forever: `in_play`
+    with a half-time score, or `scheduled` for a match played last week. Those
+    rows do not just sit there quietly; `in_play` sorts to the TOP of the web
+    app's fixture list, so a stray from days ago becomes the first thing on the
+    dashboard, dated and badged as if it were on now.
+
+    Nothing is deleted and no result is invented. A row stranded at HT holds a
+    half-time score, not a full-time one, so promoting it to `finished` would
+    feed the track record a scoreline that was never final. It goes to `off`
+    instead, which the model is never scored against.
+
+    This is reversible by ordinary data: `off` ranks BELOW `in_play` and
+    `finished` in PROGRESS, so if a provider does later carry the real result,
+    the normal upsert still overwrites it.
+    """
+    client = client or Turso()
+    client.ensure_schema()
+    now = datetime.now(timezone.utc)
+    cutoff = (now - timedelta(hours=hours)).isoformat(timespec="seconds")
+    result = client.execute(
+        f"""UPDATE {TABLE}
+               SET status       = 'UNRESOLVED',
+                   status_group = 'off',
+                   progress     = {PROGRESS['off']},
+                   minute       = NULL,
+                   updated_at   = ?
+             WHERE status_group IN ('scheduled', 'in_play')
+               AND kickoff_utc < ?""",
+        [now.isoformat(timespec="seconds"), cutoff])
+    reaped = int((result or {}).get("affected_row_count") or 0)
+    if verbose and reaped:
+        print(f"  retired {reaped} stranded row(s) — kicked off more than {hours}h "
+              f"ago and never resolved (kept, marked 'off', not scored)")
+    return reaped
 
 
 def counts(client: Turso) -> dict:

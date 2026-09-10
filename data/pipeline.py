@@ -143,6 +143,11 @@ def push_to_turso(fixtures: pd.DataFrame, args) -> None:
     _rule("5. Publishing to Turso (finished matches retained, never deleted)")
     try:
         turso.push(fixtures)
+        # Then sweep what the feeds abandoned. Pushing only ever moves a match
+        # forward; a match that dropped out of every feed before we saw it
+        # finish is not in this frame at all, so nothing but an explicit sweep
+        # will ever touch it again.
+        turso.reap_stranded()
     except turso.TursoError as exc:
         # A database hiccup must not lose the run's work: the CSVs are written.
         print(f"  ! Turso push failed: {exc}")

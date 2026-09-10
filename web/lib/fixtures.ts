@@ -105,15 +105,38 @@ const toFixture = (r: Record<string, unknown>): FixtureRow => ({
   finished_at: r.finished_at ? String(r.finished_at) : null,
 });
 
-/** Everything not yet finished: live first, then by kickoff. */
+/**
+ * How long after kickoff a row may still count as "on".
+ *
+ * Ninety minutes plus stoppage, half time, and a delayed restart all fit inside
+ * six hours; nothing that kicked off longer ago than that is still being played.
+ * Rows past it are strays the ETL never got to advance — see `reap_stranded` in
+ * data/sinks/turso.py, which retires them at the source.
+ */
+export const UPCOMING_GRACE_MS = 6 * 60 * 60 * 1000;
+
+/** The oldest kickoff the dashboard will still call current. */
+const upcomingFloor = (now = Date.now()) =>
+  new Date(now - UPCOMING_GRACE_MS).toISOString();
+
+/**
+ * Everything not yet finished: live first, then by kickoff.
+ *
+ * The kickoff floor is what keeps the grid honest. `status_group` is only ever
+ * as fresh as the last ETL pass, and a match the live feeds dropped before it
+ * was seen to finish keeps whatever it had — so without a floor a fixture from
+ * four days ago still counted as `in_play`, sorted ABOVE tonight's games, and
+ * headed the page under its own date. Age decides here, not status.
+ */
 export async function getUpcoming(limit = 300): Promise<FixtureRow[]> {
   const rs = await fixturesDb.execute({
     sql: `SELECT * FROM fixtures
           WHERE status_group IN ('scheduled', 'in_play', 'off')
+            AND kickoff_utc >= ?
           ORDER BY CASE status_group WHEN 'in_play' THEN 0 ELSE 1 END,
                    kickoff_utc ASC
           LIMIT ?`,
-    args: [limit],
+    args: [upcomingFloor(), limit],
   });
   return (rs.rows as unknown as Record<string, unknown>[]).map(toFixture);
 }
@@ -224,10 +247,17 @@ export async function getFreshness(): Promise<Freshness> {
   // the header ends up advertising a match that started days ago. Ask only for
   // kickoffs from now on, and the stat degrades to null instead of lying.
   const now = new Date().toISOString();
+  const floor = upcomingFloor();
   const [groups, meta] = await Promise.all([
-    fixturesDb.execute(
-      'SELECT status_group, COUNT(*) AS n FROM fixtures GROUP BY status_group'
-    ),
+    // Counted over the same window the grid draws from, so the header cannot
+    // advertise 104 upcoming while the page shows 40. `finished` is the whole
+    // archive by design — that one is a running total, not a "what's on" figure.
+    fixturesDb.execute({
+      sql: `SELECT status_group, COUNT(*) AS n FROM fixtures
+            WHERE status_group = 'finished' OR kickoff_utc >= ?
+            GROUP BY status_group`,
+      args: [floor],
+    }),
     fixturesDb.execute({
       sql: `SELECT MAX(updated_at) AS last_updated,
                    MIN(CASE WHEN status_group = 'scheduled' AND kickoff_utc >= ?
@@ -243,18 +273,24 @@ export async function getFreshness(): Promise<Freshness> {
   }
   const m = (meta.rows[0] ?? {}) as Record<string, unknown>;
 
-  // Kicked off, but still sitting at `scheduled` or `in_play`. A non-zero count
-  // means the ETL is behind or a league has no live source at all.
+  // Long past kickoff and still sitting at `scheduled` or `in_play`. Measured
+  // from the same floor the grid uses, so a match genuinely being played right
+  // now is not counted as stranded — only rows old enough that the ETL should
+  // have resolved them and did not. The ETL retires these itself on every pass,
+  // so a rising number here means the ETL has stopped running.
   const strandedRs = await fixturesDb.execute({
     sql: `SELECT COUNT(*) AS n FROM fixtures
           WHERE status_group IN ('scheduled', 'in_play') AND kickoff_utc < ?`,
-    args: [now],
+    args: [floor],
   });
 
-  const leagueRs = await fixturesDb.execute(
-    `SELECT DISTINCT league FROM fixtures
-     WHERE status_group IN ('scheduled', 'in_play', 'off') ORDER BY league`
-  );
+  const leagueRs = await fixturesDb.execute({
+    sql: `SELECT DISTINCT league FROM fixtures
+          WHERE status_group IN ('scheduled', 'in_play', 'off')
+            AND kickoff_utc >= ?
+          ORDER BY league`,
+    args: [floor],
+  });
 
   return {
     total: Object.values(tally).reduce((a, b) => a + b, 0),

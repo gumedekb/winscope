@@ -19,7 +19,7 @@ import socket
 import sys
 import tempfile
 import unittest
-from datetime import date
+from datetime import date, datetime, timezone
 
 import pandas as pd
 
@@ -640,6 +640,47 @@ class TestTursoSink(unittest.TestCase):
         # finished_at must be COALESCEd from the EXISTING row, i.e. stamped once
         self.assertIn("FINISHED_AT     = COALESCE(FIXTURES.FINISHED_AT", sql)
         self.assertFalse(any("DROP" in stmt.upper() for stmt in SCHEMA_SQL))
+
+    def test_reaper_retires_only_old_unfinished_rows(self):
+        """The sweep that stops a stranded match heading the dashboard forever.
+
+        Asserted against a fake client rather than a database: what matters is
+        the SQL it issues, and the four properties below are the ones a future
+        edit could silently break.
+        """
+        from sinks import turso
+
+        class FakeClient:
+            def __init__(self):
+                self.sql = self.args = None
+
+            def ensure_schema(self):
+                pass
+
+            def execute(self, sql, args=None):
+                self.sql, self.args = sql, args
+                return {"affected_row_count": 3}
+
+        client = FakeClient()
+        self.assertEqual(turso.reap_stranded(client, hours=6, verbose=False), 3)
+        sql = " ".join(client.sql.upper().split())
+
+        # 1. It never removes a match, and never touches a real result.
+        self.assertNotIn("DELETE", sql)
+        self.assertIn("WHERE STATUS_GROUP IN ('SCHEDULED', 'IN_PLAY')", sql)
+        # 2. It lands on `off`, not `finished` — a row stranded at HT holds a
+        #    half-time score, and the track record must never be fed one as final.
+        self.assertIn("STATUS_GROUP = 'OFF'", sql)
+        self.assertNotIn("OUTCOME", sql)
+        # 3. The rank it writes is below in_play and finished, so a provider that
+        #    later carries the real result still wins the ordinary upsert.
+        self.assertLess(turso.PROGRESS["off"], turso.PROGRESS["in_play"])
+        self.assertIn(f"PROGRESS = {turso.PROGRESS['off']}", sql)
+        # 4. Age is the test, and the cutoff really is `hours` back — a match
+        #    kicking off right now must survive the sweep.
+        cutoff = datetime.fromisoformat(client.args[1])
+        gap = datetime.now(timezone.utc) - cutoff
+        self.assertAlmostEqual(gap.total_seconds(), 6 * 3600, delta=60)
 
     def test_match_key_matches_the_training_set(self):
         """A fixture row must join to model_data.csv on equality, or the later
