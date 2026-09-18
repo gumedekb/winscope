@@ -146,5 +146,8 @@
     "venue_ppg_diff",
     "sot_diff_10",
     "league_code"
-  ]
+  ],
+  "stores_refreshed_at": "2026-09-18 16:01 UTC",
+  "stores_data_range": "2016-08-05 -> 2026-09-17",
+  "stores_n_matches": 38500
 }
