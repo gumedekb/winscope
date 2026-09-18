@@ -159,8 +159,12 @@ export interface ScoredMatch {
 }
 
 export interface HistorySummary {
+  /** Finished matches returned, predicted or not. */
   total: number;
+  /** Of those, the ones the model called — the only ones in the numbers. */
   evaluated: number;
+  /** Finished matches with no prediction on file: listed, never counted. */
+  unscored: number;
   correct: number;
   accuracy: number | null;
   avg_confidence_on_actual: number | null;

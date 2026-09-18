@@ -134,6 +134,14 @@ jobs:
             python pipeline.py                               # files only, free
           fi
 
+      # Aliases get added after rows were written under an API spelling (that is
+      # how "07 Elversberg" and "Elversberg" ended up as two clubs). Renaming in
+      # place, before the fold, keeps Turso, the CSV and the model's stores on
+      # one spelling per club.
+      - name: Align club names already in Turso to the training set
+        working-directory: data
+        run: python pipeline.py --turso-migrate
+
       - name: Fold finished results out of Turso
         working-directory: data
         run: python pipeline.py --from-turso

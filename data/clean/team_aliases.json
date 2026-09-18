@@ -204,5 +204,11 @@
   "Elversberg": "07 Elversberg",
   "Racing Santander": "Real Racing Club de Santander",
   "Racing de Santander": "Real Racing Club de Santander",
-  "Academico de Viseu": "Académico de Viseu"
+  "Academico de Viseu": "Académico de Viseu",
+  "_api_spellings": "Names the live APIs use that the key logic cannot fold onto the training-set spelling by itself. Every one of these showed up in Turso as a club the model server did not recognise, so the fixture went unpredicted.",
+  "Santander": "Real Racing Club de Santander",
+  "Deportivo de A Coruña": "Deportivo La Coruna",
+  "Deportivo de A Coruna": "Deportivo La Coruna",
+  "NEC Nijmegen": "Nijmegen",
+  "NEC": "Nijmegen"
 }

@@ -7,9 +7,15 @@ export const dynamic = 'force-dynamic';
  * Track record — every finished match joined to what the model predicted before
  * it was played.
  *
- * This is what the ETL's "never delete a finished fixture" rule was for: the
- * result stays in `fixtures` forever, `predictions` keeps the call, and they
- * join on `match_key`. Nothing has to be archived into a separate table.
+ * The result stays in `fixtures`, `predictions` keeps the call, and they join
+ * on `match_key`. Nothing has to be archived into a separate table.
+ *
+ * Only matches the model actually called count. A finished match with no
+ * prediction on file (the model server was asleep when it was loaded, or a
+ * club name it did not know) is still returned so the list shows it, tagged
+ * NOT PREDICTED — but it is in none of the numbers: not the hit rate, not the
+ * per-league table, not the market comparison. `summary.unscored` says how
+ * many were left out.
  */
 export async function GET(request: Request) {
   try {
@@ -22,6 +28,7 @@ export async function GET(request: Request) {
     if (to) rows = rows.filter((r) => r.kickoff_utc.slice(0, 10) <= to);
 
     let evaluated = 0;
+    let unscored = 0;
     let correct = 0;
     let confSum = 0;
     let confCount = 0;
@@ -49,14 +56,19 @@ export async function GET(request: Request) {
     let marketEvaluated = 0;
 
     const matches = rows.map((r) => {
-      const b = bucket(r.league);
-      if (r.hit !== null) {
+      // Not predicted -> listed, not counted. No bucket either, so a league
+      // the model never called does not show up as "0/0".
+      const predicted = r.hit !== null;
+      if (!predicted) unscored++;
+      const b = predicted ? bucket(r.league) : null;
+      if (b) {
         evaluated++;
         b.evaluated++;
         if (r.hit) { correct++; b.correct++; }
       }
-      // Market baseline: the bookmakers' own favourite on this match.
-      if (r.market && r.outcome) {
+      // Market baseline: the bookmakers' own favourite on this match — on the
+      // same matches the model is scored on, or the comparison means nothing.
+      if (b && r.market && r.outcome) {
         const favourite = r.market.h >= r.market.d && r.market.h >= r.market.a
           ? 1 : r.market.d >= r.market.a ? 2 : 3;
         marketEvaluated++;
@@ -95,6 +107,7 @@ export async function GET(request: Request) {
       summary: {
         total: matches.length,
         evaluated,
+        unscored,
         correct,
         accuracy: evaluated > 0 ? correct / evaluated : null,
         avg_confidence_on_actual: confCount > 0 ? confSum / confCount : null,

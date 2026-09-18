@@ -39,13 +39,34 @@ state: dict = {"stores": None, "boosters": [], "alias": {}}
 # --------------------------------------------------------------------------
 # Team-name resolution
 # --------------------------------------------------------------------------
+# Tokens that carry no identity, dropped from the matching key only — the same
+# list data/clean/normalize.py `_key` uses, so a name the ETL considers one club
+# is one club here too: club-form initials, founding years ("07 Elversberg",
+# "Bayer 04 Leverkusen") and connector words ("Celta de Vigo").
+_KEY_TOKENS = re.compile(
+    r"^(?:1\.|2\.)$|"
+    r"^(?:AFC|FC|CF|SC|AC|ACF|AS|SS|SSC|SV|SBV|SK|BV|BC|BSC|TSV|FSV|VfL|VfB|TSG|"
+    r"RC|RCD|CD|UD|SD|CA|AJ|UC|US|OGC|RB|SL|CS|ES|CFC|OSC|SCO|PEC|SpVgg)$|"
+    r"^\d{2,4}$|"
+    r"^(?:de|do|da|di|del|of|the|calcio|club|clube|futbol|fussball)$",
+    flags=re.IGNORECASE,
+)
+_ABBREVIATIONS = {"utd": "united", "cty": "city", "twn": "town", "ath": "athletic",
+                  "wdrs": "wanderers", "rvrs": "rovers", "st": "saint"}
+
+
 def _norm(name: str) -> str:
     """Fold accents, drop club-form noise — mirrors the ETL's matching rules."""
     text = unicodedata.normalize("NFKD", str(name))
     text = "".join(c for c in text if not unicodedata.combining(c))
-    text = re.sub(r"\b(FC|AFC|CF|SC|AC|SV|BV|CD|UD|SD)\b", " ", text, flags=re.I)
-    text = re.sub(r"[^A-Za-z0-9 ]", " ", text)
-    return re.sub(r"\s+", " ", text).strip().casefold()
+    text = re.sub(r"[^A-Za-z0-9. ]", " ", text)
+    tokens = []
+    for token in text.split():
+        token = token.strip(".")
+        if not token or _KEY_TOKENS.match(token):
+            continue
+        tokens.append(_ABBREVIATIONS.get(token.casefold(), token))
+    return " ".join(tokens).casefold() or text.strip().casefold()
 
 
 def build_alias_index(stores: Stores) -> dict[str, str]:
@@ -100,6 +121,12 @@ class PredictRequest(BaseModel):
     # Accepted and ignored — club football always has a home side. Kept so older
     # callers do not break.
     neutral: Optional[bool] = False
+    # True = refuse a club the stores do not know (404), the old behaviour.
+    # False = predict it anyway from training-set defaults, flagged in
+    # `coverage.home_known` / `away_known`. A promoted club's first match is
+    # exactly that case in the training data too, so the answer is honest —
+    # thin, but not a guess between two different clubs.
+    strict: Optional[bool] = False
 
 
 class BatchRequest(BaseModel):
@@ -188,7 +215,13 @@ def _prepare(req: PredictRequest):
     away, away_exact = resolve_team(req.away_team)
     if home is None or away is None:
         unknown = [n for n, r in ((req.home_team, home), (req.away_team, away)) if r is None]
-        raise HTTPException(404, f"unknown club(s): {', '.join(unknown)}")
+        if req.strict:
+            raise HTTPException(404, f"unknown club(s): {', '.join(unknown)}")
+        # Unknown club -> its raw name, which build_row treats as "no history":
+        # initial Elo, zero pi-ratings, median form, max rest. The diagnostics
+        # carry home_known/away_known = False so the caller can show it as thin.
+        home = home or req.home_team.strip()
+        away = away or req.away_team.strip()
 
     kickoff = date.today()
     if req.kickoff:

@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import {
   argmaxOutcome, buildFormIndex, getFinished, getFreshness, getPredictions,
-  getTeamBadges, getUpcoming, savePrediction, type FixtureRow,
+  getTeamBadges, getUpcoming,
 } from '../../../lib/fixtures';
+import { missingPredictions, predictSlate, storeSlate } from '../../../lib/predictSlate';
 import { applyMarket } from '../../../lib/odds';
-import { config } from '../../../lib/config';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,58 +17,6 @@ export const dynamic = 'force-dynamic';
  * caller here would blow through that and get the key banned. If a fixture is
  * missing, the fix is to run the ETL, not to fetch it from here.
  */
-
-type Probs = { home: number; draw: number; away: number };
-
-interface ModelPrediction {
-  index: number;
-  home_win: number;
-  draw: number;
-  away_win: number;
-  home_elo?: number | null;
-  away_elo?: number | null;
-  home_form?: ('W' | 'D' | 'L')[];
-  away_form?: ('W' | 'D' | 'L')[];
-  coverage?: { defaults_used?: number };
-}
-
-/**
- * Predict a whole slate in ONE call.
- *
- * The model server builds a single DMatrix for the batch, so ~90 fixtures come
- * back in well under a second. The previous shape — one HTTP request per
- * fixture, six at a time — was the slowest part of loading the dashboard.
- * A failure here is non-fatal: fixtures and live scores still render without
- * predictions.
- */
-async function predictSlate(fixtures: FixtureRow[]): Promise<Map<string, ModelPrediction>> {
-  const out = new Map<string, ModelPrediction>();
-  if (fixtures.length === 0) return out;
-  try {
-    const res = await fetch(`${config.modelServerUrl}/predict/batch`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fixtures: fixtures.map((f) => ({
-          home_team: f.home_team,
-          away_team: f.away_team,
-          league: f.league,
-          kickoff: f.kickoff_utc,
-        })),
-      }),
-      signal: AbortSignal.timeout(30000),
-    });
-    if (!res.ok) return out;
-    const data = await res.json();
-    for (const p of (data.predictions ?? []) as ModelPrediction[]) {
-      const fixture = fixtures[p.index];
-      if (fixture) out.set(fixture.match_key, p);
-    }
-  } catch {
-    /* model server offline -> no predictions, everything else still works */
-  }
-  return out;
-}
 
 const OUTCOME_LETTER: Record<number, 'H' | 'D' | 'A'> = { 1: 'H', 2: 'D', 3: 'A' };
 
@@ -88,28 +36,14 @@ export async function GET(request: Request) {
     const stored = await getPredictions(fixtures.map((f) => f.match_key));
 
     // Anything without a stored prediction goes to the model in one batch.
-    const missing = fixtures.filter(
-      (f) => !stored.has(f.match_key) && f.home_team && f.away_team
-    );
-    const fresh = await predictSlate(missing);
+    // This is the page-view gap filler; /api/predict/backfill does the same
+    // on the ETL's schedule so a fixture is covered even if nobody loads this.
+    const missing = missingPredictions(fixtures, stored);
+    const slate = await predictSlate(missing);
+    for (const [key, row] of await storeSlate(missing, slate.predictions)) stored.set(key, row);
     const modelForm = new Map<string, { home?: string[]; away?: string[] }>();
-    for (const f of missing) {
-      const p = fresh.get(f.match_key);
-      if (!p) continue;
-      await savePrediction({
-        matchKey: f.match_key,
-        homeWin: p.home_win, draw: p.draw, awayWin: p.away_win,
-        payload: p,
-      });
-      stored.set(f.match_key, {
-        match_key: f.match_key,
-        home_win: p.home_win, draw: p.draw, away_win: p.away_win,
-        predicted_outcome: argmaxOutcome(p.home_win, p.draw, p.away_win),
-        market_home: null, market_draw: null, market_away: null,
-        ai_summary: null, payload_json: JSON.stringify(p),
-        updated_at: new Date().toISOString(),
-      });
-      modelForm.set(f.match_key, { home: p.home_form, away: p.away_form });
+    for (const [key, p] of slate.predictions) {
+      modelForm.set(key, { home: p.home_form, away: p.away_form });
     }
 
     // Form strips. Two sources, best first:

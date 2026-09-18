@@ -27,7 +27,8 @@ const probFor = (m: ScoredMatch, code: string): number | null => {
 
 /**
  * Track record — finished matches joined to what was predicted before kickoff.
- * The join is possible because the ETL never deletes a finished fixture.
+ * Every number on this panel counts only matches the model actually called;
+ * unpredicted ones are listed (tagged NOT PREDICTED) and otherwise ignored.
  */
 export const HistoryDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
   const [data, setData] = useState<History | null>(null);
@@ -105,11 +106,16 @@ export const HistoryDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mb-6">
+          <div className="grid grid-cols-3 gap-3 mb-2">
             {stat(accPct != null ? `${accPct}%` : '—', 'Hit Rate', 'text-[#FFD700]')}
             {stat(summary ? `${summary.correct}/${summary.evaluated}` : '—', 'Correct')}
             {stat(confPct != null ? `${confPct}%` : '—', 'Avg Conf.')}
           </div>
+          <p className="text-[10px] text-gray-500 mb-6 text-center">
+            {summary && summary.unscored > 0
+              ? `Counting the ${summary.evaluated} matches the model predicted. ${summary.unscored} finished without a prediction and are listed below but not counted.`
+              : 'Counting only matches the model predicted before kickoff.'}
+          </p>
 
           <div className="grid grid-cols-2 gap-3 mb-6">
             <label className="block">
@@ -246,14 +252,15 @@ export const HistoryDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
                 {data?.matches.length ? 'No predicted matches yet' : 'No finished matches yet'}
               </p>
               <p className="text-xs mt-2 max-w-xs leading-relaxed">
-                Finished matches are kept forever in Turso. Once a fixture you had a prediction for
-                ends, it appears here with the call scored against the real result.
+                Once a fixture the model predicted ends, it appears here with the call scored
+                against the real result.
               </p>
             </div>
           ) : (
             <div className="space-y-2 pb-10">
               <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-3">
-                Predicted vs Actual ({rows.length})
+                Predicted vs Actual ({rows.length}
+                {!onlyScored && summary && summary.unscored > 0 ? ` · ${summary.unscored} not counted` : ''})
               </h3>
               {rows.map((m) => {
                 const predProb = probFor(m, m.predicted_outcome);
