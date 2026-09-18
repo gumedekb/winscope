@@ -1,0 +1,15 @@
+# Pins for training, used by .github/workflows/retrain.yml (and identical to the
+# `pip install` in colab_train.py Cell 1).
+#
+# numpy / pandas / xgboost MUST match model/requirements.txt: the workflow
+# saves boosters with this xgboost and Render loads them with that one, and a
+# .ubj written by a newer xgboost than the server has is the classic deploy
+# that builds fine and then refuses to boot. Bump the three together, or not
+# at all.
+numpy==1.26.4
+pandas==2.2.3
+xgboost==2.1.1
+# Only the trainer needs these — the server averages the .ubj boosters
+# directly and never unpickles xgboost_tuned.pkl.
+scikit-learn==1.5.2
+joblib==1.4.2

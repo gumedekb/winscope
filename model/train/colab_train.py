@@ -16,12 +16,22 @@ ensemble as a VotingClassifier), and the JSON stores (elo_ratings, pi_ratings,
 team_form, h2h_records, season_tables, features, feature_defaults, league_map,
 label_map, model_metadata). Cell 11 `feature_row` is the reference for how
 model/features.py must rebuild the feature row from those stores.
+
+Unattended runs: train.py (next to this file) executes these same cells in
+order, headless, for the retrain workflow — monthly for the trees, weekly for
+just the JSON stores (Cells 1-6 + make_stores). Keep the cell markers and the
+WINSCOPE_* environment hooks in Cells 1, 2 and 4 intact, or that breaks.
 """
 
 # ── Cell 1: Install & imports ──────────────────────────────────────────────
-import subprocess, sys
-subprocess.run([sys.executable, "-m", "pip", "install", "-q",
-                "xgboost==2.1.1", "scikit-learn==1.5.2", "joblib==1.4.2"])
+import os, subprocess, sys
+# The same pins as model/train/requirements-train.txt, which is what the
+# retrain workflow installs up front (so it sets WINSCOPE_SKIP_PIP=1 and skips
+# this). Keep the two lists identical: a booster saved by one xgboost version
+# and served by another is the classic "builds but will not boot" on Render.
+if os.environ.get("WINSCOPE_SKIP_PIP") != "1":
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q",
+                    "xgboost==2.1.1", "scikit-learn==1.5.2", "joblib==1.4.2"])
 
 import os, json, zipfile, warnings
 import numpy as np
@@ -39,13 +49,21 @@ print("xgboost", xgb.__version__, "| pandas", pd.__version__)
 
 
 # ── Cell 2: Config ─────────────────────────────────────────────────────────
-CSV_PATH = "model_data.csv"
-OUT_DIR = "artifacts"
+# In Colab these defaults apply. model/train/train.py (the headless runner the
+# monthly retrain workflow uses) sets the WINSCOPE_* variables instead.
+CSV_PATH = os.environ.get("WINSCOPE_CSV", "model_data.csv")
+OUT_DIR = os.environ.get("WINSCOPE_OUT", "artifacts")
+MODEL_VERSION = os.environ.get("WINSCOPE_MODEL_VERSION", "3.1-club")
 SEED = 42
 
 WARMUP_SEASONS = ["2016/17", "2017/18"]   # warm up Elo/form/ratings only; never trained or scored on
 VALID_SEASON = "2024/25"                  # used only for early stopping
 TEST_SEASONS = ["2025/26", "2026/27"]     # held out, never seen while training
+# Unattended retrains cannot keep the three lines above current by hand, so with
+# WINSCOPE_AUTO_SEASONS=1 they are re-derived from the CSV in Cell 4: the two
+# oldest seasons warm up, the two newest are held out, the one before those
+# validates. On today's data that reproduces the hand-written split exactly.
+AUTO_SEASONS = os.environ.get("WINSCOPE_AUTO_SEASONS") == "1"
 
 USE_ODDS = False   # True = add bookmaker-implied probabilities as features (see Cell 9d).
                    # Biggest gain available, but /predict must then be given odds per fixture.
@@ -103,6 +121,12 @@ df = (df.sort_values(["date", "league", "home_team"])
 df["home_score"] = df["home_score"].astype(int)
 df["away_score"] = df["away_score"].astype(int)
 df["target"] = df["outcome"].map(OUTCOME_TO_TARGET).astype(int)
+
+if AUTO_SEASONS:
+    _seasons = sorted(df["season"].dropna().unique())
+    assert len(_seasons) >= 5, f"need at least 5 seasons to split, have {_seasons}"
+    WARMUP_SEASONS, VALID_SEASON, TEST_SEASONS = _seasons[:2], _seasons[-3], _seasons[-2:]
+    print(f"season split from data: warm-up {WARMUP_SEASONS}  valid {VALID_SEASON}  test {TEST_SEASONS}")
 
 print(f"{len(df):,} matches   {df.date.min().date()} -> {df.date.max().date()}")
 print(f"teams: {pd.concat([df.home_team, df.away_team]).nunique()}   "
@@ -286,6 +310,37 @@ def build_features(d, league_map):
 
     stores["long"] = long
     return X, stores
+
+
+def make_stores(S):
+    """JSON-ready serving stores = the state after the last match seen."""
+    elo = {t: round(r, 2) for t, r in S["elo"].items()}
+    pi = {t: {"home": round(v[0], 4), "away": round(v[1], 4)} for t, v in S["pi"].items()}
+    h2h = {f"{t1}|{t2}": {"t1_win_rate": round(st["w1"] / st["n"], 4), "t2_win_rate": round(st["w2"] / st["n"], 4),
+                          "draw_rate": round(st["d"] / st["n"], 4), "matches": int(st["n"])}
+           for (t1, t2), st in S["pairs"].items() if st["n"]}
+    tables = {lg: {"season": s, "table": {t: {"pts": int(p), "gd": int(g), "played": int(n)} for t, (p, g, n) in tbl.items()}}
+              for lg, (s, tbl) in S["tables"].items()}
+
+    def r4(v):
+        return None if pd.isna(v) else round(float(v), 4)
+
+    form = {}
+    for team, grp in S["long"].groupby("team"):
+        e = {}
+        for w in FORM_WINDOWS:
+            tail = grp.tail(w)
+            for src, name in FORM_STATS + STAT_STATS:
+                e[f"form_{name}_{w}"] = r4(tail[src].mean())
+        for is_home, label in ((1, "home"), (0, "away")):
+            tail = grp[grp.is_home == is_home].tail(VENUE_WINDOW)
+            for src, name in VENUE_STATS:
+                e[f"venue_{label}_{name}"] = r4(tail[src].mean()) if len(tail) else None
+        e["matches_played"] = int(len(grp))
+        e["last_match_date"] = str(S["last_seen"][team].date())
+        e["form_summary"] = ["W" if w else ("D" if d else "L") for w, d in zip(grp.tail(5).win, grp.tail(5).draw)]
+        form[team] = e
+    return {"elo": elo, "pi": pi, "h2h": h2h, "form": form, "tables": tables}
 
 
 # ── Cell 6: Build features & split ─────────────────────────────────────────
@@ -480,37 +535,6 @@ else:
 print(type(final_model).__name__, "trained on", f"{int(is_model.sum()):,}", "matches")
 
 
-def make_stores(S):
-    """JSON-ready serving stores = the state after the last match seen."""
-    elo = {t: round(r, 2) for t, r in S["elo"].items()}
-    pi = {t: {"home": round(v[0], 4), "away": round(v[1], 4)} for t, v in S["pi"].items()}
-    h2h = {f"{t1}|{t2}": {"t1_win_rate": round(st["w1"] / st["n"], 4), "t2_win_rate": round(st["w2"] / st["n"], 4),
-                          "draw_rate": round(st["d"] / st["n"], 4), "matches": int(st["n"])}
-           for (t1, t2), st in S["pairs"].items() if st["n"]}
-    tables = {lg: {"season": s, "table": {t: {"pts": int(p), "gd": int(g), "played": int(n)} for t, (p, g, n) in tbl.items()}}
-              for lg, (s, tbl) in S["tables"].items()}
-
-    def r4(v):
-        return None if pd.isna(v) else round(float(v), 4)
-
-    form = {}
-    for team, grp in S["long"].groupby("team"):
-        e = {}
-        for w in FORM_WINDOWS:
-            tail = grp.tail(w)
-            for src, name in FORM_STATS + STAT_STATS:
-                e[f"form_{name}_{w}"] = r4(tail[src].mean())
-        for is_home, label in ((1, "home"), (0, "away")):
-            tail = grp[grp.is_home == is_home].tail(VENUE_WINDOW)
-            for src, name in VENUE_STATS:
-                e[f"venue_{label}_{name}"] = r4(tail[src].mean()) if len(tail) else None
-        e["matches_played"] = int(len(grp))
-        e["last_match_date"] = str(S["last_seen"][team].date())
-        e["form_summary"] = ["W" if w else ("D" if d else "L") for w, d in zip(grp.tail(5).win, grp.tail(5).draw)]
-        form[team] = e
-    return {"elo": elo, "pi": pi, "h2h": h2h, "form": form, "tables": tables}
-
-
 SERVING = make_stores(STORES)
 print(f"stores: {len(SERVING['elo'])} teams, {len(SERVING['h2h'])} h2h pairs, {len(SERVING['tables'])} league tables")
 print("\ntop 10 Elo")
@@ -634,7 +658,7 @@ dump("label_map.json", LABEL_MAP)
 dump("league_map.json", LEAGUE_MAP)
 dump("feature_defaults.json", FEATURE_DEFAULTS)
 dump("model_metadata.json", {
-    "model_version": "3.1-club",
+    "model_version": MODEL_VERSION,
     "trained_at": pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     "data_range": f"{df.date.min().date()} -> {df.date.max().date()}",
     "n_matches": int(len(df)),

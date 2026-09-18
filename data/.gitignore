@@ -20,9 +20,9 @@ output/*.tmp
 output/*.partial
 
 # --- deliberately NOT ignored, so do not "tidy" these away -----------------
-# output/model_data.csv   the training set. Committed once and refreshed by
-#                         hand before a retrain (workflow_dispatch ->
-#                         refresh-dataset commits it).
+# output/model_data.csv   the training set. Refreshed and committed weekly by
+#                         retrain.yml (or by hand: workflow_dispatch ->
+#                         refresh-dataset in etl.yml).
 # output/.manifest.json   which sources produced the rows above.
 # output/fixtures.csv     the last --live snapshot; small, and useful as a
 #                         reference of the exact column shape.

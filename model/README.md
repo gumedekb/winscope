@@ -87,9 +87,21 @@ and the JSON stores, dropping `xgboost_tuned.pkl` and the zip).
 
 ## Retraining
 
-Not done here. Rebuild the dataset (`cd ../data && python pipeline.py --with-api`),
-paste `train/colab_train.py` cell by cell into Colab, upload
-`data/output/model_data.csv` when Cell 3 asks, then unzip the exported
-`winscope_model_artifacts.zip` into `artifacts/` and restart. The old
-`train.py` / `pipeline.py` / `evaluate.py` in this folder were v2
-international-football code and have been removed.
+Automatic. `.github/workflows/retrain.yml` runs `train/train.py`, which executes
+the cells of `train/colab_train.py` headless (pins in `train/requirements-train.txt`,
+matched to `requirements.txt` so Render can load what the runner saves):
+
+| When | Mode | What changes in `artifacts/` |
+|---|---|---|
+| Weekly, Mon 03:17 UTC | `stores` | `elo_ratings`, `pi_ratings`, `team_form`, `h2h_records`, `season_tables` — rebuilt from the refreshed `model_data.csv`. The trees and `features` / `league_map` / `feature_defaults` are untouched. |
+| Monthly, 1st 03:37 UTC | `full` | Everything: a new 5-seed ensemble, kept only if held-out accuracy is within 1pp of the deployed one (`WINSCOPE_MIN_ACCURACY_DELTA`). |
+
+Each run first pulls this season's football-data.co.uk CSVs, folds finished
+results out of Turso into `model_data.csv`, commits, and — last — prunes non-SA
+Turso rows older than 180 days (`data/prune.py`). The commit lands on `main`,
+Render redeploys, done. Either mode can be started by hand from the Actions tab.
+
+By hand, locally: `pip install -r train/requirements-train.txt` then
+`python train/train.py --mode stores` (or `full`). Colab still works too — paste
+`train/colab_train.py` cell by cell; the `WINSCOPE_*` hooks in Cells 1, 2 and 4
+are what the runner uses and are inert there.

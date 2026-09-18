@@ -32,7 +32,9 @@ deleted from Turso, which is what lets the web app score past predictions.
    See [data/README.md](data/README.md).
 2. **model/**: `cd model && pip install -r requirements.txt && uvicorn main:app --reload --port 8000`
    → serves **v3.1-club** (81 features, 5-seed XGBoost ensemble, held-out accuracy 0.511) from
-   `model/artifacts/`. Trained in Colab, not here. See [model/README.md](model/README.md).
+   `model/artifacts/`. Retrained automatically — `.github/workflows/retrain.yml` rebuilds the
+   JSON stores weekly and the ensemble monthly, and prunes old non-SA rows from Turso. Colab
+   still works for experiments (`model/train/colab_train.py`). See [model/README.md](model/README.md).
 3. **web/**: `cd web && npm install`, copy `.env.example` → `.env.local`, add the Turso URL +
    token, `npm run dev`. Dashboard shows live scores, upcoming fixtures per league, and the
    model's track record. See [web/README.md](web/README.md).

@@ -1,8 +1,9 @@
 name: WinScope ETL
 
 # What the cron actually does: fetch new/live matches and upsert them into Turso.
-# It commits NOTHING. model_data.csv is the static history — committed once, and
-# refreshed by hand only when you are about to retrain.
+# It commits NOTHING. model_data.csv is refreshed and committed by retrain.yml
+# (weekly), which is also what retrains the model; refresh-dataset below is the
+# by-hand version of that step.
 #
 # Actions minutes are unlimited (public repo), so the only budget that constrains
 # the schedule is API-Football's 100 requests/day — and we stop at 90.

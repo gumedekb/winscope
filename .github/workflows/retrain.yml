@@ -1,0 +1,201 @@
+name: WinScope retrain
+
+# The model keeps itself current without anyone in the loop. Two cadences:
+#
+#   weekly  (Monday 03:17 UTC)   stores   pull this season's football-data.co.uk
+#                                          CSVs, fold finished results out of Turso
+#                                          into model_data.csv, rebuild the Elo /
+#                                          pi / form / h2h / standings JSON stores,
+#                                          commit, then prune old Turso rows.
+#   monthly (1st, 03:37 UTC)     full     the same, plus the API top-up and a full
+#                                          retrain of the XGBoost ensemble. The new
+#                                          trees ship only if held-out accuracy is
+#                                          not worse than the deployed model's
+#                                          (model/train/train.py has the gate).
+#
+# Every commit here touches model/artifacts/, and Render auto-deploys the model
+# service from main, so "commit" IS the deploy. Nothing needs restarting by hand.
+#
+# WHY THE STORES GO WEEKLY AND THE TREES MONTHLY
+# ---------------------------------------------
+# What actually goes stale between retrains is the state the features are read
+# from — a club's Elo, its last-10 form, the league table — not the trees that
+# map features to probabilities. A week later the trees are as good as they
+# were; the stores are a week behind. Rebuilding the stores is a two-minute
+# pass over the CSV and cannot change the model's behaviour on identical
+# inputs, so it is safe to do often. Refitting the trees is a different model
+# every time, so it gets the accuracy gate and a slower cadence.
+#
+# ORDER OF THE TURSO PRUNE
+# ------------------------
+# Results leave Turso only after they are in model_data.csv AND that file has
+# been pushed. The prune step runs last for that reason, and prune.py
+# independently refuses to delete a finished match whose key is not in the CSV.
+#
+# WHAT SCHEDULE RELIABILITY LOOKS LIKE HERE
+# -----------------------------------------
+# Scheduled events on public repos are shed freely at the top of the hour
+# (see etl.yml). A weekly or monthly job that fires late by hours is fine;
+# both times are off the hour and the window is generous. A month with no run
+# at all is covered by the following week's stores refresh, and `Run
+# workflow` in the Actions tab triggers either mode by hand.
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'     # weekly  → stores
+    - cron: '37 3 1 * *'     # monthly → full
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: >
+          stores = rebuild the JSON stores from fresh data (weekly job).
+          full = also retrain the XGBoost ensemble (monthly job).
+        default: stores
+        type: choice
+        options: [stores, full]
+      keep_days:
+        description: How many days of non-SA fixtures to keep in Turso.
+        default: '180'
+        type: string
+
+# Separate from the ETL's group on purpose: that loop is alive most of the day
+# and GitHub keeps only ONE pending run per group, so sharing it would let an
+# ETL watchdog tick cancel a queued retrain. The two never write the same
+# thing — the ETL commits nothing, and its Turso upserts are keyed rows this
+# job only ever reads or deletes by age.
+concurrency:
+  group: winscope-retrain
+  cancel-in-progress: false
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    # A full retrain is ~10 min on the runner (5 seeds, ~40k rows). Well under.
+    timeout-minutes: 60
+
+    # Commits model_data.csv + model/artifacts and pushes to main.
+    permissions:
+      contents: write
+
+    env:
+      MODE: ${{ inputs.mode || (github.event.schedule == '37 3 1 * *' && 'full' || 'stores') }}
+      KEEP_DAYS: ${{ inputs.keep_days || '180' }}
+      API_SPORTS_KEY:        ${{ secrets.API_SPORTS_KEY }}
+      FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+      THESPORTSDB_KEY:       ${{ secrets.THESPORTSDB_KEY }}
+      TURSO_FIXTURES_URL:    ${{ secrets.TURSO_FIXTURES_URL }}
+      TURSO_FIXTURES_TOKEN:  ${{ secrets.TURSO_FIXTURES_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # 3.11 = model/.python-version = what Render runs. The trainer's pins are
+      # the server's pins for the packages they share (see requirements-train.txt),
+      # so a booster saved here is one Render can load.
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            data/requirements.txt
+            model/train/requirements-train.txt
+
+      - name: Install ETL + training requirements (pinned)
+        run: |
+          pip install -r data/requirements.txt -r model/train/requirements-train.txt
+          python -c "import numpy, pandas, xgboost, sklearn; print('numpy', numpy.__version__, '| pandas', pandas.__version__, '| xgboost', xgboost.__version__, '| sklearn', sklearn.__version__)"
+
+      # Same cache the ETL uses, so the monthly API top-up spends from the one
+      # shared daily budget instead of a fresh counter that thinks it has 90 left.
+      - name: Restore API cache and quota counter
+        uses: actions/cache@v6
+        with:
+          path: |
+            data/output/cache
+            data/output/.quota.json
+          key: winscope-api-${{ github.run_id }}
+          restore-keys: winscope-api-
+
+      - name: Tests (offline)
+        working-directory: data
+        run: python -m unittest discover -s tests -t .
+
+      # ---- 1. fresh data ------------------------------------------------------
+      - name: Pull this season's football-data.co.uk CSVs
+        working-directory: data
+        run: python fetch_fduk.py
+
+      - name: Ingest CSVs into model_data.csv
+        working-directory: data
+        run: |
+          if [ "$MODE" = "full" ]; then
+            python pipeline.py --with-api --openfootball     # + SA history top-up
+          else
+            python pipeline.py                               # files only, free
+          fi
+
+      - name: Fold finished results out of Turso
+        working-directory: data
+        run: python pipeline.py --from-turso
+
+      # ---- 2. the model -------------------------------------------------------
+      - name: ${{ env.MODE == 'full' && 'Retrain the ensemble' || 'Rebuild the JSON stores' }}
+        id: train
+        run: python model/train/train.py --mode "$MODE"
+
+      - name: Result
+        env:
+          SUMMARY:  ${{ steps.train.outputs.summary }}
+          ACCEPTED: ${{ steps.train.outputs.accepted }}
+        run: |
+          echo "$SUMMARY"
+          if [ "$ACCEPTED" != "true" ]; then
+            echo "::warning title=Retrain rejected::$SUMMARY"
+          fi
+
+      # ---- 3. ship it ---------------------------------------------------------
+      # Artifacts only when the trainer accepted them; the refreshed dataset
+      # goes in either way, so a rejected month still banks its new results.
+      - name: Commit dataset and artifacts
+        id: commit
+        env:
+          # Through env, not inlined: the summary carries quotes and brackets.
+          SUMMARY:  ${{ steps.train.outputs.summary }}
+          ACCEPTED: ${{ steps.train.outputs.accepted }}
+        run: |
+          git config user.name  "winscope-bot"
+          git config user.email "bot@winscope.local"
+          git add data/output/model_data.csv data/output/.manifest.json data/output/conflicts.csv || true
+          git add data/unsorted/*.csv || true
+          if [ "$ACCEPTED" = "true" ]; then
+            git add model/artifacts
+          else
+            git checkout -- model/artifacts
+          fi
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$MODE" = "full" ] && [ "$ACCEPTED" = "true" ]; then
+            msg="chore(model): monthly retrain — $SUMMARY"
+          else
+            msg="chore(model): weekly refresh — $SUMMARY"
+          fi
+          git commit -m "$msg" -m "Automated by .github/workflows/retrain.yml [skip ci]"
+          # main may have moved (a hand-pushed fix while this ran); replay on top.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # ---- 4. Turso retention ---------------------------------------------------
+      # Only once the fold-in above is safely on main. If nothing was pushed
+      # this run, the results are either already there from a previous run (in
+      # which case prune.py's own CSV check lets them go) or not (kept).
+      - name: Prune old non-SA fixtures from Turso
+        working-directory: data
+        run: python prune.py --keep-days "$KEEP_DAYS"
+
+      - name: Turso status
+        working-directory: data
+        run: python pipeline.py --turso-status

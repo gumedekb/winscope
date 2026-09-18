@@ -4,9 +4,11 @@ Talks to Turso's HTTP v2 pipeline API with plain `requests`, so the pipeline
 gains NO new dependency — that keeps `pip install` in GitHub Actions fast and
 avoids a native build step.
 
-THE RULE THAT SHAPES EVERYTHING HERE: a finished match is never deleted and never
-walked backwards. The table is an append-and-advance log, because the whole point
-is to come back later and ask "did the model call this one right?". So:
+THE RULE THAT SHAPES EVERYTHING HERE: a finished match is never deleted BY THE
+ETL and never walked backwards. The table is an append-and-advance log, because
+the whole point is to come back later and ask "did the model call this one
+right?". (Retention is a separate, deliberate step: prune.py drops non-SA rows
+older than a window, and only after their results are in model_data.csv.) So:
 
   * writes are UPSERTs keyed on `match_key`, never INSERT-then-DELETE;
   * every row carries a `progress` rank (scheduled 0 -> postponed 1 -> in play 2

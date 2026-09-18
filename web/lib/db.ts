@@ -5,8 +5,9 @@ import { createClient, type Client } from '@libsql/client/web';
  *
  * There is ONE physical database (`fixture-…`), holding two tables:
  *   fixtures    — written by the data/ ETL. Live + upcoming + finished matches.
- *                 Finished rows are never deleted, which is what makes the
- *                 track record possible.
+ *                 Finished rows stay for the track record; data/prune.py
+ *                 (weekly, from retrain.yml) drops non-SA rows older than its
+ *                 window once their results are in the training set.
  *   predictions — written by this app. One row per fixture, joined to `fixtures`
  *                 on `match_key`.
  *
