@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getPredictions, getUpcoming } from '../../../../lib/fixtures';
 import { missingPredictions, predictSlate, storeSlate } from '../../../../lib/predictSlate';
+import { getMarketForFixtures } from '../../../../lib/odds';
 
 export const dynamic = 'force-dynamic';
 // Long enough to wait out a Render cold start (~50s) inside one call.
@@ -40,8 +41,9 @@ export async function POST(request: Request) {
       });
     }
 
-    const slate = await predictSlate(missing, 55_000);
-    const saved = await storeSlate(missing, slate.predictions);
+    const market = await getMarketForFixtures(missing);
+    const slate = await predictSlate(missing, market, 55_000);
+    const saved = await storeSlate(missing, slate.predictions, market);
     const refused = Array.from(slate.failed.values()).map((f) => ({
       home_team: f.home_team, away_team: f.away_team, error: f.error,
     }));

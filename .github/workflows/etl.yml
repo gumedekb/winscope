@@ -52,6 +52,13 @@ name: WinScope ETL
 #   WINSCOPE_BACKFILL_KEY  the same value as the Vercel env var of that name
 # and optionally MODEL_SERVER_URL (the Render URL) to wake the model first.
 # Without WINSCOPE_WEB_URL the step is skipped and the ETL behaves as before.
+#
+# ...AND THE DAILY TELEGRAM DIGEST
+# The same loop sends data/digest.py once a day: the first pass after
+# DIGEST_HOUR (SAST, default 06:00) posts today's confident picks and perm
+# advice to your Telegram, and a marker file in the cache stops the later
+# passes repeating it. Needs TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID; without
+# them it is skipped. digest.yml sends one by hand.
 
 on:
   schedule:
@@ -130,6 +137,7 @@ jobs:
           path: |
             data/output/cache
             data/output/.quota.json
+            data/output/.digest_sent
           key: winscope-api-${{ github.run_id }}
           restore-keys: winscope-api-
 
@@ -158,6 +166,8 @@ jobs:
           WINSCOPE_WEB_URL:      ${{ secrets.WINSCOPE_WEB_URL }}
           WINSCOPE_BACKFILL_KEY: ${{ secrets.WINSCOPE_BACKFILL_KEY }}
           MODEL_SERVER_URL:      ${{ secrets.MODEL_SERVER_URL }}
+          TELEGRAM_BOT_TOKEN:    ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:      ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -u
           deadline=$(( LOOP_MINUTES * 60 ))
@@ -198,6 +208,8 @@ jobs:
             timeout 600 python pipeline.py --live --providers "$providers" \
               || echo "!! pass $pass failed (exit $?) — continuing"
             backfill
+            # Once a day, after the backfill so the picks it lists are complete.
+            python digest.py --if-due || echo "  digest: failed — next pass retries"
             echo "::endgroup::"
             # Stop when the next pass would land past the deadline; the queued
             # run takes over from here.

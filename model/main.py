@@ -113,11 +113,20 @@ app = FastAPI(title="WinScope model server", version="3.1", lifespan=lifespan)
 
 
 # --------------------------------------------------------------------------
+class MarketProbs(BaseModel):
+    """De-vigged bookmaker probabilities for the fixture (they need not sum to 1)."""
+    home: float
+    draw: float
+    away: float
+
+
 class PredictRequest(BaseModel):
     home_team: str
     away_team: str
     league: Optional[str] = None
     kickoff: Optional[str] = Field(None, description="ISO date; affects days-rest")
+    # Optional; used only by a model trained with USE_ODDS (see colab_train Cell 2).
+    market: Optional[MarketProbs] = None
     # Accepted and ignored — club football always has a home side. Kept so older
     # callers do not break.
     neutral: Optional[bool] = False
@@ -168,6 +177,9 @@ def _shape(probs: np.ndarray, stores: Stores, diagnostics: dict,
         "home_form": home_form.get("form_summary", []),
         "away_form": away_form.get("form_summary", []),
         "model_version": stores.metadata.get("model_version"),
+        # The web app blends market odds into a model that did not see them; a
+        # model that DID must not be blended twice. This is how it knows.
+        "used_odds": bool(diagnostics.get("used_odds")),
         # How much of this was real data vs. training-set averages. A caller can
         # use this to mark a prediction as thin rather than presenting a guess
         # about two unknown clubs with the same confidence as a derby.
@@ -230,7 +242,8 @@ def _prepare(req: PredictRequest):
         except ValueError:
             pass
 
-    row, diagnostics = build_row(stores, home, away, req.league, kickoff)
+    market = req.market.model_dump() if req.market else None
+    row, diagnostics = build_row(stores, home, away, req.league, kickoff, market)
     diagnostics["home_name_exact"] = home_exact
     diagnostics["away_name_exact"] = away_exact
     return home, away, row, diagnostics

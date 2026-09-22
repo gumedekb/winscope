@@ -6,7 +6,7 @@ import { MatchCard } from './MatchCard';
 import { PredictionDrawer } from './PredictionDrawer';
 import { HistoryDrawer } from './HistoryDrawer';
 import { SplashScreen } from './SplashScreen';
-import { LeagueFilter } from './LeagueFilter';
+import { LeagueFilter, type LeagueEdge } from './LeagueFilter';
 import { StatusBar } from './StatusBar';
 import { BetslipDrawer } from './BetslipDrawer';
 import { SearchBar, matchesQuery } from './SearchBar';
@@ -35,6 +35,24 @@ export const Dashboard: React.FC = () => {
   const [slipKeys, setSlipKeys] = useState<Set<string>>(new Set());
   const [slipVersion, setSlipVersion] = useState(0);
   const [slipBusy, setSlipBusy] = useState<string | null>(null);
+
+  // Which leagues the model is beating the market in, from the track record.
+  // Needs a fair sample before it says anything; loaded once, never blocks.
+  const [leagueEdge, setLeagueEdge] = useState<Record<string, LeagueEdge>>({});
+  useEffect(() => {
+    (async () => {
+      try {
+        const h = await api.getHistory();
+        const out: Record<string, LeagueEdge> = {};
+        for (const l of h.per_league) {
+          if (l.accuracy === null || l.market_accuracy === null || l.evaluated < 10) continue;
+          if (l.accuracy > l.market_accuracy) out[l.league] = 'ahead';
+          else if (l.accuracy < l.market_accuracy) out[l.league] = 'behind';
+        }
+        setLeagueEdge(out);
+      } catch { /* a missing record just means no markers */ }
+    })();
+  }, []);
 
   const [cardRefreshing, setCardRefreshing] = useState<Record<string, boolean>>({});
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
@@ -331,7 +349,7 @@ export const Dashboard: React.FC = () => {
 
         {leagues.length > 1 && (
           <div className="mb-8">
-            <LeagueFilter leagues={leagues} active={league} counts={counts} onChange={setLeague} />
+            <LeagueFilter leagues={leagues} active={league} counts={counts} onChange={setLeague} edge={leagueEdge} />
           </div>
         )}
 

@@ -129,8 +129,8 @@ Two providers, tried in order: **Gemini** (`GEMINI_API_KEY`), then **OpenRouter*
 | `GET/POST /api/betslip` | Read the day's slip; `add` / `remove` / `move`. |
 | `GET /api/history` | Track record. `?from=&to=` |
 | `POST /api/sync` | Reports what is in Turso and whether it is stale. Fetches nothing. |
-| `POST /api/retrain` | **Retired (410)** — the model is trained in Colab, not from here. |
-| `GET /api/results`, `POST /api/sync-played` | **Retired (410)** — used to hit football APIs directly. |
+| `POST /api/predict/backfill` | Predicts every upcoming fixture with nothing on file. The ETL calls it after each pass. |
+| `GET /api/results` | **Retired (410)** — used to hit football APIs directly. |
 
 ---
 

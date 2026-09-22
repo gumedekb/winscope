@@ -159,7 +159,7 @@ def main(argv=None) -> int:
     parser.add_argument("--csv", default=os.environ.get("WINSCOPE_CSV", DEFAULT_CSV))
     parser.add_argument("--version", default=None,
                         help="model_version to stamp on a full retrain "
-                             "(default: keep the deployed one)")
+                             "(default: the notebook's, which follows USE_ODDS)")
     args = parser.parse_args(argv)
 
     if not os.path.exists(args.csv):
@@ -171,11 +171,8 @@ def main(argv=None) -> int:
     os.environ["WINSCOPE_CSV"] = os.path.abspath(args.csv)
     os.environ["WINSCOPE_AUTO_SEASONS"] = "1"
     os.environ.setdefault("WINSCOPE_SKIP_PIP", "1")
-    meta_path = os.path.join(ARTIFACTS, "model_metadata.json")
     if args.version:
         os.environ["WINSCOPE_MODEL_VERSION"] = args.version
-    elif os.path.exists(meta_path):
-        os.environ["WINSCOPE_MODEL_VERSION"] = str(load_json(meta_path).get("model_version", "3.1-club"))
 
     cells = split_cells(NOTEBOOK)
     ns = {"__name__": "__winscope_train__", "__file__": NOTEBOOK}

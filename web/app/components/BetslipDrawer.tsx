@@ -1,10 +1,14 @@
 "use client";
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
-  Check, ChevronDown, ChevronUp, ClipboardList, Loader2, Trash2, X,
+  Check, ChevronDown, ChevronUp, ClipboardList, Layers, Loader2, Trash2, X,
 } from 'lucide-react';
 import type { BetslipResponse, BetslipRow } from '../types';
 import { api } from '../api-client';
+import { coveredBy, labelFor, permAdvice, permPair, pickCode, slipMaths, type Code } from '../../lib/perm';
+
+const STAKE_KEY = 'winscope.perm.stake';
+const rowProbs = (row: BetslipRow) => ({ home: row.prob_home, draw: row.prob_draw, away: row.prob_away });
 
 interface Props {
   isOpen: boolean;
@@ -32,6 +36,13 @@ export const BetslipDrawer: React.FC<Props> = ({ isOpen, onClose, version, onCha
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Perm builder: which matches are covered two ways. Defaults to the advice;
+  // a tap overrides it for this session. Stake per line is remembered locally.
+  const [permOverride, setPermOverride] = useState<Record<string, boolean>>({});
+  const [stake, setStake] = useState<number>(() => {
+    try { return Number(localStorage.getItem(STAKE_KEY)) || 1; } catch { return 1; }
+  });
+  useEffect(() => { try { localStorage.setItem(STAKE_KEY, String(stake)); } catch { /* per-viewer nicety only */ } }, [stake]);
 
   const load = useCallback(async (forDate?: string) => {
     try {
@@ -70,6 +81,17 @@ export const BetslipDrawer: React.FC<Props> = ({ isOpen, onClose, version, onCha
   const rows = data?.rows ?? [];
   const settled = rows.filter((r) => r.hit !== null);
   const correct = settled.filter((r) => r.hit).length;
+
+  // One advice per row; the override flips perm on/off but keeps the pick.
+  const plan = useMemo(() => rows.map((row) => {
+    const probs = rowProbs(row);
+    const advice = permAdvice(probs, row.pick);
+    const perm = permOverride[row.match_key] ?? advice.perm;
+    const selections: Code[] = perm ? permPair(probs, row.pick) : [pickCode(row.pick)];
+    return { row, advice, perm, selections, covered: coveredBy(probs, selections) };
+  }), [rows, permOverride]);
+  const open = plan.filter((p) => p.row.hit === null);
+  const maths = slipMaths(open.map((p) => ({ selections: p.selections, covered: p.covered })), stake);
 
   return (
     <>
@@ -124,6 +146,44 @@ export const BetslipDrawer: React.FC<Props> = ({ isOpen, onClose, version, onCha
             </div>
           )}
 
+          {open.length > 0 && (
+            <div className="mb-5 bg-[#2d2d2d] border border-[#404040] rounded-2xl p-4">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-[#FFD700]" /> Perm builder
+                </p>
+                <label className="flex items-center gap-1.5 text-[10px] text-gray-500">
+                  R/line
+                  <input
+                    type="number" min={0} step={0.5} value={stake}
+                    onChange={(e) => setStake(Number(e.target.value))}
+                    className="w-14 bg-[#1a1a1a] border border-[#404040] rounded px-1.5 py-0.5 text-right
+                               text-xs text-white focus:border-[#FFD700] outline-none tabular-nums"
+                  />
+                </label>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <div>
+                  <p className="text-lg font-black text-white tabular-nums">{maths.lines}</p>
+                  <p className="text-[9px] font-bold text-gray-500 uppercase">{maths.lines === 1 ? 'line' : 'lines'}</p>
+                </div>
+                <div>
+                  <p className="text-lg font-black text-[#FFD700] tabular-nums">R{maths.cost.toFixed(maths.cost % 1 ? 2 : 0)}</p>
+                  <p className="text-[9px] font-bold text-gray-500 uppercase">stake</p>
+                </div>
+                <div>
+                  <p className="text-lg font-black text-white tabular-nums">{(maths.chance * 100).toFixed(maths.chance < 0.1 ? 1 : 0)}%</p>
+                  <p className="text-[9px] font-bold text-gray-500 uppercase">all {open.length} land</p>
+                </div>
+              </div>
+              <p className="text-[10px] text-gray-500 mt-3 leading-relaxed">
+                {maths.permed > 0
+                  ? `${maths.permed} match${maths.permed === 1 ? '' : 'es'} covered two ways — the model rarely calls a draw outright, so tight games and live draws get a second selection. Tap a pick to change it.`
+                  : 'Every match is a single. Tap a pick to cover it two ways.'}
+              </p>
+            </div>
+          )}
+
           {error && <p className="text-[11px] text-[#E30613] mb-4">{error}</p>}
 
           {loading && !data ? (
@@ -143,9 +203,10 @@ export const BetslipDrawer: React.FC<Props> = ({ isOpen, onClose, version, onCha
             </div>
           ) : (
             <ol className="space-y-2 pb-10">
-              {rows.map((row, i) => {
+              {plan.map(({ row, advice, perm, selections, covered }, i) => {
                 const key = row.match_key;
                 const isBusy = busy === key;
+                const upcoming = row.hit === null;
                 return (
                   <li key={key} className="bg-[#2d2d2d] border border-[#404040] rounded-xl p-3">
                     <div className="flex items-start gap-2">
@@ -185,12 +246,31 @@ export const BetslipDrawer: React.FC<Props> = ({ isOpen, onClose, version, onCha
                           )}
                         </p>
 
-                        <p className="text-[11px] mt-1">
-                          <span className="text-gray-500">Pick: </span>
-                          <span className="font-black text-[#FFD700]">{PICK_CODE[row.pick]}</span>
-                          <span className="text-gray-300"> {PICK_LABEL(row)}</span>
-                          <span className="text-gray-600"> ({Math.round(pickProb(row) * 100)}%)</span>
-                        </p>
+                        {upcoming ? (
+                          <button
+                            onClick={() => setPermOverride((o) => ({ ...o, [key]: !perm }))}
+                            title={perm ? 'Back to a single pick' : advice.reason ? `Perm this: ${advice.reason}` : 'Cover two outcomes'}
+                            className={`mt-1 text-[11px] text-left rounded-md px-1.5 py-0.5 -ml-1.5 transition-colors
+                              ${perm ? 'bg-[#FFD700]/10 hover:bg-[#FFD700]/20' : 'hover:bg-white/5'}`}
+                          >
+                            <span className="text-gray-500">{perm ? 'Perm: ' : 'Pick: '}</span>
+                            <span className="font-black text-[#FFD700]">{selections.join('')}</span>
+                            <span className="text-gray-300">
+                              {' '}{selections.map((c) => labelFor(c, row.home_team, row.away_team)).join(' / ')}
+                            </span>
+                            <span className="text-gray-600"> ({Math.round(covered * 100)}%)</span>
+                            {!perm && advice.perm && (
+                              <span className="ml-1.5 text-[9px] font-bold text-orange-400 uppercase">perm? {advice.reason}</span>
+                            )}
+                          </button>
+                        ) : (
+                          <p className="text-[11px] mt-1">
+                            <span className="text-gray-500">Pick: </span>
+                            <span className="font-black text-[#FFD700]">{PICK_CODE[row.pick]}</span>
+                            <span className="text-gray-300"> {PICK_LABEL(row)}</span>
+                            <span className="text-gray-600"> ({Math.round(pickProb(row) * 100)}%)</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="flex flex-col gap-0.5 shrink-0">

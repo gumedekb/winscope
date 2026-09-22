@@ -53,7 +53,12 @@ print("xgboost", xgb.__version__, "| pandas", pd.__version__)
 # monthly retrain workflow uses) sets the WINSCOPE_* variables instead.
 CSV_PATH = os.environ.get("WINSCOPE_CSV", "model_data.csv")
 OUT_DIR = os.environ.get("WINSCOPE_OUT", "artifacts")
-MODEL_VERSION = os.environ.get("WINSCOPE_MODEL_VERSION", "3.1-club")
+USE_ODDS = os.environ.get("WINSCOPE_USE_ODDS", "1") == "1"
+# True = add bookmaker-implied probabilities as features (Cell 9d). Measured on the
+# 2025/26 hold-out: 0.527 vs 0.511 without — the biggest single gain available.
+# The serving side (model/main.py) passes the market consensus per fixture when
+# the web app has it; fixtures without odds hit XGBoost's "missing" branch.
+MODEL_VERSION = os.environ.get("WINSCOPE_MODEL_VERSION", "3.2-club-odds" if USE_ODDS else "3.1-club")
 SEED = 42
 
 WARMUP_SEASONS = ["2016/17", "2017/18"]   # warm up Elo/form/ratings only; never trained or scored on
@@ -65,8 +70,6 @@ TEST_SEASONS = ["2025/26", "2026/27"]     # held out, never seen while training
 # validates. On today's data that reproduces the hand-written split exactly.
 AUTO_SEASONS = os.environ.get("WINSCOPE_AUTO_SEASONS") == "1"
 
-USE_ODDS = False   # True = add bookmaker-implied probabilities as features (see Cell 9d).
-                   # Biggest gain available, but /predict must then be given odds per fixture.
 N_SEEDS = 5        # final model = average of N XGBoost fits with different seeds (1 = single model)
 
 INITIAL_ELO = 1000.0

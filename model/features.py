@@ -88,8 +88,15 @@ def _nan(value) -> float:
 
 
 def build_row(stores: Stores, home_team: str, away_team: str, league: str | None,
-              kickoff: date | None = None) -> tuple[dict, dict]:
-    """-> (feature dict in model order, diagnostics)"""
+              kickoff: date | None = None, market: dict | None = None) -> tuple[dict, dict]:
+    """-> (feature dict in model order, diagnostics)
+
+    `market` = de-vigged bookmaker probabilities {home, draw, away} for this
+    fixture, when the caller has them. Training (USE_ODDS) derives the same
+    quantity from closing 1X2 odds as 1/odds renormalised, so a consensus
+    market probability drops straight in. A model trained without odds has no
+    odds_p_* in features.json and the values are simply never read.
+    """
     kickoff = kickoff or date.today()
     hf = stores.form.get(home_team) or {}
     af = stores.form.get(away_team) or {}
@@ -140,6 +147,11 @@ def build_row(stores: Stores, home_team: str, away_team: str, league: str | None
         row[f"away_venue_{name}"] = af.get(f"venue_away_{name}")
     row["home_matches_played"] = hf.get("matches_played", 0)
     row["away_matches_played"] = af.get("matches_played", 0)
+    if market and all(market.get(k) for k in ("home", "draw", "away")):
+        total = float(market["home"]) + float(market["draw"]) + float(market["away"])
+        row["odds_p_home"] = float(market["home"]) / total
+        row["odds_p_draw"] = float(market["draw"]) / total
+        row["odds_p_away"] = float(market["away"]) / total
 
     # differentials (NaN propagates, then the fill below decides what happens to it)
     row["ppg_diff_5"] = _nan(row["home_form_ppg_5"]) - _nan(row["away_form_ppg_5"])
@@ -169,5 +181,7 @@ def build_row(stores: Stores, home_team: str, away_team: str, league: str | None
         "away_matches_played": af.get("matches_played", 0),
         "defaults_used": len(filled),
         "defaulted_features": filled[:12],
+        # True only when the model has odds features AND this fixture came with odds.
+        "used_odds": "odds_p_home" in stores.features and "odds_p_home" in row,
     }
     return out, diagnostics

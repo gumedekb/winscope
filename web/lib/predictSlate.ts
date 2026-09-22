@@ -1,5 +1,6 @@
 import { argmaxOutcome, savePrediction, type FixtureRow, type PredictionRow } from './fixtures';
 import { config } from './config';
+import type { Market } from './odds';
 
 /**
  * Predict a whole slate in ONE call and store what comes back.
@@ -30,6 +31,8 @@ export interface ModelPrediction {
   home_form?: ('W' | 'D' | 'L')[];
   away_form?: ('W' | 'D' | 'L')[];
   coverage?: { defaults_used?: number; home_known?: boolean; away_known?: boolean };
+  /** The model consumed this fixture's market odds as features (see lib/odds.ts). */
+  used_odds?: boolean;
 }
 
 export interface ModelFailure {
@@ -56,6 +59,7 @@ export const MODEL_TIMEOUT_MS = 30_000;
 
 export async function predictSlate(
   fixtures: FixtureRow[],
+  market: Map<string, Market> = new Map(),
   timeoutMs = MODEL_TIMEOUT_MS
 ): Promise<SlateResult> {
   const out: SlateResult = { predictions: new Map(), failed: new Map(), reachable: true };
@@ -65,12 +69,17 @@ export async function predictSlate(
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        fixtures: fixtures.map((f) => ({
-          home_team: f.home_team,
-          away_team: f.away_team,
-          league: f.league,
-          kickoff: f.kickoff_utc,
-        })),
+        fixtures: fixtures.map((f) => {
+          const m = market.get(f.match_key);
+          return {
+            home_team: f.home_team,
+            away_team: f.away_team,
+            league: f.league,
+            kickoff: f.kickoff_utc,
+            // Consumed only by a model trained with odds features; ignored otherwise.
+            market: m ? { home: m.home, draw: m.draw, away: m.away } : undefined,
+          };
+        }),
       }),
       signal: AbortSignal.timeout(timeoutMs),
     });
@@ -108,22 +117,27 @@ export async function predictSlate(
  */
 export async function storeSlate(
   fixtures: FixtureRow[],
-  fresh: Map<string, ModelPrediction>
+  fresh: Map<string, ModelPrediction>,
+  market: Map<string, Market> = new Map()
 ): Promise<Map<string, PredictionRow>> {
   const stored = new Map<string, PredictionRow>();
   for (const f of fixtures) {
     const p = fresh.get(f.match_key);
     if (!p) continue;
+    // The pre-match market is snapshotted with the call: odds vanish after
+    // kickoff, and the track record benchmarks against them.
+    const m = market.get(f.match_key) ?? null;
     await savePrediction({
       matchKey: f.match_key,
       homeWin: p.home_win, draw: p.draw, awayWin: p.away_win,
+      market: m ? { home: m.home, draw: m.draw, away: m.away } : null,
       payload: p,
     });
     stored.set(f.match_key, {
       match_key: f.match_key,
       home_win: p.home_win, draw: p.draw, away_win: p.away_win,
       predicted_outcome: argmaxOutcome(p.home_win, p.draw, p.away_win),
-      market_home: null, market_draw: null, market_away: null,
+      market_home: m?.home ?? null, market_draw: m?.draw ?? null, market_away: m?.away ?? null,
       ai_summary: null, payload_json: JSON.stringify(p),
       updated_at: new Date().toISOString(),
     });

@@ -171,6 +171,45 @@ export const HistoryDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
             </div>
           )}
 
+          {(data?.by_confidence?.length ?? 0) > 0 && (
+            <div className="mb-6">
+              <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">
+                By confidence — said vs. did
+              </p>
+              <div className="space-y-1">
+                <div className="flex items-center justify-between gap-2 px-3 text-[9px] font-bold text-gray-600 uppercase">
+                  <span className="flex-1">Model said</span>
+                  <span className="w-12 text-right">n</span>
+                  <span className="w-12 text-right">hit</span>
+                  <span className="w-12 text-right">avg</span>
+                </div>
+                {data?.by_confidence.map((b) => {
+                  const confident = b.min >= 0.5;
+                  const gap = Math.round((b.hit_rate - b.avg_confidence) * 100);
+                  return (
+                    <div
+                      key={b.label}
+                      className={`flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-[11px] border
+                        ${confident ? 'bg-[#00A651]/10 border-[#00A651]/30' : 'bg-[#2d2d2d] border-[#404040]'}`}
+                      title={`When the pick was rated ${b.label}, it landed ${Math.round(b.hit_rate * 100)}% of the time (${b.correct}/${b.n}). ${gap >= 0 ? 'Under-confident by' : 'Over-confident by'} ${Math.abs(gap)}pp.`}
+                    >
+                      <span className={`flex-1 ${confident ? 'text-white font-bold' : 'text-gray-300'}`}>{b.label}</span>
+                      <span className="w-12 text-right text-gray-500 tabular-nums">{b.n}</span>
+                      <span className={`w-12 text-right font-bold tabular-nums ${b.hit_rate >= b.avg_confidence ? 'text-[#00A651]' : 'text-orange-400'}`}>
+                        {Math.round(b.hit_rate * 100)}%
+                      </span>
+                      <span className="w-12 text-right text-gray-500 tabular-nums">{Math.round(b.avg_confidence * 100)}%</span>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-[10px] text-gray-500 mt-2">
+                Green rows are what the Confident filter shows. If their hit rate is not above the
+                50–55% row&apos;s, move the line up before trusting it with money.
+              </p>
+            </div>
+          )}
+
           {(data?.per_league.length ?? 0) > 0 && (
             <div className="mb-6">
               <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">

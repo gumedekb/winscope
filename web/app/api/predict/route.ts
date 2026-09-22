@@ -3,7 +3,7 @@ import { fixturesDb } from '../../../lib/db';
 import {
   argmaxOutcome, ensurePredictionsTable, getPredictions, savePrediction,
 } from '../../../lib/fixtures';
-import { applyMarket } from '../../../lib/odds';
+import { applyMarket, getMarketProbs } from '../../../lib/odds';
 import { fetchFixtureRecent } from '../../../lib/recentMatches';
 import { config } from '../../../lib/config';
 
@@ -44,6 +44,9 @@ export async function POST(request: Request) {
     const homeTeam = String(fixture.home_team);
     const awayTeam = String(fixture.away_team);
     const league = String(fixture.league);
+    // Fetched first so the model can consume it (odds-trained model) and so the
+    // track record has the pre-match snapshot.
+    const market = await getMarketProbs(homeTeam, awayTeam, league, String(fixture.kickoff_utc));
 
     // --- model probabilities (cached unless forced) ---------------------
     const stored = await getPredictions([matchKey]);
@@ -57,7 +60,11 @@ export async function POST(request: Request) {
         const res = await fetch(`${config.modelServerUrl}/predict`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ home_team: homeTeam, away_team: awayTeam, neutral: false, league }),
+          body: JSON.stringify({
+            home_team: homeTeam, away_team: awayTeam, neutral: false, league,
+            kickoff: String(fixture.kickoff_utc),
+            market: market ? { home: market.home, draw: market.draw, away: market.away } : undefined,
+          }),
           signal: AbortSignal.timeout(20000),
         });
         if (res.ok) {
@@ -69,11 +76,12 @@ export async function POST(request: Request) {
             payload = data;
             await savePrediction({
               matchKey, homeWin: home, draw, awayWin: away, payload: data,
+              market: market ? { home: market.home, draw: market.draw, away: market.away } : null,
             });
             pred = {
               match_key: matchKey, home_win: home, draw, away_win: away,
               predicted_outcome: argmaxOutcome(home, draw, away),
-              market_home: null, market_draw: null, market_away: null,
+              market_home: market?.home ?? null, market_draw: market?.draw ?? null, market_away: market?.away ?? null,
               ai_summary: null, payload_json: JSON.stringify(data),
               updated_at: new Date().toISOString(),
             };
@@ -95,9 +103,9 @@ export async function POST(request: Request) {
     const { home: homeHistory, away: awayHistory } =
       await fetchFixtureRecent(homeTeam, awayTeam, 5);
 
-    // --- market blend ----------------------------------------------------
+    // --- market blend (only for a call made WITHOUT odds features) ----------
     const modelProbs = { home: pred.home_win, draw: pred.draw, away: pred.away_win };
-    const { blended, market } = await applyMarket(homeTeam, awayTeam, modelProbs);
+    const blended = applyMarket(modelProbs, market, Boolean(payload?.used_odds));
 
     // Snapshot the pre-match market once — odds vanish after kickoff, and the
     // track record needs them to benchmark model against market.

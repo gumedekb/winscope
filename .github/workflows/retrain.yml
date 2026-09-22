@@ -113,6 +113,7 @@ jobs:
           path: |
             data/output/cache
             data/output/.quota.json
+            data/output/.digest_sent
           key: winscope-api-${{ github.run_id }}
           restore-keys: winscope-api-
 

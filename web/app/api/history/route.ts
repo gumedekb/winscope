@@ -55,6 +55,13 @@ export async function GET(request: Request) {
     let marketCorrect = 0;
     let marketEvaluated = 0;
 
+    // Calibration on REAL results: when the model said 55%, how often was it
+    // right? This is what decides whether the Confident filter's 50% line is
+    // the right one. Bucketed on the probability of the pick itself.
+    const EDGES = [0, 0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 1.01];
+    const LABELS = ['<40%', '40–45%', '45–50%', '50–55%', '55–60%', '60–70%', '70%+'];
+    const buckets = LABELS.map((label, i) => ({ label, min: EDGES[i], n: 0, correct: 0, conf_sum: 0 }));
+
     const matches = rows.map((r) => {
       // Not predicted -> listed, not counted. No bucket either, so a league
       // the model never called does not show up as "0/0".
@@ -65,6 +72,14 @@ export async function GET(request: Request) {
         evaluated++;
         b.evaluated++;
         if (r.hit) { correct++; b.correct++; }
+        const pk = r.predicted_outcome ? key[r.predicted_outcome] : null;
+        const conf = r.probs && pk ? r.probs[pk] : null;
+        if (conf !== null) {
+          const cb = buckets[Math.max(0, EDGES.findIndex((e, i) => conf >= e && conf < EDGES[i + 1]))];
+          cb.n++;
+          cb.conf_sum += conf;
+          if (r.hit) cb.correct++;
+        }
       }
       // Market baseline: the bookmakers' own favourite on this match — on the
       // same matches the model is scored on, or the comparison means nothing.
@@ -121,6 +136,12 @@ export async function GET(request: Request) {
           to: to ?? (rows.length ? rows[0].kickoff_utc.slice(0, 10) : null),
         },
       },
+      by_confidence: buckets
+        .filter((b) => b.n > 0)
+        .map((b) => ({
+          label: b.label, min: b.min, n: b.n, correct: b.correct,
+          hit_rate: b.correct / b.n, avg_confidence: b.conf_sum / b.n,
+        })),
       per_league: Array.from(perLeague.values())
         .map((b) => ({
           ...b,

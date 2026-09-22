@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import {
   argmaxOutcome, buildFormIndex, getFinished, getFreshness, getPredictions,
-  getTeamBadges, getUpcoming,
+  getTeamBadges, getUpcoming, savePrediction, type PredictionRow,
 } from '../../../lib/fixtures';
 import { missingPredictions, predictSlate, storeSlate } from '../../../lib/predictSlate';
-import { applyMarket } from '../../../lib/odds';
+import { applyMarket, getMarketForFixtures, type Market } from '../../../lib/odds';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,6 +19,12 @@ export const dynamic = 'force-dynamic';
  */
 
 const OUTCOME_LETTER: Record<number, 'H' | 'D' | 'A'> = { 1: 'H', 2: 'D', 3: 'A' };
+
+/** Did the model consume odds when it made this stored call? */
+const usedOdds = (pred: PredictionRow): boolean => {
+  if (!pred.payload_json) return false;
+  try { return Boolean(JSON.parse(pred.payload_json).used_odds); } catch { return false; }
+};
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -39,8 +45,11 @@ export async function GET(request: Request) {
     // This is the page-view gap filler; /api/predict/backfill does the same
     // on the ETL's schedule so a fixture is covered even if nobody loads this.
     const missing = missingPredictions(fixtures, stored);
-    const slate = await predictSlate(missing);
-    for (const [key, row] of await storeSlate(missing, slate.predictions)) stored.set(key, row);
+    // Market consensus for the whole slate: a feature for the model on the
+    // missing ones, the benchmark snapshot and the display blend on all.
+    const marketByKey = await getMarketForFixtures(fixtures);
+    const slate = await predictSlate(missing, marketByKey);
+    for (const [key, row] of await storeSlate(missing, slate.predictions, marketByKey)) stored.set(key, row);
     const modelForm = new Map<string, { home?: string[]; away?: string[] }>();
     for (const [key, p] of slate.predictions) {
       modelForm.set(key, { home: p.home_form, away: p.away_form });
@@ -80,9 +89,18 @@ export async function GET(request: Request) {
 
         if (pred) {
           const model = { home: pred.home_win, draw: pred.draw, away: pred.away_win };
-          // Odds are the one external call this app still makes, and it is
-          // optional — no key means the model probabilities pass through.
-          const { blended, market } = await applyMarket(f.home_team, f.away_team, model);
+          // Live consensus if we have it, else the snapshot taken with the call.
+          let market: Market | null = marketByKey.get(f.match_key) ?? null;
+          if (!market && pred.market_home !== null && pred.market_draw !== null && pred.market_away !== null) {
+            market = { home: pred.market_home, draw: pred.market_draw, away: pred.market_away, books: 0 };
+          } else if (market && pred.market_home === null) {
+            // An older call with no snapshot yet: take it now, before kickoff.
+            await savePrediction({
+              matchKey: f.match_key, homeWin: pred.home_win, draw: pred.draw, awayWin: pred.away_win,
+              market: { home: market.home, draw: market.draw, away: market.away },
+            });
+          }
+          const blended = applyMarket(model, market, usedOdds(pred));
           const outcome = argmaxOutcome(blended.home, blended.draw, blended.away);
           prediction = {
             home_win: blended.home,

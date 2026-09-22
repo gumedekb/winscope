@@ -1,0 +1,41 @@
+name: WinScope digest (send now)
+
+# The daily digest goes out from the ETL loop (etl.yml, `digest.py --if-due`),
+# once a day after DIGEST_HOUR SAST. This workflow exists to send one by hand:
+# to test the bot after setting it up, or to get today's picks again.
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: SAST day to build, YYYY-MM-DD (blank = today)
+        default: ''
+        type: string
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: data
+    env:
+      TURSO_FIXTURES_URL:   ${{ secrets.TURSO_FIXTURES_URL }}
+      TURSO_FIXTURES_TOKEN: ${{ secrets.TURSO_FIXTURES_TOKEN }}
+      TELEGRAM_BOT_TOKEN:   ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID:     ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: data/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Send
+        run: |
+          if [ -n "${{ inputs.date }}" ]; then
+            python digest.py --date "${{ inputs.date }}"
+          else
+            python digest.py
+          fi

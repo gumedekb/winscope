@@ -185,8 +185,20 @@ export interface LeagueRecord {
   market_accuracy: number | null;
 }
 
+/** Real-result calibration: matches where the pick was rated in this band. */
+export interface ConfidenceBucket {
+  label: string;
+  /** Lower edge of the band, as a probability. */
+  min: number;
+  n: number;
+  correct: number;
+  hit_rate: number;
+  avg_confidence: number;
+}
+
 export interface History {
   summary: HistorySummary;
+  by_confidence: ConfidenceBucket[];
   per_league: LeagueRecord[];
   matches: ScoredMatch[];
 }
