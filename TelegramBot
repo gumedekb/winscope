@@ -6,3 +6,6 @@ Telegram
    - TELEGRAM_BOT_TOKEN = the token
    - TELEGRAM_CHAT_ID = the number
 5. Test: Actions tab → WinScope digest (send now) → Run workflow. You should get today's picks within a minute.
+
+git pull --rebase
+git push

@@ -9,7 +9,8 @@ Reads Turso only — the same `fixtures` + `predictions` join the dashboard
 shows — so it costs no API credit and cannot disagree with the site. The ETL
 calls `--if-due` after every pass; the first pass after DIGEST_HOUR (SAST)
 sends, and a marker file in output/ (kept in the Actions cache) stops the
-later passes sending again.
+later passes sending again. Days with no fixtures send nothing on the
+schedule; a hand-triggered run still sends, so the bot can be tested any day.
 
 Needs TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID (GitHub secrets, or data/.env).
 
@@ -190,6 +191,12 @@ def main(argv=None) -> int:
     except TursoError as exc:
         print(f"  ! {exc}")
         return 1
+
+    # Empty days (international breaks, midweeks off) send nothing. No marker
+    # is written, so if fixtures land later in the day a later pass still
+    # sends. A hand-triggered run (digest.yml) still sends, as a bot test.
+    if args.if_due and not fixtures:
+        return 0
 
     text = build_message(day, fixtures, ahead, behind)
     if args.dry_run:
