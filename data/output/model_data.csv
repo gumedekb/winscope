@@ -38073,14 +38073,14 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-08-22,2026/27,Ligue 1,France,Nice,Lorient,0,0,2,2.1,3.5,3.4,14,10,1,2,9,3,15,8,1,0,0,0,0,0,football-data.co.uk
 2026-08-22,2026/27,Ligue 1,France,Toulouse,Olympique Lyonnais,0,2,3,2.8,3.4,2.5,17,11,2,3,6,5,15,15,1,2,0,0,0,0,football-data.co.uk
 2026-08-22,2026/27,Ligue 1,France,Troyes,Paris,0,0,2,3.1,3.4,2.3,9,10,2,1,6,2,8,14,2,1,0,0,0,0,football-data.co.uk
-2026-08-22,2026/27,Ligue 1,France,Troyes,Paris Saint Germain,0,0,2,,,,,,,,,,,,,,,,,,openfootball
+2026-08-22,2026/27,Ligue 1,France,Troyes,Paris Saint Germain,0,0,2,3.1,3.4,2.3,9,10,2,1,6,2,8,14,2,1,0,0,0,0,football-data.co.uk
 2026-08-22,2026/27,Premier League,England,Brentford,Tottenham Hotspur,3,0,1,2.4,3.7,2.75,26,9,8,4,7,3,17,14,1,1,0,0,2,0,football-data.co.uk
 2026-08-22,2026/27,Premier League,England,Everton,Crystal Palace,2,0,1,2.15,3.5,3.3,16,11,5,4,4,0,5,15,0,1,0,0,1,0,football-data.co.uk
 2026-08-22,2026/27,Premier League,England,Hull City,Manchester United,2,0,1,8.5,5.0,1.36,8,21,4,5,1,6,10,9,2,1,0,0,2,0,football-data.co.uk
 2026-08-22,2026/27,Premier League,England,Ipswich Town,Sunderland,2,1,1,2.7,3.3,2.63,10,11,3,4,3,5,12,14,0,3,0,0,1,1,football-data.co.uk
 2026-08-22,2026/27,Premier League,England,Nottingham Forest,Leeds United,0,1,3,2.3,3.4,3.1,12,11,2,3,3,2,15,14,2,1,0,0,0,0,football-data.co.uk
 2026-08-22,2026/27,Scottish Premiership,Scotland,Dundee United,Dundee,0,2,3,2.15,3.4,3.2,24,14,5,4,6,6,11,11,4,3,0,0,0,1,football-data.co.uk
-2026-08-22,2026/27,Serie A,Italy,AC Milan,Monza,4,1,1,,,,,,,,,,,,,,,,,,openfootball
+2026-08-22,2026/27,Serie A,Italy,AC Milan,Monza,4,1,1,1.2,7.0,13.0,13,7,5,3,3,3,5,14,2,2,0,0,1,1,football-data.co.uk
 2026-08-22,2026/27,Serie A,Italy,Genoa,Napoli,0,2,3,4.5,3.4,1.9,11,13,2,4,5,5,10,8,2,1,0,0,0,0,football-data.co.uk
 2026-08-22,2026/27,Serie A,Italy,Inter Milan,Monza,4,1,1,1.2,7.0,13.0,13,7,5,3,3,3,5,14,2,2,0,0,1,1,football-data.co.uk
 2026-08-22,2026/27,Serie A,Italy,Parma,Cagliari,0,1,3,2.5,3.0,3.1,13,14,2,5,3,2,6,20,0,2,0,0,0,0,football-data.co.uk
@@ -38201,7 +38201,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-08-30,2026/27,Liga Portugal,Portugal,Nacional,Estrela,2,3,3,2.3,3.3,3.1,10,14,5,4,4,3,12,9,2,1,0,0,1,1,football-data.co.uk
 2026-08-30,2026/27,Ligue 1,France,Monaco,Olympique Marseille,2,0,1,2.4,3.7,2.75,11,13,5,2,5,7,9,10,4,0,0,0,1,0,football-data.co.uk
 2026-08-30,2026/27,Ligue 1,France,Paris,Nice,3,0,1,2.05,3.3,3.8,15,15,4,4,2,4,7,7,0,1,0,0,1,0,football-data.co.uk
-2026-08-30,2026/27,Ligue 1,France,Paris Saint Germain,Nice,3,0,1,,,,,,,,,,,,,,,,,,football-data.org
+2026-08-30,2026/27,Ligue 1,France,Paris Saint Germain,Nice,3,0,1,2.05,3.3,3.8,15,15,4,4,2,4,7,7,0,1,0,0,1,0,football-data.co.uk
 2026-08-30,2026/27,Ligue 1,France,Rennes,Le Mans,3,2,1,1.44,5.0,6.5,22,12,8,5,8,6,15,15,3,2,0,1,2,1,football-data.co.uk
 2026-08-30,2026/27,Premier League,England,Chelsea,Brighton & Hove Albion,4,3,1,1.83,4.0,4.0,17,15,6,6,4,7,6,12,1,3,0,0,3,1,football-data.co.uk
 2026-08-30,2026/27,Premier League,England,Leeds United,Brentford,1,1,2,2.6,3.3,2.7,12,22,2,5,5,6,5,13,0,4,0,0,0,1,football-data.co.uk
@@ -38211,7 +38211,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-08-30,2026/27,Scottish Premiership,Scotland,Dundee,Hibernian,1,2,3,3.2,3.4,2.2,11,25,3,7,3,5,8,14,1,1,0,0,0,1,football-data.co.uk
 2026-08-30,2026/27,Scottish Premiership,Scotland,St Mirren,Motherwell,3,3,2,2.45,3.3,2.7,23,22,9,7,7,7,14,12,2,2,0,0,3,2,football-data.co.uk
 2026-08-30,2026/27,Serie A,Italy,Cagliari,Inter Milan,0,1,3,7.0,4.5,1.44,10,31,0,7,8,6,6,5,2,1,0,0,0,1,football-data.co.uk
-2026-08-30,2026/27,Serie A,Italy,Cagliari,AC Milan,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
+2026-08-30,2026/27,Serie A,Italy,Cagliari,AC Milan,0,1,3,7.0,4.5,1.44,10,31,0,7,8,6,6,5,2,1,0,0,0,1,football-data.co.uk
 2026-08-30,2026/27,Serie A,Italy,Lazio,Genoa,1,0,1,2.0,3.1,4.33,15,8,2,1,4,2,18,6,1,2,0,0,1,0,football-data.co.uk
 2026-08-30,2026/27,Serie A,Italy,Napoli,Como,1,2,3,2.5,3.0,3.1,13,21,2,6,2,7,9,5,1,0,0,0,1,2,football-data.co.uk
 2026-08-31,2026/27,La Liga,Spain,Barcelona,Rayo Vallecano,5,2,1,1.17,8.0,13.0,26,11,9,5,9,5,4,11,0,1,0,0,2,1,football-data.co.uk
@@ -38323,7 +38323,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-09-05,2026/27,Scottish Premiership,Scotland,Dundee United,Falkirk,1,1,2,1.86,3.6,3.8,27,12,9,4,14,5,16,14,3,2,0,0,0,1,football-data.co.uk
 2026-09-05,2026/27,Scottish Premiership,Scotland,Rangers,Motherwell,1,0,1,1.41,4.33,7.0,27,8,6,3,7,5,7,12,0,0,0,0,1,0,football-data.co.uk
 2026-09-05,2026/27,Scottish Premiership,Scotland,St Mirren,Celtic,1,2,3,6.25,4.33,1.45,19,23,6,8,6,10,6,15,4,1,0,0,1,0,football-data.co.uk
-2026-09-05,2026/27,Serie A,Italy,AC Milan,Napoli,3,2,1,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-05,2026/27,Serie A,Italy,AC Milan,Napoli,3,2,1,1.67,3.6,5.5,29,16,8,7,10,5,7,7,1,2,0,0,0,0,football-data.co.uk
 2026-09-05,2026/27,Serie A,Italy,AS Roma,Atalanta,2,1,1,1.73,3.6,5.0,39,6,10,2,14,1,9,10,1,1,0,1,0,0,football-data.co.uk
 2026-09-05,2026/27,Serie A,Italy,Fiorentina,Torino,1,2,3,1.9,3.3,4.5,14,7,6,4,3,5,13,9,0,0,0,0,0,0,football-data.co.uk
 2026-09-05,2026/27,Serie A,Italy,Inter Milan,Napoli,3,2,1,1.67,3.6,5.5,29,16,8,7,10,5,7,7,1,2,0,0,0,0,football-data.co.uk
@@ -38344,7 +38344,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-09-06,2026/27,Liga Portugal,Portugal,Vitoria Guimaraes,Casa Pia,0,0,2,1.46,3.8,6.5,29,7,8,3,17,4,16,6,2,2,0,0,0,0,football-data.co.uk
 2026-09-06,2026/27,Ligue 1,France,Angers,Rennes,1,2,3,4.0,3.75,1.85,19,17,3,5,12,6,10,15,1,1,0,0,1,2,football-data.co.uk
 2026-09-06,2026/27,Ligue 1,France,Olympique Marseille,Paris,2,3,3,1.75,3.8,4.33,14,18,5,7,5,4,10,12,0,2,0,0,1,2,football-data.co.uk
-2026-09-06,2026/27,Ligue 1,France,Olympique Marseille,Paris Saint Germain,2,3,3,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-06,2026/27,Ligue 1,France,Olympique Marseille,Paris Saint Germain,2,3,3,1.75,3.8,4.33,14,18,5,7,5,4,10,12,0,2,0,0,1,2,football-data.co.uk
 2026-09-06,2026/27,Ligue 1,France,Troyes,Strasbourg,2,6,3,3.1,3.4,2.3,27,19,6,12,11,0,6,16,1,1,0,0,1,2,football-data.co.uk
 2026-09-06,2026/27,Premier League,England,Arsenal,Chelsea,2,1,1,1.67,3.75,5.25,16,13,9,5,5,3,13,16,2,4,0,0,1,1,football-data.co.uk
 2026-09-06,2026/27,Premier League,England,Everton,Manchester United,2,2,2,3.3,3.5,2.1,18,14,6,3,4,3,7,11,3,3,0,0,0,0,football-data.co.uk
@@ -38429,7 +38429,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-09-12,2026/27,Ligue 1,France,Le Havre,Angers,0,0,2,2.55,3.2,2.88,15,9,6,1,4,6,15,13,1,1,0,0,0,0,football-data.co.uk
 2026-09-12,2026/27,Ligue 1,France,Lorient,Toulouse,2,2,2,2.63,3.25,2.75,10,13,3,4,4,3,8,18,1,0,0,0,2,0,football-data.co.uk
 2026-09-12,2026/27,Ligue 1,France,Paris,Olympique Lyonnais,0,0,2,2.55,3.6,2.55,6,5,4,1,4,3,19,13,2,1,0,0,0,0,football-data.co.uk
-2026-09-12,2026/27,Ligue 1,France,Paris Saint Germain,Olympique Lyonnais,0,0,2,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-12,2026/27,Ligue 1,France,Paris Saint Germain,Olympique Lyonnais,0,0,2,2.55,3.6,2.55,6,5,4,1,4,3,19,13,2,1,0,0,0,0,football-data.co.uk
 2026-09-12,2026/27,Ligue 1,France,Strasbourg,Monaco,1,1,2,3.1,3.75,2.15,13,12,2,3,2,7,9,10,1,1,0,0,0,0,football-data.co.uk
 2026-09-12,2026/27,Premier League,England,Aston Villa,Nottingham Forest,1,2,3,2.2,3.4,3.25,7,22,5,7,6,1,11,16,2,5,0,0,0,0,football-data.co.uk
 2026-09-12,2026/27,Premier League,England,Bournemouth,Brentford,2,2,2,2.5,3.6,2.7,20,8,10,2,2,1,10,13,5,1,0,0,1,1,football-data.co.uk
@@ -38471,7 +38471,7 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-09-14,2026/27,Liga Portugal,Portugal,Moreirense,Maritimo,3,1,1,2.4,3.2,2.85,11,9,5,2,3,5,14,16,1,3,0,0,2,0,football-data.co.uk
 2026-09-14,2026/27,Liga Portugal,Portugal,Rio Ave,Estrela,3,3,2,2.75,3.25,2.45,11,20,6,6,4,5,16,12,2,3,0,0,1,1,football-data.co.uk
 2026-09-14,2026/27,Premier League,England,Leeds United,Newcastle United,4,1,1,2.38,3.5,2.88,15,7,6,5,5,5,8,13,1,2,0,0,3,0,football-data.co.uk
-2026-09-14,2026/27,Serie A,Italy,AC Milan,Udinese,5,3,1,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-14,2026/27,Serie A,Italy,AC Milan,Udinese,5,3,1,1.27,5.75,12.0,27,6,12,5,10,1,9,9,1,1,0,0,2,2,football-data.co.uk
 2026-09-14,2026/27,Serie A,Italy,Como,Parma,2,1,1,1.22,5.5,15.0,29,12,7,4,11,4,8,4,1,0,0,0,1,0,football-data.co.uk
 2026-09-14,2026/27,Serie A,Italy,Inter Milan,Udinese,5,3,1,1.27,5.75,12.0,27,6,12,5,10,1,9,9,1,1,0,0,2,2,football-data.co.uk
 2026-09-14,2026/27,Serie A,Italy,Torino,AS Roma,0,2,3,6.0,4.0,1.57,8,14,3,5,1,8,7,20,0,2,0,0,0,1,football-data.co.uk
@@ -38491,105 +38491,110 @@ date,season,league,country,home_team,away_team,home_score,away_score,outcome,odd
 2026-09-17,2026/27,La Liga,Spain,Malaga,Villarreal,1,3,3,3.6,3.7,1.95,5,16,1,7,4,8,17,10,0,0,0,0,1,2,football-data.co.uk
 2026-09-17,2026/27,La Liga,Spain,Real Betis,Getafe,1,0,1,1.57,4.0,5.75,22,8,8,2,4,3,13,24,0,0,0,0,1,0,football-data.co.uk
 2026-09-17,2026/27,League One,England,Wimbledon,MK Dons,0,0,2,3.0,3.3,2.25,11,11,2,2,5,6,6,18,0,0,0,0,0,0,football-data.co.uk
-2026-09-18,2026/27,Bundesliga,Germany,Bayern Munchen,Union Berlin,7,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,Championship,England,Bristol City,Watford,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,Eredivisie,Netherlands,Groningen,Zwolle,3,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,La Liga,Spain,Espanyol,Elche,1,3,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,Ligue 1,France,Monaco,Lens,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,Premier League,England,Brentford,Chelsea,3,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-18,2026/27,Serie A,Italy,Monza,Sassuolo,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-18,2026/27,Bundesliga,Germany,Bayern Munchen,Union Berlin,7,0,1,1.04,19.0,29.0,23,3,15,2,9,2,12,9,1,3,0,0,3,0,football-data.co.uk
+2026-09-18,2026/27,Championship,England,Bristol City,Watford,1,0,1,1.66,3.9,4.5,17,10,7,2,2,5,11,15,2,5,0,0,1,0,football-data.co.uk
+2026-09-18,2026/27,Eredivisie,Netherlands,Groningen,Zwolle,3,0,1,1.53,4.5,5.5,17,9,7,1,5,6,7,11,0,2,0,0,2,0,football-data.co.uk
+2026-09-18,2026/27,La Liga,Spain,Espanyol,Elche,1,3,3,1.8,3.5,4.5,23,9,4,6,3,3,14,9,2,2,0,1,0,2,football-data.co.uk
+2026-09-18,2026/27,Ligue 1,France,Monaco,Lens,2,1,1,2.05,3.7,3.4,9,12,6,4,2,8,13,11,1,1,0,0,1,0,football-data.co.uk
+2026-09-18,2026/27,Premier League,England,Brentford,Chelsea,3,0,1,2.55,3.8,2.45,13,12,6,2,4,12,10,7,2,0,0,0,0,0,football-data.co.uk
+2026-09-18,2026/27,Serie A,Italy,Monza,Sassuolo,2,1,1,2.7,3.4,2.55,15,20,6,8,7,5,13,6,4,1,0,0,0,0,football-data.co.uk
 2026-09-19,2026/27,Betway Premiership,South Africa,Kruger United,Stellenbosch,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
 2026-09-19,2026/27,Betway Premiership,South Africa,Polokwane City,AmaZulu,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
 2026-09-19,2026/27,Betway Premiership,South Africa,Richards Bay,Sekhukhune United,2,3,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Bundesliga,Germany,Borussia Monchengladbach,Mainz 05,3,4,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Bundesliga,Germany,Eintracht Frankfurt,SC Freiburg,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Bundesliga,Germany,Hamburg,1. FC Koln,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Bundesliga,Germany,VfB Stuttgart,Borussia Dortmund,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Bundesliga,Germany,Werder Bremen,FC Augsburg,3,2,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Birmingham City,Middlesbrough,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Burnley,Derby County,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Cardiff City,Charlton Athletic,3,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Lincoln City,Swansea City,1,2,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Millwall,West Ham United,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Portsmouth,Blackburn Rovers,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Queens Park Rangers,Preston North End,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Stoke City,Sheffield United,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Championship,England,Wrexham,Southampton,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Eredivisie,Netherlands,ADO Den Haag,Cambuur,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Eredivisie,Netherlands,Ajax,Excelsior,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Eredivisie,Netherlands,Sparta Rotterdam,Heerenveen,0,4,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Eredivisie,Netherlands,Willem II,Fortuna Sittard,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,La Liga,Spain,Athletic Club,Deportivo Alaves,0,0,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,La Liga,Spain,Celta Vigo,Real Racing Club de Santander,5,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,La Liga,Spain,Osasuna,Rayo Vallecano,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,La Liga,Spain,Sevilla,Barcelona,1,3,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,League One,England,Barnsley,Leicester City,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Blackpool,Plymouth Argyle,2,4,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Bromley,Huddersfield Town,2,1,1,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Burton,Mansfield Town,2,2,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Leyton Orient,Stevenage,1,0,1,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Luton Town,Bradford,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Oxford United,Cambridge,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Peterborough United,Doncaster,0,2,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Reading,Notts County,2,0,1,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Sheffield Wednesday,Stockport County,0,0,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,League One,England,Wigan Athletic,Wycombe Wanderers,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Liga Portugal,Portugal,Alverca,Rio Ave,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Liga Portugal,Portugal,Gil Vicente,Maritimo,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Liga Portugal,Portugal,Nacional,Famalicao,0,4,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Liga Portugal,Portugal,Sporting CP,Arouca,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Ligue 1,France,Angers,Troyes,2,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Ligue 1,France,Le Mans,Lorient,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Ligue 1,France,Olympique Lyonnais,Rennes,4,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Ligue 1,France,Paris Saint Germain,Strasbourg,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Ligue 1,France,Toulouse,Le Havre,3,2,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Premier League,England,Brighton & Hove Albion,Arsenal,3,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Premier League,England,Everton,Ipswich Town,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Premier League,England,Newcastle United,Hull City,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Premier League,England,Nottingham Forest,Coventry City,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Premier League,England,Tottenham Hotspur,Aston Villa,2,3,3,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-19,2026/27,Bundesliga,Germany,Borussia Monchengladbach,Mainz 05,3,4,3,3.0,3.7,2.2,21,17,7,8,6,4,12,14,6,5,0,0,1,2,football-data.co.uk
+2026-09-19,2026/27,Bundesliga,Germany,Eintracht Frankfurt,SC Freiburg,2,2,2,2.4,3.9,2.63,10,22,3,7,3,5,12,11,2,2,0,0,2,1,football-data.co.uk
+2026-09-19,2026/27,Bundesliga,Germany,Hamburg,1. FC Koln,2,1,1,2.7,3.6,2.45,12,18,7,5,3,5,12,14,1,3,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Bundesliga,Germany,VfB Stuttgart,Borussia Dortmund,0,1,3,2.4,3.75,2.75,12,13,5,2,6,2,9,14,2,5,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Bundesliga,Germany,Werder Bremen,FC Augsburg,3,2,1,2.3,3.8,2.8,20,7,11,4,2,2,10,11,2,2,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Birmingham City,Middlesbrough,2,2,2,2.75,3.6,2.3,15,15,5,4,5,3,11,11,2,0,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Burnley,Derby County,1,1,2,1.76,3.6,4.33,6,17,2,6,4,6,9,12,4,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Cardiff City,Charlton Athletic,3,1,1,1.79,3.8,4.0,27,6,8,3,6,1,10,15,5,3,0,0,2,1,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Lincoln City,Swansea City,1,2,3,2.75,3.3,2.45,13,10,4,4,2,1,12,11,2,1,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Millwall,West Ham United,2,2,2,4.1,3.9,1.76,19,15,7,6,3,11,17,18,1,4,0,1,2,0,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Portsmouth,Blackburn Rovers,2,2,2,2.05,3.5,3.4,22,8,7,5,9,7,16,9,2,1,0,0,1,1,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Queens Park Rangers,Preston North End,2,2,2,1.68,3.75,4.75,30,13,6,3,9,3,8,13,2,2,1,0,0,2,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Stoke City,Sheffield United,2,1,1,2.3,3.4,2.85,12,8,5,3,8,1,12,15,4,4,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Championship,England,Wrexham,Southampton,2,1,1,3.0,3.6,2.2,8,20,4,7,2,3,8,7,1,4,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Eredivisie,Netherlands,ADO Den Haag,Cambuur,1,1,2,1.8,3.9,4.2,18,8,6,3,6,3,22,14,3,2,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,Eredivisie,Netherlands,Ajax,Excelsior,2,2,2,1.22,7.0,11.0,33,4,8,2,9,0,6,12,1,2,0,0,1,1,football-data.co.uk
+2026-09-19,2026/27,Eredivisie,Netherlands,Sparta Rotterdam,Heerenveen,0,4,3,2.5,3.75,2.6,11,23,0,9,3,6,11,9,2,0,0,0,0,2,football-data.co.uk
+2026-09-19,2026/27,Eredivisie,Netherlands,Willem II,Fortuna Sittard,0,1,3,2.55,3.75,2.55,15,17,3,3,5,3,9,10,3,1,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,La Liga,Spain,Athletic Club,Deportivo Alaves,0,0,2,1.62,4.0,5.25,24,2,6,0,5,1,14,13,2,0,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,La Liga,Spain,Celta Vigo,Real Racing Club de Santander,5,0,1,1.8,3.8,4.2,13,11,9,5,3,3,13,11,2,5,0,0,2,0,football-data.co.uk
+2026-09-19,2026/27,La Liga,Spain,Osasuna,Rayo Vallecano,1,1,2,2.38,3.3,3.0,10,19,3,2,4,4,21,13,3,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,La Liga,Spain,Sevilla,Barcelona,1,3,3,11.0,7.5,1.2,7,24,3,7,1,3,10,11,1,0,0,0,1,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Barnsley,Leicester City,1,1,2,3.3,3.75,1.96,12,20,5,8,5,12,19,12,4,4,1,0,0,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Blackpool,Plymouth Argyle,2,4,3,2.57,3.4,2.45,10,24,4,9,3,8,15,7,3,0,0,0,1,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Bromley,Huddersfield Town,2,1,1,5.5,3.9,1.53,5,18,3,8,4,9,17,13,2,2,0,0,1,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Burton,Mansfield Town,2,2,2,2.5,3.3,2.57,10,12,3,5,4,5,12,14,1,5,0,0,2,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Leyton Orient,Stevenage,1,0,1,2.2,3.3,3.1,7,16,1,4,3,6,10,16,0,4,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,League One,England,Luton Town,Bradford,0,1,3,2.01,3.3,3.5,15,5,3,3,14,3,17,15,1,4,1,0,0,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Oxford United,Cambridge,1,1,2,2.05,3.4,3.3,10,15,5,2,5,8,11,14,1,5,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,League One,England,Peterborough United,Doncaster,0,2,3,2.32,3.6,2.65,14,9,0,4,8,3,12,17,2,1,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,League One,England,Reading,Notts County,2,0,1,1.76,3.7,4.0,17,12,7,2,4,1,13,12,2,1,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,League One,England,Sheffield Wednesday,Stockport County,0,0,2,3.0,3.5,2.15,6,18,2,2,4,5,15,9,3,1,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,League One,England,Wigan Athletic,Wycombe Wanderers,0,1,3,2.5,3.3,2.57,12,11,2,1,4,5,17,8,6,1,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Liga Portugal,Portugal,Alverca,Rio Ave,1,0,1,1.86,3.5,4.0,23,6,6,3,8,3,12,8,2,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Liga Portugal,Portugal,Gil Vicente,Maritimo,1,1,2,1.86,3.4,4.0,19,10,4,3,4,3,9,13,1,1,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Liga Portugal,Portugal,Nacional,Famalicao,0,4,3,3.6,3.4,2.01,12,12,3,7,7,3,11,10,1,3,1,0,0,3,football-data.co.uk
+2026-09-19,2026/27,Liga Portugal,Portugal,Sporting CP,Arouca,2,2,2,1.19,7.0,11.0,10,15,3,5,4,2,9,17,4,5,1,0,2,0,football-data.co.uk
+2026-09-19,2026/27,Ligue 1,France,Angers,Troyes,2,0,1,2.2,3.3,3.4,12,19,3,3,2,11,14,15,3,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Ligue 1,France,Le Mans,Lorient,2,1,1,2.7,3.3,2.63,11,9,7,2,1,3,15,15,3,3,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Ligue 1,France,Olympique Lyonnais,Rennes,4,0,1,2.1,3.7,3.2,15,13,9,4,3,8,13,14,4,2,0,0,2,0,football-data.co.uk
+2026-09-19,2026/27,Ligue 1,France,Paris Saint Germain,Strasbourg,2,1,1,1.95,3.75,3.6,17,5,7,1,3,0,17,12,3,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Ligue 1,France,Toulouse,Le Havre,3,2,1,1.7,3.75,5.0,14,18,5,7,6,7,17,15,3,1,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Premier League,England,Brighton & Hove Albion,Arsenal,3,0,1,5.0,3.9,1.67,17,11,5,2,5,6,13,11,4,1,0,0,2,0,football-data.co.uk
+2026-09-19,2026/27,Premier League,England,Everton,Ipswich Town,1,0,1,1.75,3.8,4.5,21,13,2,4,4,4,6,12,2,1,0,1,1,0,football-data.co.uk
+2026-09-19,2026/27,Premier League,England,Newcastle United,Hull City,2,1,1,1.6,4.33,5.0,12,22,5,4,4,7,4,10,1,4,0,0,2,0,football-data.co.uk
+2026-09-19,2026/27,Premier League,England,Nottingham Forest,Coventry City,0,1,3,1.57,4.0,5.75,24,10,3,3,6,2,12,10,2,0,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Premier League,England,Tottenham Hotspur,Aston Villa,2,3,3,2.0,3.5,3.7,20,15,7,6,11,1,9,13,1,2,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,Scottish Premiership,Scotland,Dundee,Motherwell,2,1,1,3.0,3.4,2.25,11,15,6,4,9,9,8,9,1,1,0,0,2,1,football-data.co.uk
 2026-09-19,2026/27,Scottish Premiership,Scotland,Dundee United,Motherwell,2,1,1,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Scottish Premiership,Scotland,Hibernian,Aberdeen,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Scottish Premiership,Scotland,Kilmarnock,Heart of Midlothian,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Scottish Premiership,Scotland,St Johnstone,Falkirk,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Scottish Premiership,Scotland,St Mirren,Dundee United,0,3,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-19,2026/27,Serie A,Italy,AS Roma,AC Milan,2,2,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Serie A,Italy,Bologna,Torino,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Serie A,Italy,Udinese,Cagliari,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-19,2026/27,Serie A,Italy,Venezia,Lazio,0,2,3,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-19,2026/27,Scottish Premiership,Scotland,Hibernian,Aberdeen,1,1,2,1.68,3.8,4.5,12,9,2,2,6,9,12,11,2,2,0,0,0,1,football-data.co.uk
+2026-09-19,2026/27,Scottish Premiership,Scotland,Kilmarnock,Heart of Midlothian,1,1,2,4.75,4.1,1.61,4,17,0,3,2,6,13,17,2,2,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Scottish Premiership,Scotland,St Johnstone,Falkirk,1,1,2,2.01,3.5,3.5,8,13,5,4,3,8,13,18,2,0,1,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Scottish Premiership,Scotland,St Mirren,Dundee United,0,3,3,2.3,3.6,2.82,10,13,0,9,4,7,13,13,2,2,0,0,0,3,football-data.co.uk
+2026-09-19,2026/27,Serie A,Italy,AS Roma,AC Milan,2,2,2,2.7,3.4,2.55,18,16,4,5,4,2,13,7,3,3,0,0,2,0,football-data.co.uk
+2026-09-19,2026/27,Serie A,Italy,Bologna,Torino,1,1,2,1.91,3.5,4.0,11,14,1,3,1,6,18,12,0,3,0,0,1,0,football-data.co.uk
+2026-09-19,2026/27,Serie A,Italy,Udinese,Cagliari,0,1,3,2.25,3.3,3.3,26,5,5,2,16,1,10,8,2,0,0,0,0,0,football-data.co.uk
+2026-09-19,2026/27,Serie A,Italy,Venezia,Lazio,0,2,3,3.9,3.5,1.91,17,12,6,2,7,2,14,8,6,0,0,0,0,0,football-data.co.uk
 2026-09-20,2026/27,Betway Premiership,South Africa,Golden Arrows,Kaizer Chiefs,0,0,2,,,,,,,,,,,,,,,,,,TheSportsDB
 2026-09-20,2026/27,Betway Premiership,South Africa,Marumo Gallants,Orlando Pirates,0,2,3,,,,,,,,,,,,,,,,,,TheSportsDB
 2026-09-20,2026/27,Betway Premiership,South Africa,Milford,Durban City,1,1,2,,,,,,,,,,,,,,,,,,TheSportsDB
 2026-09-20,2026/27,Betway Premiership,South Africa,TS Galaxy,Chippa United,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-20,2026/27,Bundesliga,Germany,Bayer Leverkusen,RB Leipzig,2,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Bundesliga,Germany,Paderborn,1899 Hoffenheim,3,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Bundesliga,Germany,Schalke 04,07 Elversberg,0,0,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Championship,England,Norwich City,Bolton Wanderers,3,4,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Championship,England,Wolverhampton Wanderers,West Bromwich Albion,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Eredivisie,Netherlands,AZ Alkmaar,Telstar,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Eredivisie,Netherlands,Feyenoord,Utrecht,5,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Eredivisie,Netherlands,Nijmegen,Go Ahead Eagles,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Eredivisie,Netherlands,Twente,PSV,3,2,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,La Liga,Spain,Atletico Madrid,Real Madrid,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,La Liga,Spain,Deportivo La Coruna,Real Betis,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,La Liga,Spain,Getafe,Malaga,1,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,La Liga,Spain,Valencia,Real Sociedad,2,3,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,La Liga,Spain,Villarreal,Levante,3,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Liga Portugal,Portugal,Estoril,Casa Pia,1,2,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Liga Portugal,Portugal,Estrela,Académico de Viseu,0,2,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Liga Portugal,Portugal,FC Porto,Benfica,3,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Liga Portugal,Portugal,Santa Clara,Braga,0,0,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Liga Portugal,Portugal,Vitoria Guimaraes,Moreirense,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Ligue 1,France,Auxerre,Brest,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Ligue 1,France,Nice,Lille,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Ligue 1,France,Olympique Marseille,Paris Saint Germain,1,2,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Premier League,England,Bournemouth,Liverpool,0,1,3,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Premier League,England,Fulham,Manchester United,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Premier League,England,Leeds United,Crystal Palace,0,0,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Premier League,England,Manchester City,Sunderland,5,3,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Scottish Premiership,Scotland,Celtic,Rangers,0,1,3,,,,,,,,,,,,,,,,,,TheSportsDB
-2026-09-20,2026/27,Serie A,Italy,AC Milan,Lecce,3,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Serie A,Italy,Fiorentina,Napoli,1,1,2,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Serie A,Italy,Frosinone,Como,2,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Serie A,Italy,Juventus,Atalanta,2,0,1,,,,,,,,,,,,,,,,,,football-data.org
-2026-09-20,2026/27,Serie A,Italy,Parma,Genoa,2,1,1,,,,,,,,,,,,,,,,,,football-data.org
+2026-09-20,2026/27,Bundesliga,Germany,Bayer Leverkusen,RB Leipzig,2,0,1,1.95,4.2,3.25,18,12,6,3,9,6,14,8,2,3,0,0,1,0,football-data.co.uk
+2026-09-20,2026/27,Bundesliga,Germany,Paderborn,1899 Hoffenheim,3,1,1,4.33,4.5,1.67,13,23,5,2,6,5,6,14,0,1,0,0,2,0,football-data.co.uk
+2026-09-20,2026/27,Bundesliga,Germany,Schalke 04,07 Elversberg,0,0,2,2.0,3.7,3.5,13,11,1,1,4,4,10,10,1,2,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Championship,England,Norwich City,Bolton Wanderers,3,4,3,1.46,4.5,5.75,10,9,4,5,4,2,11,12,0,0,0,0,2,2,football-data.co.uk
+2026-09-20,2026/27,Championship,England,Wolverhampton Wanderers,West Bromwich Albion,1,0,1,1.76,3.7,4.33,15,7,6,2,8,7,18,13,1,2,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Eredivisie,Netherlands,AZ Alkmaar,Telstar,1,0,1,1.25,6.0,10.0,17,3,8,1,5,2,15,12,1,1,0,0,1,0,football-data.co.uk
+2026-09-20,2026/27,Eredivisie,Netherlands,Feyenoord,Utrecht,5,0,1,1.29,5.75,9.5,23,5,12,2,6,3,11,23,2,2,0,0,3,0,football-data.co.uk
+2026-09-20,2026/27,Eredivisie,Netherlands,Nijmegen,Go Ahead Eagles,1,1,2,1.95,4.0,3.5,17,14,5,6,5,7,8,6,0,2,0,0,1,1,football-data.co.uk
+2026-09-20,2026/27,Eredivisie,Netherlands,Twente,PSV,3,2,1,2.88,4.0,2.2,21,11,5,4,6,5,10,12,1,3,0,0,1,2,football-data.co.uk
+2026-09-20,2026/27,La Liga,Spain,Atletico Madrid,Real Madrid,2,1,1,3.6,3.8,1.95,18,8,9,3,3,1,19,6,2,2,0,1,0,0,football-data.co.uk
+2026-09-20,2026/27,La Liga,Spain,Deportivo La Coruna,Real Betis,1,1,2,3.4,3.75,2.05,24,11,7,4,11,5,6,9,1,1,0,0,0,1,football-data.co.uk
+2026-09-20,2026/27,La Liga,Spain,Getafe,Malaga,1,0,1,2.0,3.1,4.2,20,11,7,4,5,9,16,16,4,2,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,La Liga,Spain,Valencia,Real Sociedad,2,3,3,2.7,3.4,2.6,22,21,5,6,7,5,9,12,2,1,0,1,0,1,football-data.co.uk
+2026-09-20,2026/27,La Liga,Spain,Villarreal,Levante,3,1,1,1.5,4.75,5.5,21,6,7,1,7,1,9,10,1,1,0,0,1,1,football-data.co.uk
+2026-09-20,2026/27,Liga Portugal,Portugal,Estoril,Casa Pia,1,2,3,1.71,3.6,4.75,14,11,6,3,7,4,7,11,3,2,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Liga Portugal,Portugal,Estrela,Académico de Viseu,0,2,3,2.1,3.3,3.4,16,8,2,4,5,2,10,11,2,3,0,0,0,2,football-data.co.uk
+2026-09-20,2026/27,Liga Portugal,Portugal,FC Porto,Benfica,3,1,1,2.65,3.3,2.5,20,12,7,3,3,3,17,12,3,3,0,1,1,0,football-data.co.uk
+2026-09-20,2026/27,Liga Portugal,Portugal,Santa Clara,Braga,0,0,2,3.5,3.3,2.05,10,8,1,1,5,5,13,13,4,3,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Liga Portugal,Portugal,Vitoria Guimaraes,Moreirense,1,1,2,1.49,3.75,7.0,16,7,5,3,3,0,10,13,0,0,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Ligue 1,France,Auxerre,Brest,2,1,1,2.88,3.5,2.45,11,8,4,2,8,3,19,13,1,1,0,0,0,1,football-data.co.uk
+2026-09-20,2026/27,Ligue 1,France,Nice,Lille,2,1,1,3.6,3.5,2.05,10,21,4,8,3,7,16,9,3,1,0,0,1,0,football-data.co.uk
+2026-09-20,2026/27,Ligue 1,France,Olympique Marseille,Paris Saint Germain,1,2,3,7.0,5.0,1.4,12,31,4,10,3,7,9,3,2,1,1,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Premier League,England,Bournemouth,Liverpool,0,1,3,3.2,3.8,2.1,9,12,2,3,3,3,11,13,1,2,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Premier League,England,Fulham,Manchester United,1,1,2,3.5,3.8,2.0,12,29,6,6,3,13,9,5,3,0,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Premier League,England,Leeds United,Crystal Palace,0,0,2,1.73,3.9,4.75,13,12,2,4,4,3,10,12,2,3,0,0,0,0,football-data.co.uk
+2026-09-20,2026/27,Premier League,England,Manchester City,Sunderland,5,3,1,1.3,5.5,9.0,16,17,6,9,6,5,14,14,0,1,0,0,3,2,football-data.co.uk
+2026-09-20,2026/27,Scottish Premiership,Scotland,Celtic,Rangers,0,1,3,2.15,3.7,3.0,5,15,1,8,8,4,16,19,2,3,0,0,0,1,football-data.co.uk
+2026-09-20,2026/27,Serie A,Italy,AC Milan,Lecce,3,0,1,1.27,5.75,11.0,10,6,4,3,2,3,9,15,0,1,0,0,1,0,football-data.co.uk
+2026-09-20,2026/27,Serie A,Italy,Fiorentina,Napoli,1,1,2,3.3,3.4,2.2,17,13,4,5,4,5,11,9,3,0,0,0,0,1,football-data.co.uk
+2026-09-20,2026/27,Serie A,Italy,Frosinone,Como,2,0,1,6.0,4.5,1.5,22,27,6,8,7,8,21,8,3,2,0,0,2,0,football-data.co.uk
+2026-09-20,2026/27,Serie A,Italy,Juventus,Atalanta,2,0,1,1.7,3.9,4.75,14,11,5,2,4,5,10,10,1,2,0,0,1,0,football-data.co.uk
+2026-09-20,2026/27,Serie A,Italy,Parma,Genoa,2,1,1,3.1,3.1,2.45,5,12,2,5,2,5,17,14,3,3,0,0,1,0,football-data.co.uk
+2026-09-26,2026/27,League One,England,Cambridge,Wimbledon,1,1,2,1.76,3.6,4.2,18,7,5,3,8,1,8,11,2,2,0,0,0,1,football-data.co.uk
+2026-09-26,2026/27,League One,England,Plymouth Argyle,Burton,0,1,3,1.57,4.0,5.0,13,10,3,3,3,4,11,4,3,3,0,0,0,0,football-data.co.uk
+2026-09-26,2026/27,League One,England,Stockport County,Peterborough United,1,0,1,1.33,4.75,7.5,14,10,5,4,6,4,8,8,1,3,0,0,0,0,football-data.co.uk
+2026-09-26,2026/27,League One,England,Wycombe Wanderers,Reading,2,2,2,2.45,3.6,2.5,17,21,5,7,5,7,9,17,2,3,0,0,0,0,football-data.co.uk

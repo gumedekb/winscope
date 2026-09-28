@@ -1686,10 +1686,10 @@
     "matches": 3
   },
   "Dundee|Motherwell": {
-    "t1_win_rate": 0.28,
-    "t2_win_rate": 0.48,
-    "draw_rate": 0.24,
-    "matches": 25
+    "t1_win_rate": 0.3077,
+    "t2_win_rate": 0.4615,
+    "draw_rate": 0.2308,
+    "matches": 26
   },
   "Heart of Midlothian|Partick": {
     "t1_win_rate": 0.2857,
@@ -15984,10 +15984,10 @@
     "matches": 8
   },
   "Burton|Plymouth Argyle": {
-    "t1_win_rate": 0.1,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.4,
-    "matches": 10
+    "t1_win_rate": 0.1818,
+    "t2_win_rate": 0.4545,
+    "draw_rate": 0.3636,
+    "matches": 11
   },
   "Shrewsbury Town|Sunderland": {
     "t1_win_rate": 0.2857,
@@ -19932,10 +19932,10 @@
     "matches": 12
   },
   "Reading|Wycombe Wanderers": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.25,
-    "matches": 8
+    "t1_win_rate": 0.4444,
+    "t2_win_rate": 0.2222,
+    "draw_rate": 0.3333,
+    "matches": 9
   },
   "Hull City|Wimbledon": {
     "t1_win_rate": 1.0,
@@ -22182,10 +22182,10 @@
     "matches": 2
   },
   "Cambridge|Wimbledon": {
-    "t1_win_rate": 1.0,
+    "t1_win_rate": 0.6667,
     "t2_win_rate": 0.0,
-    "draw_rate": 0.0,
-    "matches": 2
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Cheltenham|Sheffield Wednesday": {
     "t1_win_rate": 0.0,
@@ -27990,10 +27990,10 @@
     "matches": 3
   },
   "Peterborough United|Stockport County": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.6,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "FC Augsburg|Holstein Kiel": {
     "t1_win_rate": 0.0,

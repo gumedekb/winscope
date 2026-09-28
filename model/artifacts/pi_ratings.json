@@ -68,12 +68,12 @@
     "away": 0.7945
   },
   "Burton": {
-    "home": -0.3771,
-    "away": -0.5406
+    "home": -0.3454,
+    "away": -0.4953
   },
   "Reading": {
-    "home": 0.1353,
-    "away": -0.363
+    "home": 0.145,
+    "away": -0.3491
   },
   "Preston North End": {
     "home": -0.1786,
@@ -172,8 +172,8 @@
     "away": -0.582
   },
   "Peterborough United": {
-    "home": -0.3091,
-    "away": -0.818
+    "home": -0.3065,
+    "away": -0.8144
   },
   "Scunthorpe": {
     "home": -0.31,
@@ -212,16 +212,16 @@
     "away": -0.6021
   },
   "Wimbledon": {
-    "home": -0.6691,
-    "away": -0.7927
+    "home": -0.6575,
+    "away": -0.7762
   },
   "Kilmarnock": {
     "home": 0.0236,
     "away": -0.489
   },
   "Motherwell": {
-    "home": 0.4933,
-    "away": 0.3134
+    "home": 0.4664,
+    "away": 0.275
   },
   "Partick": {
     "home": -0.4166,
@@ -244,8 +244,8 @@
     "away": -0.6548
   },
   "Dundee": {
-    "home": -0.0603,
-    "away": -0.2608
+    "home": -0.0211,
+    "away": -0.2334
   },
   "Queens Park Rangers": {
     "home": -0.0532,
@@ -784,8 +784,8 @@
     "away": -0.6765
   },
   "Plymouth Argyle": {
-    "home": 0.2169,
-    "away": -0.2005
+    "home": 0.1717,
+    "away": -0.2322
   },
   "Portsmouth": {
     "home": 0.1152,
@@ -864,8 +864,8 @@
     "away": -0.3417
   },
   "Wycombe Wanderers": {
-    "home": 0.0455,
-    "away": -0.1913
+    "home": 0.0316,
+    "away": -0.201
   },
   "Livingston": {
     "home": -0.4569,
@@ -1012,8 +1012,8 @@
     "away": -0.1759
   },
   "Dundee United": {
-    "home": -0.0686,
-    "away": -0.1202
+    "home": -0.0693,
+    "away": -0.1208
   },
   "Lens": {
     "home": 0.8552,
@@ -1060,8 +1060,8 @@
     "away": -0.3091
   },
   "Cambridge": {
-    "home": -0.4401,
-    "away": -0.6573
+    "home": -0.4566,
+    "away": -0.6689
   },
   "Cheltenham": {
     "home": -0.5273,
@@ -1216,8 +1216,8 @@
     "away": -0.5118
   },
   "Stockport County": {
-    "home": 0.2472,
-    "away": 0.1806
+    "home": 0.2436,
+    "away": 0.1781
   },
   "Wrexham": {
     "home": 0.3119,
