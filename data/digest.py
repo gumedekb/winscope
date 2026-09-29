@@ -130,8 +130,10 @@ def build_message(day, fixtures: list[dict], ahead: list[str], behind: list[str]
         parts += [s for _, s in confident[:MAX_LINES]]
         if len(confident) > MAX_LINES:
             parts.append(f"… and {len(confident) - MAX_LINES} more on the dashboard")
-    else:
+    elif predicted:
         parts += ["", "No pick above 50% today."]
+    else:
+        parts += ["", "No predictions yet."]
     if perms:
         parts += ["", "<b>Perm these</b> (live draw / no clear favourite)"]
         parts += perms[:MAX_LINES]

@@ -47,11 +47,13 @@ name: WinScope ETL
 # page load in that window gets no predictions at all). A fixture that kicks
 # off before that happens can never be scored. So each pass ends by waking the
 # model server and calling the web app's /api/predict/backfill, which predicts
-# whatever upcoming fixture has nothing on file. Needs two secrets:
-#   WINSCOPE_WEB_URL       e.g. https://winscope.vercel.app  (no trailing slash)
+# whatever upcoming fixture has nothing on file. Optional secrets:
+#   WINSCOPE_WEB_URL       default https://winscope.vercel.app  (no trailing slash)
+#   MODEL_SERVER_URL       default https://winscope.onrender.com (woken first)
 #   WINSCOPE_BACKFILL_KEY  the same value as the Vercel env var of that name
-# and optionally MODEL_SERVER_URL (the Render URL) to wake the model first.
-# Without WINSCOPE_WEB_URL the step is skipped and the ETL behaves as before.
+# The URLs default to production because they used to be required: with the
+# secrets never set, the step skipped itself silently and fixtures went a week
+# unpredicted — past kickoff — until someone happened to open the dashboard.
 #
 # ...AND THE DAILY TELEGRAM DIGEST
 # The same loop sends data/digest.py once a day: the first pass after
@@ -177,16 +179,15 @@ jobs:
 
           # The prediction guard (see the header). Never fails the pass: an
           # asleep model or a cold Vercel function is retried 20 minutes later.
+          web_url="${WINSCOPE_WEB_URL:-https://winscope.vercel.app}"
+          model_url="${MODEL_SERVER_URL:-https://winscope.onrender.com}"
           backfill() {
-            [ -n "${WINSCOPE_WEB_URL:-}" ] || return 0
-            if [ -n "${MODEL_SERVER_URL:-}" ]; then
-              # Wake Render first so the web call does not spend its budget waiting.
-              curl -sS --max-time 90 -o /dev/null -w '  model server: HTTP %{http_code} in %{time_total}s\n' \
-                "${MODEL_SERVER_URL%/}/health" || true
-            fi
+            # Wake Render first so the web call does not spend its budget waiting.
+            curl -sS --max-time 90 -o /dev/null -w '  model server: HTTP %{http_code} in %{time_total}s\n' \
+              "${model_url%/}/health" || true
             curl -sS --max-time 70 -X POST \
               -H "x-winscope-key: ${WINSCOPE_BACKFILL_KEY:-}" \
-              "${WINSCOPE_WEB_URL%/}/api/predict/backfill" \
+              "${web_url%/}/api/predict/backfill" \
               | python -c 'import json,sys; d=json.load(sys.stdin); print("  backfill:", d.get("message") or d.get("error")); [print("    - " + m) for m in d.get("still_missing", [])[:20]]' \
               || echo "  backfill: call failed — next pass retries"
           }
