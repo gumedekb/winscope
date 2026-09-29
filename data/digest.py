@@ -14,7 +14,8 @@ schedule; a hand-triggered run still sends, so the bot can be tested any day.
 
 Needs TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID (GitHub secrets, or data/.env).
 
-Perm thresholds are the web app's (web/lib/perm.ts) — keep the two in step.
+Perm thresholds are the web app's (web/lib/perm.ts), and the bot's /scope
+command renders this same message (web/lib/telegram.ts) — keep all three in step.
 """
 import argparse
 import html
