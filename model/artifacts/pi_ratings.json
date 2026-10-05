@@ -48,8 +48,8 @@
     "away": 1.0634
   },
   "Huddersfield Town": {
-    "home": 0.0255,
-    "away": -0.3464
+    "home": 0.0606,
+    "away": -0.2963
   },
   "Brentford": {
     "home": 1.1858,
@@ -68,12 +68,12 @@
     "away": 0.7945
   },
   "Burton": {
-    "home": -0.3454,
-    "away": -0.4953
+    "home": -0.3955,
+    "away": -0.5304
   },
   "Reading": {
-    "home": 0.145,
-    "away": -0.3491
+    "home": 0.1298,
+    "away": -0.3597
   },
   "Preston North End": {
     "home": -0.1786,
@@ -128,8 +128,8 @@
     "away": 0.0488
   },
   "Bradford": {
-    "home": -0.0726,
-    "away": -0.3196
+    "home": -0.0619,
+    "away": -0.3044
   },
   "Port Vale": {
     "home": -0.6644,
@@ -784,8 +784,8 @@
     "away": -0.6765
   },
   "Plymouth Argyle": {
-    "home": 0.1717,
-    "away": -0.2322
+    "home": 0.2062,
+    "away": -0.1828
   },
   "Portsmouth": {
     "home": 0.1152,
@@ -1176,8 +1176,8 @@
     "away": -0.7094
   },
   "Leyton Orient": {
-    "home": -0.286,
-    "away": -0.2275
+    "home": -0.3353,
+    "away": -0.262
   },
   "Stevenage": {
     "home": -0.1424,

@@ -9354,10 +9354,10 @@
     "matches": 10
   },
   "Burton|Huddersfield Town": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.1667,
-    "draw_rate": 0.3333,
-    "matches": 6
+    "t1_win_rate": 0.4286,
+    "t2_win_rate": 0.2857,
+    "draw_rate": 0.2857,
+    "matches": 7
   },
   "Cardiff City|Wolverhampton Wanderers": {
     "t1_win_rate": 0.5,
@@ -28374,10 +28374,10 @@
     "matches": 2
   },
   "Leyton Orient|Plymouth Argyle": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.6667,
     "draw_rate": 0.0,
-    "matches": 2
+    "matches": 3
   },
   "Bradford|Stockport County": {
     "t1_win_rate": 1.0,
@@ -29274,10 +29274,10 @@
     "matches": 3
   },
   "Bradford|Reading": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.0,
-    "matches": 2
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.3333,
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Cardiff City|Doncaster": {
     "t1_win_rate": 1.0,
