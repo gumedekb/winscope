@@ -1,71 +1,71 @@
 {
   "Fulham": {
-    "home": 0.8273,
-    "away": 0.7
+    "home": 0.84,
+    "away": 0.7089
   },
   "Newcastle United": {
-    "home": 1.1044,
-    "away": 0.7471
+    "home": 1.0194,
+    "away": 0.656
   },
   "Nijmegen": {
-    "home": 0.6126,
-    "away": 0.6065
+    "home": 0.586,
+    "away": 0.5879
   },
   "Zwolle": {
-    "home": -0.2434,
-    "away": -0.5724
+    "home": -0.1766,
+    "away": -0.5257
   },
   "Birmingham City": {
-    "home": 0.4771,
-    "away": 0.1215
+    "home": 0.5991,
+    "away": 0.2069
   },
   "Cardiff City": {
-    "home": 0.1908,
-    "away": -0.0122
+    "home": 0.2727,
+    "away": 0.0558
   },
   "Blackburn Rovers": {
-    "home": 0.0564,
-    "away": -0.1851
+    "home": 0.0682,
+    "away": -0.1681
   },
   "Norwich City": {
-    "home": 0.2927,
-    "away": 0.0238
+    "home": 0.2252,
+    "away": -0.0235
   },
   "Bristol City": {
-    "home": 0.219,
-    "away": -0.0062
+    "home": 0.1465,
+    "away": -0.0569
   },
   "Wigan Athletic": {
     "home": -0.4886,
     "away": -0.6029
   },
   "Derby County": {
-    "home": 0.2205,
-    "away": -0.1286
+    "home": 0.1364,
+    "away": -0.2192
   },
   "Brighton & Hove Albion": {
-    "home": 1.2269,
-    "away": 1.1043
+    "home": 1.3017,
+    "away": 1.1566
   },
   "Huddersfield Town": {
     "home": 0.0352,
     "away": -0.3141
   },
   "Brentford": {
-    "home": 1.1922,
-    "away": 0.948
+    "home": 1.1531,
+    "away": 0.9206
   },
   "Ipswich Town": {
-    "home": 0.7044,
-    "away": 0.4531
+    "home": 0.7269,
+    "away": 0.4854
   },
   "Barnsley": {
     "home": -0.4486,
     "away": -0.5039
   },
   "Nottingham Forest": {
-    "home": 0.881,
-    "away": 0.7426
+    "home": 0.8722,
+    "away": 0.7365
   },
   "Burton": {
     "home": -0.416,
@@ -76,56 +76,56 @@
     "away": -0.2864
   },
   "Preston North End": {
-    "home": -0.2004,
-    "away": -0.3579
+    "home": -0.2854,
+    "away": -0.4794
   },
   "Rotherham United": {
     "home": -0.5456,
     "away": -0.9965
   },
   "Wolverhampton Wanderers": {
-    "home": 0.4527,
-    "away": 0.3228
+    "home": 0.417,
+    "away": 0.3145
   },
   "ADO Den Haag": {
-    "home": -0.6215,
-    "away": -0.7944
+    "home": -0.5533,
+    "away": -0.7467
   },
   "Go Ahead Eagles": {
-    "home": 0.4918,
-    "away": 0.1513
+    "home": 0.445,
+    "away": 0.0845
   },
   "Twente": {
-    "home": 0.9714,
-    "away": 0.6044
+    "home": 0.9256,
+    "away": 0.5724
   },
   "Excelsior": {
-    "home": 0.0363,
-    "away": -0.2378
+    "home": -0.0109,
+    "away": -0.3053
   },
   "Utrecht": {
-    "home": 0.6389,
-    "away": 0.4155
+    "home": 0.671,
+    "away": 0.4613
   },
   "PSV": {
-    "home": 1.5522,
-    "away": 1.362
+    "home": 1.5045,
+    "away": 1.2938
   },
   "Willem II": {
-    "home": -0.4526,
-    "away": -0.6663
+    "home": -0.4605,
+    "away": -0.6776
   },
   "Vitesse": {
     "home": -0.1502,
     "away": -0.3182
   },
   "Bolton Wanderers": {
-    "home": 0.1595,
-    "away": -0.2327
+    "home": 0.2201,
+    "away": -0.1461
   },
   "Sheffield United": {
-    "home": 0.3226,
-    "away": 0.0943
+    "home": 0.3244,
+    "away": 0.0968
   },
   "Bradford": {
     "home": -0.0693,
@@ -140,12 +140,12 @@
     "away": -0.5589
   },
   "Charlton Athletic": {
-    "home": 0.051,
-    "away": -0.2771
+    "home": 0.0306,
+    "away": -0.3063
   },
   "Millwall": {
-    "home": 0.5816,
-    "away": 0.3049
+    "home": 0.53,
+    "away": 0.2688
   },
   "Oldham": {
     "home": -0.2214,
@@ -160,8 +160,8 @@
     "away": -0.5938
   },
   "Oxford United": {
-    "home": 0.1159,
-    "away": -0.2336
+    "home": 0.1184,
+    "away": -0.2299
   },
   "Chesterfield": {
     "home": -0.4594,
@@ -204,8 +204,8 @@
     "away": -0.7597
   },
   "Coventry City": {
-    "home": 0.819,
-    "away": 0.5183
+    "home": 0.881,
+    "away": 0.5617
   },
   "Walsall": {
     "home": -0.4162,
@@ -244,40 +244,40 @@
     "away": -0.6548
   },
   "Dundee": {
-    "home": -0.0211,
-    "away": -0.2334
+    "home": 0.0039,
+    "away": -0.1976
   },
   "Queens Park Rangers": {
-    "home": -0.0298,
-    "away": -0.1223
+    "home": -0.0068,
+    "away": -0.1347
   },
   "Leeds United": {
-    "home": 1.2071,
-    "away": 0.8609
+    "home": 1.1916,
+    "away": 0.85
   },
   "Sheffield Wednesday": {
     "home": -0.396,
     "away": -0.6641
   },
   "Aston Villa": {
-    "home": 1.0632,
-    "away": 0.745
+    "home": 1.0923,
+    "away": 0.7865
   },
   "AZ Alkmaar": {
-    "home": 0.832,
-    "away": 0.6978
+    "home": 0.8042,
+    "away": 0.6581
   },
   "Heerenveen": {
-    "home": 0.4477,
-    "away": 0.1972
+    "home": 0.5152,
+    "away": 0.2445
   },
   "Groningen": {
-    "home": 0.4582,
-    "away": -0.0178
+    "home": 0.4002,
+    "away": -0.0584
   },
   "Feyenoord": {
-    "home": 1.1194,
-    "away": 1.0446
+    "home": 1.1125,
+    "away": 1.0347
   },
   "Roda": {
     "home": -0.4185,
@@ -288,12 +288,12 @@
     "away": -1.0598
   },
   "Sparta Rotterdam": {
-    "home": 0.0655,
-    "away": -0.0236
+    "home": 0.0768,
+    "away": -0.0157
   },
   "Ajax": {
-    "home": 1.0764,
-    "away": 0.8001
+    "home": 1.117,
+    "away": 0.8582
   },
   "Heart of Midlothian": {
     "home": 1.0719,
@@ -324,12 +324,12 @@
     "away": -0.4775
   },
   "Paris Saint Germain": {
-    "home": 1.1905,
-    "away": 1.0924
+    "home": 1.2084,
+    "away": 1.1256
   },
   "Monaco": {
-    "home": 0.9435,
-    "away": 0.6386
+    "home": 0.9157,
+    "away": 0.5989
   },
   "Guingamp": {
     "home": -0.336,
@@ -372,8 +372,8 @@
     "away": -0.6062
   },
   "Lorient": {
-    "home": 0.2876,
-    "away": -0.1364
+    "home": 0.3273,
+    "away": -0.1086
   },
   "Dijon": {
     "home": -0.604,
@@ -388,72 +388,72 @@
     "away": -0.6594
   },
   "Lille": {
-    "home": 0.8743,
-    "away": 0.6684
+    "home": 0.8449,
+    "away": 0.6478
   },
   "Montpellier": {
     "home": -0.4228,
     "away": -0.6429
   },
   "Angers": {
-    "home": -0.2119,
-    "away": -0.3709
+    "home": -0.2664,
+    "away": -0.409
   },
   "Burnley": {
-    "home": 0.348,
-    "away": 0.2957
+    "home": 0.2956,
+    "away": 0.259
   },
   "Swansea City": {
-    "home": 0.391,
-    "away": 0.1308
+    "home": 0.3969,
+    "away": 0.1559
   },
   "Crystal Palace": {
-    "home": 0.7571,
-    "away": 0.7109
+    "home": 0.7047,
+    "away": 0.636
   },
   "West Bromwich Albion": {
-    "home": 0.2838,
-    "away": -0.1426
+    "home": 0.3333,
+    "away": -0.0877
   },
   "Everton": {
-    "home": 0.9823,
-    "away": 0.7779
+    "home": 0.9311,
+    "away": 0.7421
   },
   "Tottenham Hotspur": {
     "home": 0.6153,
     "away": 0.5698
   },
   "Hull City": {
-    "home": 0.3065,
-    "away": 0.245
+    "home": 0.2977,
+    "away": 0.2324
   },
   "Leicester City": {
     "home": -0.0706,
     "away": -0.1403
   },
   "Manchester City": {
-    "home": 1.6109,
-    "away": 1.4221
+    "home": 1.5787,
+    "away": 1.3996
   },
   "Sunderland": {
-    "home": 0.6606,
-    "away": 0.5382
+    "home": 0.6337,
+    "away": 0.4997
   },
   "Middlesbrough": {
-    "home": 0.6049,
-    "away": 0.4052
+    "home": 0.5995,
+    "away": 0.4127
   },
   "Stoke City": {
-    "home": -0.0105,
-    "away": -0.308
+    "home": -0.0044,
+    "away": -0.2831
   },
   "Southampton": {
-    "home": 0.6792,
-    "away": 0.454
+    "home": 0.6704,
+    "away": 0.462
   },
   "Watford": {
-    "home": -0.1264,
-    "away": -0.5035
+    "home": -0.1245,
+    "away": -0.5365
   },
   "Boavista": {
     "home": -0.4156,
@@ -484,40 +484,40 @@
     "away": -0.4038
   },
   "Olympique Lyonnais": {
-    "home": 0.901,
-    "away": 0.6678
+    "home": 0.9038,
+    "away": 0.6697
   },
   "Nice": {
-    "home": 0.3015,
-    "away": 0.0743
+    "home": 0.2996,
+    "away": 0.0716
   },
   "Rennes": {
-    "home": 0.8376,
-    "away": 0.3319
+    "home": 0.8449,
+    "away": 0.3424
   },
   "Olympique Marseille": {
-    "home": 0.8679,
-    "away": 0.5444
+    "home": 0.9061,
+    "away": 0.5989
   },
   "Toulouse": {
-    "home": 0.3019,
-    "away": 0.2537
+    "home": 0.3447,
+    "away": 0.3148
   },
   "Arsenal": {
-    "home": 1.5042,
-    "away": 1.3207
+    "home": 1.5103,
+    "away": 1.3294
   },
   "Liverpool": {
-    "home": 1.1648,
-    "away": 0.9916
+    "home": 1.1922,
+    "away": 1.0307
   },
   "Bournemouth": {
-    "home": 1.0195,
-    "away": 0.8484
+    "home": 1.058,
+    "away": 0.8753
   },
   "Manchester United": {
-    "home": 1.1874,
-    "away": 0.9797
+    "home": 1.1982,
+    "away": 0.9952
   },
   "Estoril": {
     "home": 0.1218,
@@ -528,120 +528,120 @@
     "away": -0.6726
   },
   "Chelsea": {
-    "home": 1.0366,
-    "away": 0.9355
+    "home": 1.0725,
+    "away": 0.9867
   },
   "West Ham United": {
-    "home": 0.8392,
-    "away": 0.6277
+    "home": 0.9166,
+    "away": 0.7383
   },
   "Deportivo La Coruna": {
-    "home": -0.3333,
-    "away": -0.5293
+    "home": -0.3327,
+    "away": -0.5289
   },
   "Eibar": {
     "home": -0.1629,
     "away": -0.4551
   },
   "Malaga": {
-    "home": -0.4668,
-    "away": -0.6706
+    "home": -0.5238,
+    "away": -0.7105
   },
   "Osasuna": {
-    "home": 0.0707,
-    "away": -0.2158
+    "home": 0.118,
+    "away": -0.1826
   },
   "Barcelona": {
-    "home": 1.6361,
-    "away": 1.4105
+    "home": 1.6696,
+    "away": 1.4584
   },
   "Real Betis": {
-    "home": 0.7722,
-    "away": 0.3947
+    "home": 0.7243,
+    "away": 0.3612
   },
   "Granada": {
     "home": -0.4582,
     "away": -0.7644
   },
   "Villarreal": {
-    "home": 0.8485,
-    "away": 0.5132
+    "home": 0.8119,
+    "away": 0.4876
   },
   "Sevilla": {
-    "home": 0.0991,
-    "away": -0.0835
+    "home": 0.0752,
+    "away": -0.1177
   },
   "Espanyol": {
-    "home": 0.0239,
-    "away": -0.2708
+    "home": 0.009,
+    "away": -0.2813
   },
   "Chaves": {
     "home": -0.334,
     "away": -0.5099
   },
   "AS Roma": {
-    "home": 1.2943,
-    "away": 0.9209
+    "home": 1.3064,
+    "away": 0.9293
   },
   "Udinese": {
-    "home": 0.2444,
-    "away": 0.1515
+    "home": 0.1568,
+    "away": 0.0752
   },
   "Juventus": {
-    "home": 1.0425,
-    "away": 0.766
+    "home": 0.9723,
+    "away": 0.7168
   },
   "Fiorentina": {
-    "home": 0.4694,
-    "away": 0.1673
+    "home": 0.4263,
+    "away": 0.1371
   },
   "Atletico Madrid": {
-    "home": 1.0301,
-    "away": 0.6387
+    "home": 1.0405,
+    "away": 0.6536
   },
   "Deportivo Alaves": {
-    "home": 0.2805,
-    "away": -0.1208
+    "home": 0.2682,
+    "away": -0.1384
   },
   "Real Sociedad": {
-    "home": 0.2726,
-    "away": 0.0944
+    "home": 0.3125,
+    "away": 0.1515
   },
   "Real Madrid": {
-    "home": 1.2575,
-    "away": 0.9527
+    "home": 1.2957,
+    "away": 0.9794
   },
   "Sp Gijon": {
     "home": -0.3677,
     "away": -0.4074
   },
   "Athletic Club": {
-    "home": 0.4564,
-    "away": 0.0498
+    "home": 0.4608,
+    "away": 0.0561
   },
   "Nacional": {
     "home": -0.2001,
     "away": -0.3329
   },
   "AC Milan": {
-    "home": 1.0149,
-    "away": 0.9286
+    "home": 1.0661,
+    "away": 0.986
   },
   "Torino": {
-    "home": 0.2576,
-    "away": 0.0701
+    "home": 0.287,
+    "away": 0.0907
   },
   "Atalanta": {
-    "home": 0.7368,
-    "away": 0.7716
+    "home": 0.7503,
+    "away": 0.7699
   },
   "Lazio": {
-    "home": 0.6957,
-    "away": 0.5814
+    "home": 0.7449,
+    "away": 0.6516
   },
   "Bologna": {
-    "home": 0.5851,
-    "away": 0.3184
+    "home": 0.5428,
+    "away": 0.2888
   },
   "Crotone": {
     "home": -0.5047,
@@ -664,8 +664,8 @@
     "away": -0.6863
   },
   "Genoa": {
-    "home": 0.1792,
-    "away": 0.0056
+    "home": 0.1707,
+    "away": -0.0065
   },
   "Cagliari": {
     "home": 0.31,
@@ -676,104 +676,104 @@
     "away": -0.6646
   },
   "Sassuolo": {
-    "home": 0.2183,
-    "away": 0.0429
+    "home": 0.1812,
+    "away": -0.0101
   },
   "Pescara": {
     "home": -0.6794,
     "away": -0.7165
   },
   "Napoli": {
-    "home": 0.8736,
-    "away": 0.8899
+    "home": 0.8349,
+    "away": 0.8347
   },
   "Celta Vigo": {
-    "home": 0.467,
-    "away": 0.2048
+    "home": 0.4846,
+    "away": 0.2171
   },
   "Leganes": {
     "home": -0.0669,
     "away": -0.261
   },
   "Valencia": {
-    "home": 0.2224,
-    "away": -0.2638
+    "home": 0.2161,
+    "away": -0.2681
   },
   "Las Palmas": {
     "home": -0.3533,
     "away": -0.5554
   },
   "Bayern Munchen": {
-    "home": 1.7622,
-    "away": 1.3989
+    "home": 1.8222,
+    "away": 1.441
   },
   "Werder Bremen": {
-    "home": -0.0013,
-    "away": 0.0597
+    "home": -0.0144,
+    "away": 0.0505
   },
   "1. FC Koln": {
-    "home": 0.0135,
-    "away": -0.3292
+    "home": 0.0071,
+    "away": -0.3383
   },
   "Darmstadt": {
     "home": -0.8238,
     "away": -0.8811
   },
   "Borussia Dortmund": {
-    "home": 1.2934,
-    "away": 0.8834
+    "home": 1.2724,
+    "away": 0.8534
   },
   "Mainz 05": {
-    "home": 0.483,
-    "away": 0.2786
+    "home": 0.4915,
+    "away": 0.2908
   },
   "Borussia Monchengladbach": {
-    "home": 0.2465,
-    "away": -0.2713
+    "home": 0.2137,
+    "away": -0.2942
   },
   "Bayer Leverkusen": {
-    "home": 1.023,
-    "away": 0.8912
+    "home": 1.0187,
+    "away": 0.8882
   },
   "Eintracht Frankfurt": {
-    "home": 0.5219,
-    "away": 0.1645
+    "home": 0.531,
+    "away": 0.1708
   },
   "Schalke 04": {
-    "home": -0.4879,
-    "away": -0.7059
+    "home": -0.5001,
+    "away": -0.7145
   },
   "FC Augsburg": {
-    "home": 0.3167,
-    "away": -0.0272
+    "home": 0.2958,
+    "away": -0.0571
   },
   "VfL Wolfsburg": {
     "home": -0.024,
     "away": 0.028
   },
   "Hamburg": {
-    "home": -0.1184,
-    "away": -0.4124
+    "home": -0.0733,
+    "away": -0.3808
   },
   "Ingolstadt": {
     "home": -0.2842,
     "away": -0.2975
   },
   "1899 Hoffenheim": {
-    "home": 0.3711,
-    "away": 0.1915
+    "home": 0.394,
+    "away": 0.2242
   },
   "RB Leipzig": {
-    "home": 1.0489,
-    "away": 0.6094
+    "home": 1.0069,
+    "away": 0.5494
   },
   "Hertha": {
     "home": -0.3306,
     "away": -0.5489
   },
   "SC Freiburg": {
-    "home": 0.6759,
-    "away": 0.1174
+    "home": 0.6789,
+    "away": 0.1217
   },
   "Blackpool": {
     "home": -0.1068,
@@ -788,20 +788,20 @@
     "away": -0.1824
   },
   "Portsmouth": {
-    "home": 0.1111,
-    "away": -0.2291
+    "home": 0.1703,
+    "away": -0.1673
   },
   "Strasbourg": {
-    "home": 0.7248,
-    "away": 0.4419
+    "home": 0.6843,
+    "away": 0.4135
   },
   "Amiens": {
     "home": -0.2332,
     "away": -0.4302
   },
   "Troyes": {
-    "home": -0.4593,
-    "away": -0.6858
+    "home": -0.4875,
+    "away": -0.7055
   },
   "Hibernian": {
     "home": 0.5259,
@@ -824,8 +824,8 @@
     "away": -0.4776
   },
   "VfB Stuttgart": {
-    "home": 0.9528,
-    "away": 0.6039
+    "home": 0.9212,
+    "away": 0.5589
   },
   "Hannover": {
     "home": -0.5194,
@@ -852,8 +852,8 @@
     "away": -0.6559
   },
   "Levante": {
-    "home": 0.034,
-    "away": -0.3165
+    "home": 0.0296,
+    "away": -0.3199
   },
   "Accrington": {
     "home": -0.6218,
@@ -876,8 +876,8 @@
     "away": -0.2693
   },
   "Fortuna Sittard": {
-    "home": 0.1137,
-    "away": -0.2258
+    "home": 0.1323,
+    "away": -0.1992
   },
   "Nimes": {
     "home": -0.3168,
@@ -916,8 +916,8 @@
     "away": -0.1078
   },
   "Frosinone": {
-    "home": -0.1984,
-    "away": -0.2565
+    "home": -0.1453,
+    "away": -0.2194
   },
   "Fortuna Dusseldorf": {
     "home": -0.3164,
@@ -928,8 +928,8 @@
     "away": -0.6102
   },
   "AmaZulu": {
-    "home": 0.2392,
-    "away": 0.0065
+    "home": 0.2617,
+    "away": 0.0386
   },
   "Bidvest Wits": {
     "home": 0.0443,
@@ -948,20 +948,20 @@
     "away": -0.2495
   },
   "Stellenbosch": {
-    "home": 0.4011,
-    "away": 0.2241
+    "home": 0.3989,
+    "away": 0.2209
   },
   "Mamelodi Sundowns": {
-    "home": 1.2717,
-    "away": 0.9591
+    "home": 1.3035,
+    "away": 1.0046
   },
   "SuperSport United": {
     "home": -0.03,
     "away": -0.1695
   },
   "Orlando Pirates": {
-    "home": 1.1514,
-    "away": 0.9654
+    "home": 1.1938,
+    "away": 0.995
   },
   "Bloemfontein Celtic": {
     "home": -0.0338,
@@ -972,8 +972,8 @@
     "away": -0.4458
   },
   "Lincoln City": {
-    "home": 0.5102,
-    "away": 0.3558
+    "home": 0.4297,
+    "away": 0.3049
   },
   "Tranmere": {
     "home": -0.4533,
@@ -984,40 +984,40 @@
     "away": 0.1103
   },
   "Famalicao": {
-    "home": 0.6473,
-    "away": 0.5126
+    "home": 0.5774,
+    "away": 0.4637
   },
   "Brest": {
-    "home": 0.4647,
-    "away": 0.0662
+    "home": 0.4852,
+    "away": 0.0955
   },
   "Paderborn": {
-    "home": -0.4739,
-    "away": -0.3752
+    "home": -0.4647,
+    "away": -0.3621
   },
   "Mallorca": {
     "home": 0.23,
     "away": -0.2522
   },
   "Union Berlin": {
-    "home": 0.0511,
-    "away": -0.3598
+    "home": 0.0811,
+    "away": -0.3389
   },
   "Brescia": {
     "home": -0.4888,
     "away": -0.5772
   },
   "Lecce": {
-    "home": -0.2252,
-    "away": -0.1904
+    "home": -0.1783,
+    "away": -0.1234
   },
   "Dundee United": {
-    "home": -0.0069,
-    "away": -0.0601
+    "home": -0.0073,
+    "away": -0.0607
   },
   "Lens": {
-    "home": 0.8814,
-    "away": 0.7076
+    "home": 0.9012,
+    "away": 0.7358
   },
   "Cadiz": {
     "home": -0.3159,
@@ -1036,8 +1036,8 @@
     "away": -0.076
   },
   "Elche": {
-    "home": -0.0472,
-    "away": -0.3523
+    "home": -0.0216,
+    "away": -0.3157
   },
   "Spezia": {
     "home": -0.3181,
@@ -1052,8 +1052,8 @@
     "away": -0.1443
   },
   "Kaizer Chiefs": {
-    "home": 0.142,
-    "away": -0.039
+    "home": 0.1452,
+    "away": -0.0367
   },
   "Vizela": {
     "home": -0.2704,
@@ -1084,8 +1084,8 @@
     "away": -0.6328
   },
   "Cambuur": {
-    "home": -0.6761,
-    "away": -0.6059
+    "home": -0.6364,
+    "away": -0.5781
   },
   "TT Madzivhandila": {
     "home": -0.0335,
@@ -1100,8 +1100,8 @@
     "away": -0.5951
   },
   "Venezia": {
-    "home": -0.3993,
-    "away": -0.4097
+    "home": -0.3641,
+    "away": -0.3995
   },
   "Forest Green": {
     "home": -0.9091,
@@ -1116,8 +1116,8 @@
     "away": -0.6582
   },
   "Richards Bay": {
-    "home": -0.2363,
-    "away": -0.4581
+    "home": -0.2818,
+    "away": -0.4899
   },
   "Marumo Gallants": {
     "home": -0.3132,
@@ -1136,8 +1136,8 @@
     "away": -0.4099
   },
   "TS Galaxy": {
-    "home": 0.2715,
-    "away": -0.0599
+    "home": 0.2419,
+    "away": -0.1023
   },
   "Volendam": {
     "home": -0.3663,
@@ -1148,8 +1148,8 @@
     "away": -0.3041
   },
   "Auxerre": {
-    "home": 0.1345,
-    "away": -0.082
+    "home": 0.169,
+    "away": -0.0327
   },
   "Monza": {
     "home": -0.4608,
@@ -1196,8 +1196,8 @@
     "away": -0.2399
   },
   "Le Havre": {
-    "home": -0.1447,
-    "away": -0.0694
+    "home": -0.194,
+    "away": -0.1039
   },
   "Heidenheim": {
     "home": -0.2957,
@@ -1208,8 +1208,8 @@
     "away": -0.0663
   },
   "Mansfield Town": {
-    "home": -0.1397,
-    "away": -0.235
+    "home": -0.1434,
+    "away": -0.2376
   },
   "Crawley Town": {
     "home": -0.4213,
@@ -1220,16 +1220,16 @@
     "away": 0.2056
   },
   "Wrexham": {
-    "home": 0.3119,
-    "away": 0.2205
+    "home": 0.3278,
+    "away": 0.2316
   },
   "AVS": {
     "home": -0.4654,
     "away": -0.5479
   },
   "Como": {
-    "home": 0.8344,
-    "away": 0.8098
+    "home": 0.8645,
+    "away": 0.8529
   },
   "Holstein Kiel": {
     "home": -0.2868,
@@ -1248,16 +1248,16 @@
     "away": -0.1715
   },
   "Falkirk": {
-    "home": -0.0348,
-    "away": -0.0202
+    "home": -0.0701,
+    "away": -0.0449
   },
   "Telstar": {
-    "home": -0.0165,
-    "away": 0.0201
+    "home": -0.0066,
+    "away": 0.027
   },
   "Alverca": {
-    "home": 0.0414,
-    "away": 0.025
+    "home": 0.0902,
+    "away": 0.0948
   },
   "Oviedo": {
     "home": -0.2927,
@@ -1284,8 +1284,8 @@
     "away": 0.0061
   },
   "Durban City": {
-    "home": 0.0381,
-    "away": -0.053
+    "home": 0.006,
+    "away": -0.0755
   },
   "Hungry Lions": {
     "home": -0.0222,
@@ -1372,15 +1372,15 @@
     "away": -0.098
   },
   "Real Racing Club de Santander": {
-    "home": -0.0703,
-    "away": -0.1476
+    "home": -0.1035,
+    "away": -0.195
   },
   "Le Mans": {
-    "home": 0.0418,
-    "away": 0.0197
+    "home": -0.0193,
+    "away": -0.0231
   },
   "07 Elversberg": {
-    "home": 0.069,
-    "away": 0.0409
+    "home": 0.0989,
+    "away": 0.0618
   }
 }
