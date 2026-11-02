@@ -3,124 +3,124 @@
     "season": "2026/27",
     "table": {
       "Wolverhampton Wanderers": {
-        "pts": 21,
-        "gd": 4,
-        "played": 12
+        "pts": 24,
+        "gd": 7,
+        "played": 13
       },
       "Blackburn Rovers": {
         "pts": 18,
-        "gd": 3,
-        "played": 12
+        "gd": -1,
+        "played": 13
       },
       "Bolton Wanderers": {
         "pts": 14,
-        "gd": -7,
-        "played": 12
+        "gd": -8,
+        "played": 13
       },
       "Preston North End": {
         "pts": 5,
-        "gd": -15,
-        "played": 12
+        "gd": -17,
+        "played": 13
       },
       "Bristol City": {
-        "pts": 15,
-        "gd": -3,
-        "played": 12
+        "pts": 18,
+        "gd": -2,
+        "played": 13
       },
       "Millwall": {
-        "pts": 15,
-        "gd": -1,
-        "played": 12
+        "pts": 18,
+        "gd": 2,
+        "played": 13
       },
       "Charlton Athletic": {
         "pts": 14,
-        "gd": -7,
-        "played": 12
+        "gd": -10,
+        "played": 13
       },
       "Derby County": {
         "pts": 7,
-        "gd": -11,
-        "played": 12
+        "gd": -14,
+        "played": 13
       },
       "Middlesbrough": {
-        "pts": 25,
-        "gd": 10,
-        "played": 12
+        "pts": 28,
+        "gd": 13,
+        "played": 13
       },
       "Lincoln City": {
         "pts": 15,
-        "gd": -7,
-        "played": 12
+        "gd": -9,
+        "played": 13
       },
       "Norwich City": {
-        "pts": 12,
-        "gd": -2,
-        "played": 12
+        "pts": 15,
+        "gd": -1,
+        "played": 13
       },
       "West Bromwich Albion": {
-        "pts": 21,
-        "gd": 3,
-        "played": 12
+        "pts": 24,
+        "gd": 5,
+        "played": 13
       },
       "Portsmouth": {
-        "pts": 18,
+        "pts": 19,
         "gd": 1,
-        "played": 12
+        "played": 13
       },
       "Queens Park Rangers": {
         "pts": 20,
-        "gd": 8,
-        "played": 12
+        "gd": 5,
+        "played": 13
       },
       "Sheffield United": {
-        "pts": 16,
-        "gd": 1,
-        "played": 12
+        "pts": 19,
+        "gd": 2,
+        "played": 13
       },
       "Birmingham City": {
-        "pts": 20,
-        "gd": 8,
-        "played": 12
+        "pts": 23,
+        "gd": 10,
+        "played": 13
       },
       "Stoke City": {
-        "pts": 20,
-        "gd": 2,
-        "played": 12
+        "pts": 23,
+        "gd": 4,
+        "played": 13
       },
       "Swansea City": {
-        "pts": 23,
-        "gd": 3,
-        "played": 12
+        "pts": 26,
+        "gd": 7,
+        "played": 13
       },
       "Burnley": {
-        "pts": 8,
+        "pts": 9,
         "gd": -8,
-        "played": 12
+        "played": 13
       },
       "West Ham United": {
         "pts": 22,
-        "gd": 17,
-        "played": 12
+        "gd": 15,
+        "played": 13
       },
       "Watford": {
         "pts": 11,
-        "gd": -10,
-        "played": 12
+        "gd": -11,
+        "played": 13
       },
       "Southampton": {
-        "pts": 24,
-        "gd": 12,
-        "played": 12
+        "pts": 27,
+        "gd": 15,
+        "played": 13
       },
       "Cardiff City": {
         "pts": 14,
-        "gd": 2,
-        "played": 12
+        "gd": -1,
+        "played": 13
       },
       "Wrexham": {
         "pts": 14,
-        "gd": -3,
-        "played": 12
+        "gd": -4,
+        "played": 13
       }
     }
   },
@@ -128,94 +128,94 @@
     "season": "2026/27",
     "table": {
       "Cambuur": {
-        "pts": 12,
-        "gd": -3,
-        "played": 10
+        "pts": 15,
+        "gd": 1,
+        "played": 11
       },
       "Excelsior": {
         "pts": 11,
-        "gd": -3,
-        "played": 10
+        "gd": -12,
+        "played": 11
       },
       "AZ Alkmaar": {
         "pts": 20,
-        "gd": 8,
-        "played": 10
+        "gd": 7,
+        "played": 11
       },
       "ADO Den Haag": {
         "pts": 6,
-        "gd": -10,
-        "played": 10
+        "gd": -11,
+        "played": 11
       },
       "Go Ahead Eagles": {
         "pts": 14,
-        "gd": 0,
-        "played": 10
+        "gd": -4,
+        "played": 11
       },
       "Willem II": {
         "pts": 2,
-        "gd": -22,
-        "played": 10
+        "gd": -29,
+        "played": 11
       },
       "Nijmegen": {
         "pts": 11,
-        "gd": -1,
-        "played": 10
+        "gd": -2,
+        "played": 11
       },
       "Telstar": {
-        "pts": 6,
-        "gd": -9,
-        "played": 10
+        "pts": 9,
+        "gd": -7,
+        "played": 11
       },
       "PSV": {
-        "pts": 20,
-        "gd": 15,
-        "played": 10
+        "pts": 23,
+        "gd": 22,
+        "played": 11
       },
       "Fortuna Sittard": {
-        "pts": 18,
+        "pts": 19,
         "gd": 0,
-        "played": 10
+        "played": 11
       },
       "Groningen": {
         "pts": 15,
-        "gd": 3,
-        "played": 10
+        "gd": 2,
+        "played": 11
       },
       "Utrecht": {
         "pts": 12,
-        "gd": -10,
-        "played": 10
+        "gd": -12,
+        "played": 11
       },
       "Heerenveen": {
-        "pts": 15,
-        "gd": 5,
-        "played": 10
+        "pts": 18,
+        "gd": 6,
+        "played": 11
       },
       "Twente": {
-        "pts": 20,
-        "gd": 9,
-        "played": 10
+        "pts": 23,
+        "gd": 18,
+        "played": 11
       },
       "Sparta Rotterdam": {
-        "pts": 9,
-        "gd": -7,
-        "played": 10
+        "pts": 12,
+        "gd": -6,
+        "played": 11
       },
       "Feyenoord": {
-        "pts": 24,
+        "pts": 25,
         "gd": 21,
-        "played": 10
+        "played": 11
       },
       "Zwolle": {
-        "pts": 8,
-        "gd": -12,
-        "played": 10
+        "pts": 11,
+        "gd": -11,
+        "played": 11
       },
       "Ajax": {
-        "pts": 21,
-        "gd": 16,
-        "played": 10
+        "pts": 24,
+        "gd": 17,
+        "played": 11
       }
     }
   },
@@ -223,124 +223,124 @@
     "season": "2026/27",
     "table": {
       "Barnsley": {
-        "pts": 8,
-        "gd": -9,
-        "played": 10
-      },
-      "Bromley": {
-        "pts": 8,
-        "gd": -16,
-        "played": 10
-      },
-      "Blackpool": {
-        "pts": 11,
-        "gd": -1,
-        "played": 10
-      },
-      "Wycombe Wanderers": {
-        "pts": 14,
-        "gd": -4,
-        "played": 11
-      },
-      "Bradford": {
-        "pts": 21,
-        "gd": 5,
-        "played": 11
-      },
-      "Peterborough United": {
         "pts": 9,
         "gd": -10,
-        "played": 11
+        "played": 12
+      },
+      "Bromley": {
+        "pts": 9,
+        "gd": -20,
+        "played": 13
+      },
+      "Blackpool": {
+        "pts": 12,
+        "gd": -4,
+        "played": 12
+      },
+      "Wycombe Wanderers": {
+        "pts": 18,
+        "gd": -2,
+        "played": 13
+      },
+      "Bradford": {
+        "pts": 22,
+        "gd": 2,
+        "played": 13
+      },
+      "Peterborough United": {
+        "pts": 10,
+        "gd": -12,
+        "played": 13
       },
       "Burton": {
-        "pts": 14,
-        "gd": -2,
-        "played": 12
+        "pts": 17,
+        "gd": -3,
+        "played": 14
       },
       "Stevenage": {
-        "pts": 15,
-        "gd": 5,
-        "played": 10
-      },
-      "Cambridge": {
-        "pts": 20,
+        "pts": 16,
         "gd": 4,
-        "played": 11
-      },
-      "Wigan Athletic": {
-        "pts": 7,
-        "gd": -8,
-        "played": 10
-      },
-      "Huddersfield Town": {
-        "pts": 22,
-        "gd": 12,
-        "played": 11
-      },
-      "Wimbledon": {
-        "pts": 12,
-        "gd": -11,
-        "played": 11
-      },
-      "Leyton Orient": {
-        "pts": 14,
-        "gd": 3,
-        "played": 11
-      },
-      "Sheffield Wednesday": {
-        "pts": 18,
-        "gd": 10,
-        "played": 10
-      },
-      "Mansfield Town": {
-        "pts": 15,
-        "gd": 1,
-        "played": 10
-      },
-      "Doncaster": {
-        "pts": 9,
-        "gd": -3,
-        "played": 10
-      },
-      "Notts County": {
-        "pts": 10,
-        "gd": -3,
-        "played": 10
-      },
-      "Leicester City": {
-        "pts": 15,
-        "gd": 1,
-        "played": 10
-      },
-      "Oxford United": {
-        "pts": 18,
-        "gd": 8,
-        "played": 9
-      },
-      "MK Dons": {
-        "pts": 9,
-        "gd": -7,
-        "played": 10
-      },
-      "Plymouth Argyle": {
-        "pts": 19,
-        "gd": 1,
         "played": 12
       },
+      "Cambridge": {
+        "pts": 21,
+        "gd": 0,
+        "played": 14
+      },
+      "Wigan Athletic": {
+        "pts": 10,
+        "gd": -11,
+        "played": 13
+      },
+      "Huddersfield Town": {
+        "pts": 28,
+        "gd": 16,
+        "played": 13
+      },
+      "Wimbledon": {
+        "pts": 13,
+        "gd": -12,
+        "played": 13
+      },
+      "Leyton Orient": {
+        "pts": 17,
+        "gd": 5,
+        "played": 13
+      },
+      "Sheffield Wednesday": {
+        "pts": 20,
+        "gd": 8,
+        "played": 13
+      },
+      "Mansfield Town": {
+        "pts": 18,
+        "gd": 2,
+        "played": 12
+      },
+      "Doncaster": {
+        "pts": 12,
+        "gd": -8,
+        "played": 13
+      },
+      "Notts County": {
+        "pts": 14,
+        "gd": -1,
+        "played": 12
+      },
+      "Leicester City": {
+        "pts": 19,
+        "gd": 3,
+        "played": 13
+      },
+      "Oxford United": {
+        "pts": 23,
+        "gd": 9,
+        "played": 12
+      },
+      "MK Dons": {
+        "pts": 18,
+        "gd": 2,
+        "played": 13
+      },
+      "Plymouth Argyle": {
+        "pts": 23,
+        "gd": 2,
+        "played": 14
+      },
       "Stockport County": {
-        "pts": 22,
+        "pts": 26,
         "gd": 12,
-        "played": 11
+        "played": 14
       },
       "Reading": {
-        "pts": 18,
-        "gd": 11,
-        "played": 11
+        "pts": 22,
+        "gd": 12,
+        "played": 13
       },
       "Luton Town": {
-        "pts": 14,
-        "gd": 1,
-        "played": 10
+        "pts": 23,
+        "gd": 6,
+        "played": 13
       }
     }
   },
@@ -348,64 +348,64 @@
     "season": "2026/27",
     "table": {
       "Dundee United": {
-        "pts": 19,
-        "gd": 1,
-        "played": 12
+        "pts": 23,
+        "gd": 2,
+        "played": 14
       },
       "Rangers": {
-        "pts": 20,
-        "gd": 6,
-        "played": 9
+        "pts": 24,
+        "gd": 10,
+        "played": 11
       },
       "Aberdeen": {
         "pts": 11,
-        "gd": 0,
-        "played": 9
+        "gd": -2,
+        "played": 11
       },
       "Heart of Midlothian": {
-        "pts": 16,
-        "gd": 5,
-        "played": 9
+        "pts": 20,
+        "gd": 7,
+        "played": 11
       },
       "Falkirk": {
-        "pts": 9,
-        "gd": -4,
-        "played": 10
+        "pts": 18,
+        "gd": 2,
+        "played": 13
       },
       "St Mirren": {
-        "pts": 10,
+        "pts": 14,
         "gd": -8,
-        "played": 9
+        "played": 12
       },
       "Hibernian": {
-        "pts": 7,
-        "gd": -5,
-        "played": 9
-      },
-      "Motherwell": {
         "pts": 8,
         "gd": -6,
-        "played": 10
+        "played": 11
+      },
+      "Motherwell": {
+        "pts": 12,
+        "gd": -7,
+        "played": 13
       },
       "St Johnstone": {
-        "pts": 13,
-        "gd": 0,
-        "played": 10
+        "pts": 15,
+        "gd": -4,
+        "played": 13
       },
       "Kilmarnock": {
-        "pts": 8,
-        "gd": -10,
-        "played": 9
+        "pts": 9,
+        "gd": -15,
+        "played": 12
       },
       "Celtic": {
-        "pts": 24,
-        "gd": 18,
-        "played": 9
+        "pts": 28,
+        "gd": 17,
+        "played": 12
       },
       "Dundee": {
-        "pts": 14,
-        "gd": 3,
-        "played": 9
+        "pts": 17,
+        "gd": 4,
+        "played": 11
       }
     }
   },
@@ -414,33 +414,33 @@
     "table": {
       "Estoril": {
         "pts": 2,
-        "gd": -10,
-        "played": 9
+        "gd": -14,
+        "played": 10
       },
       "Famalicao": {
         "pts": 10,
-        "gd": 3,
-        "played": 9
+        "gd": 0,
+        "played": 10
       },
       "Estrela": {
         "pts": 10,
-        "gd": -3,
-        "played": 9
+        "gd": -4,
+        "played": 10
       },
       "Sporting CP": {
-        "pts": 18,
-        "gd": 10,
-        "played": 9
+        "pts": 21,
+        "gd": 12,
+        "played": 10
       },
       "Maritimo": {
         "pts": 8,
-        "gd": -10,
-        "played": 9
+        "gd": -12,
+        "played": 10
       },
       "Casa Pia": {
         "pts": 7,
-        "gd": -12,
-        "played": 9
+        "gd": -14,
+        "played": 10
       },
       "Vitoria Guimaraes": {
         "pts": 8,
@@ -448,24 +448,24 @@
         "played": 9
       },
       "Arouca": {
-        "pts": 17,
-        "gd": 5,
-        "played": 9
+        "pts": 20,
+        "gd": 6,
+        "played": 10
       },
       "Benfica": {
-        "pts": 19,
-        "gd": 17,
-        "played": 8
+        "pts": 22,
+        "gd": 18,
+        "played": 9
       },
       "Acad\u00e9mico de Viseu": {
-        "pts": 17,
-        "gd": 2,
-        "played": 9
+        "pts": 20,
+        "gd": 3,
+        "played": 10
       },
       "FC Porto": {
-        "pts": 27,
-        "gd": 17,
-        "played": 9
+        "pts": 30,
+        "gd": 21,
+        "played": 10
       },
       "Alverca": {
         "pts": 11,
@@ -479,28 +479,28 @@
       },
       "Rio Ave": {
         "pts": 7,
-        "gd": -13,
-        "played": 9
+        "gd": -14,
+        "played": 10
       },
       "Moreirense": {
-        "pts": 11,
-        "gd": -5,
-        "played": 9
+        "pts": 14,
+        "gd": -4,
+        "played": 10
       },
       "Braga": {
-        "pts": 11,
-        "gd": -2,
-        "played": 9
+        "pts": 14,
+        "gd": 1,
+        "played": 10
       },
       "Santa Clara": {
-        "pts": 18,
-        "gd": 8,
-        "played": 8
+        "pts": 21,
+        "gd": 9,
+        "played": 10
       },
       "Nacional": {
         "pts": 7,
-        "gd": -8,
-        "played": 9
+        "gd": -9,
+        "played": 10
       }
     }
   },
@@ -508,19 +508,19 @@
     "season": "2026/27",
     "table": {
       "Olympique Marseille": {
-        "pts": 12,
-        "gd": 4,
-        "played": 9
+        "pts": 15,
+        "gd": 6,
+        "played": 10
       },
       "Strasbourg": {
-        "pts": 7,
-        "gd": -6,
-        "played": 8
+        "pts": 10,
+        "gd": -2,
+        "played": 9
       },
       "Le Mans": {
         "pts": 7,
-        "gd": -5,
-        "played": 8
+        "gd": -7,
+        "played": 9
       },
       "Brest": {
         "pts": 9,
@@ -529,18 +529,18 @@
       },
       "Lens": {
         "pts": 13,
-        "gd": 4,
-        "played": 8
+        "gd": 3,
+        "played": 9
       },
       "Auxerre": {
         "pts": 10,
-        "gd": -6,
-        "played": 8
+        "gd": -10,
+        "played": 9
       },
       "Nice": {
-        "pts": 11,
-        "gd": -5,
-        "played": 9
+        "pts": 14,
+        "gd": -2,
+        "played": 10
       },
       "Lorient": {
         "pts": 12,
@@ -549,18 +549,18 @@
       },
       "Toulouse": {
         "pts": 10,
-        "gd": 1,
-        "played": 8
+        "gd": -1,
+        "played": 9
       },
       "Olympique Lyonnais": {
-        "pts": 15,
+        "pts": 18,
         "gd": 8,
-        "played": 8
+        "played": 10
       },
       "Troyes": {
-        "pts": 6,
-        "gd": -11,
-        "played": 9
+        "pts": 9,
+        "gd": -9,
+        "played": 10
       },
       "Paris": {
         "pts": 8,
@@ -568,34 +568,34 @@
         "played": 4
       },
       "Paris Saint Germain": {
-        "pts": 28,
-        "gd": 9,
-        "played": 15
+        "pts": 37,
+        "gd": 17,
+        "played": 18
       },
       "Angers": {
         "pts": 8,
-        "gd": -6,
-        "played": 8
+        "gd": -8,
+        "played": 9
       },
       "Lille": {
-        "pts": 15,
-        "gd": 5,
-        "played": 8
+        "pts": 18,
+        "gd": 6,
+        "played": 9
       },
       "Le Havre": {
         "pts": 2,
-        "gd": -7,
-        "played": 8
+        "gd": -11,
+        "played": 9
       },
       "Monaco": {
         "pts": 15,
-        "gd": 4,
-        "played": 8
+        "gd": 2,
+        "played": 9
       },
       "Rennes": {
         "pts": 16,
-        "gd": 4,
-        "played": 8
+        "gd": 1,
+        "played": 9
       }
     }
   },
@@ -603,24 +603,24 @@
     "season": "2026/27",
     "table": {
       "Arsenal": {
-        "pts": 21,
-        "gd": 8,
-        "played": 8
+        "pts": 24,
+        "gd": 9,
+        "played": 9
       },
       "Coventry City": {
-        "pts": 6,
-        "gd": -9,
-        "played": 8
+        "pts": 9,
+        "gd": -7,
+        "played": 9
       },
       "Brentford": {
-        "pts": 11,
-        "gd": 5,
-        "played": 8
+        "pts": 14,
+        "gd": 7,
+        "played": 9
       },
       "Tottenham Hotspur": {
-        "pts": 9,
-        "gd": -2,
-        "played": 8
+        "pts": 12,
+        "gd": 0,
+        "played": 9
       },
       "Everton": {
         "pts": 10,
@@ -629,58 +629,58 @@
       },
       "Crystal Palace": {
         "pts": 7,
-        "gd": -10,
-        "played": 8
+        "gd": -12,
+        "played": 9
       },
       "Hull City": {
-        "pts": 10,
+        "pts": 11,
         "gd": 1,
-        "played": 8
+        "played": 9
       },
       "Manchester United": {
         "pts": 7,
-        "gd": -3,
-        "played": 8
+        "gd": -5,
+        "played": 9
       },
       "Ipswich Town": {
-        "pts": 10,
+        "pts": 11,
         "gd": -4,
-        "played": 8
+        "played": 9
       },
       "Sunderland": {
         "pts": 5,
-        "gd": -8,
-        "played": 8
+        "gd": -10,
+        "played": 9
       },
       "Nottingham Forest": {
         "pts": 6,
-        "gd": -4,
-        "played": 8
+        "gd": -6,
+        "played": 9
       },
       "Leeds United": {
         "pts": 11,
-        "gd": 3,
-        "played": 8
+        "gd": 1,
+        "played": 9
       },
       "Brighton & Hove Albion": {
-        "pts": 16,
-        "gd": 16,
-        "played": 8
+        "pts": 19,
+        "gd": 17,
+        "played": 9
       },
       "Aston Villa": {
-        "pts": 11,
+        "pts": 12,
         "gd": -3,
-        "played": 8
+        "played": 9
       },
       "Manchester City": {
         "pts": 21,
-        "gd": 11,
-        "played": 8
+        "gd": 10,
+        "played": 9
       },
       "Bournemouth": {
-        "pts": 9,
-        "gd": -1,
-        "played": 8
+        "pts": 12,
+        "gd": 1,
+        "played": 9
       },
       "Newcastle United": {
         "pts": 11,
@@ -689,18 +689,18 @@
       },
       "Liverpool": {
         "pts": 15,
-        "gd": 3,
-        "played": 8
+        "gd": 2,
+        "played": 9
       },
       "Fulham": {
-        "pts": 8,
+        "pts": 9,
         "gd": -2,
-        "played": 8
+        "played": 9
       },
       "Chelsea": {
-        "pts": 13,
-        "gd": 2,
-        "played": 8
+        "pts": 16,
+        "gd": 4,
+        "played": 9
       }
     }
   },
@@ -709,43 +709,43 @@
     "table": {
       "Deportivo Alaves": {
         "pts": 12,
-        "gd": 3,
-        "played": 10
+        "gd": -2,
+        "played": 11
       },
       "Getafe": {
-        "pts": 9,
-        "gd": -10,
-        "played": 10
+        "pts": 12,
+        "gd": -8,
+        "played": 11
       },
       "Sevilla": {
-        "pts": 14,
+        "pts": 17,
         "gd": -2,
-        "played": 9
+        "played": 11
       },
       "Rayo Vallecano": {
-        "pts": 9,
-        "gd": -8,
-        "played": 9
+        "pts": 12,
+        "gd": -5,
+        "played": 10
       },
       "Espanyol": {
-        "pts": 8,
-        "gd": -2,
-        "played": 10
+        "pts": 11,
+        "gd": -1,
+        "played": 11
       },
       "Levante": {
         "pts": 10,
-        "gd": -3,
-        "played": 10
+        "gd": -5,
+        "played": 11
       },
       "Real Racing Club de Santander": {
         "pts": 11,
-        "gd": -11,
-        "played": 10
+        "gd": -14,
+        "played": 11
       },
       "Villarreal": {
         "pts": 12,
-        "gd": 1,
-        "played": 10
+        "gd": 0,
+        "played": 11
       },
       "Deportivo La Coruna": {
         "pts": 11,
@@ -754,58 +754,58 @@
       },
       "Elche": {
         "pts": 10,
-        "gd": -3,
-        "played": 10
+        "gd": -4,
+        "played": 11
       },
       "Atletico Madrid": {
-        "pts": 25,
-        "gd": 12,
-        "played": 10
+        "pts": 28,
+        "gd": 14,
+        "played": 11
       },
       "Malaga": {
         "pts": 5,
-        "gd": -12,
-        "played": 10
+        "gd": -13,
+        "played": 11
       },
       "Real Betis": {
-        "pts": 20,
-        "gd": 2,
-        "played": 10
+        "pts": 23,
+        "gd": 3,
+        "played": 11
       },
       "Real Sociedad": {
         "pts": 19,
-        "gd": 1,
-        "played": 10
+        "gd": 0,
+        "played": 11
       },
       "Athletic Club": {
-        "pts": 12,
-        "gd": 3,
-        "played": 9
+        "pts": 15,
+        "gd": 4,
+        "played": 10
       },
       "Real Madrid": {
-        "pts": 24,
-        "gd": 15,
-        "played": 10
+        "pts": 27,
+        "gd": 18,
+        "played": 11
       },
       "Valencia": {
-        "pts": 6,
-        "gd": -10,
-        "played": 10
+        "pts": 9,
+        "gd": -9,
+        "played": 11
       },
       "Celta Vigo": {
         "pts": 12,
-        "gd": 3,
-        "played": 10
+        "gd": 0,
+        "played": 11
       },
       "Barcelona": {
-        "pts": 27,
-        "gd": 29,
-        "played": 10
+        "pts": 30,
+        "gd": 34,
+        "played": 11
       },
       "Osasuna": {
         "pts": 11,
-        "gd": -8,
-        "played": 9
+        "gd": -10,
+        "played": 10
       }
     }
   },
@@ -813,104 +813,104 @@
     "season": "2026/27",
     "table": {
       "AC Milan": {
-        "pts": 40,
+        "pts": 43,
         "gd": 22,
-        "played": 16
+        "played": 18
       },
       "Monza": {
         "pts": 7,
-        "gd": -6,
-        "played": 9
+        "gd": -10,
+        "played": 11
       },
       "Genoa": {
-        "pts": 7,
-        "gd": -7,
-        "played": 8
+        "pts": 13,
+        "gd": -4,
+        "played": 10
       },
       "Napoli": {
-        "pts": 11,
-        "gd": 2,
-        "played": 9
+        "pts": 14,
+        "gd": 3,
+        "played": 11
       },
       "Inter Milan": {
-        "pts": 12,
-        "gd": 7,
-        "played": 4
+        "pts": 25,
+        "gd": 13,
+        "played": 10
       },
       "Parma": {
-        "pts": 4,
-        "gd": -10,
-        "played": 8
+        "pts": 5,
+        "gd": -13,
+        "played": 10
       },
       "Cagliari": {
         "pts": 13,
-        "gd": -4,
-        "played": 9
+        "gd": -7,
+        "played": 11
       },
       "Udinese": {
-        "pts": 4,
-        "gd": -11,
-        "played": 9
+        "pts": 5,
+        "gd": -14,
+        "played": 11
       },
       "Como": {
-        "pts": 17,
-        "gd": 7,
-        "played": 8
+        "pts": 23,
+        "gd": 10,
+        "played": 10
       },
       "Atalanta": {
-        "pts": 10,
+        "pts": 11,
         "gd": -1,
-        "played": 8
+        "played": 9
       },
       "Sassuolo": {
         "pts": 8,
-        "gd": -4,
-        "played": 8
+        "gd": -8,
+        "played": 9
       },
       "Frosinone": {
-        "pts": 14,
-        "gd": 4,
-        "played": 8
+        "pts": 20,
+        "gd": 10,
+        "played": 10
       },
       "Juventus": {
-        "pts": 14,
+        "pts": 17,
         "gd": 3,
-        "played": 8
+        "played": 10
       },
       "Torino": {
         "pts": 13,
-        "gd": 2,
-        "played": 8
+        "gd": -2,
+        "played": 10
       },
       "Venezia": {
         "pts": 3,
-        "gd": -11,
-        "played": 8
+        "gd": -14,
+        "played": 10
       },
       "Lecce": {
         "pts": 9,
-        "gd": -5,
-        "played": 8
+        "gd": -10,
+        "played": 10
       },
       "AS Roma": {
-        "pts": 18,
-        "gd": 13,
-        "played": 8
+        "pts": 25,
+        "gd": 18,
+        "played": 11
       },
       "Fiorentina": {
-        "pts": 4,
-        "gd": -10,
-        "played": 8
+        "pts": 5,
+        "gd": -11,
+        "played": 10
       },
       "Bologna": {
-        "pts": 8,
-        "gd": -2,
-        "played": 8
+        "pts": 14,
+        "gd": -1,
+        "played": 11
       },
       "Lazio": {
-        "pts": 22,
-        "gd": 11,
-        "played": 8
+        "pts": 28,
+        "gd": 16,
+        "played": 10
       }
     }
   },
@@ -918,94 +918,94 @@
     "season": "2026/27",
     "table": {
       "Bayern Munchen": {
-        "pts": 17,
+        "pts": 18,
         "gd": 19,
-        "played": 7
+        "played": 8
       },
       "VfB Stuttgart": {
-        "pts": 6,
-        "gd": -3,
-        "played": 7
+        "pts": 9,
+        "gd": -1,
+        "played": 8
       },
       "07 Elversberg": {
-        "pts": 10,
-        "gd": -3,
-        "played": 7
+        "pts": 13,
+        "gd": 0,
+        "played": 8
       },
       "Bayer Leverkusen": {
         "pts": 13,
-        "gd": 4,
-        "played": 7
+        "gd": 2,
+        "played": 8
       },
       "1. FC Koln": {
-        "pts": 8,
+        "pts": 9,
         "gd": -3,
-        "played": 7
+        "played": 8
       },
       "1899 Hoffenheim": {
         "pts": 9,
-        "gd": 0,
-        "played": 7
+        "gd": -2,
+        "played": 8
       },
       "Borussia Dortmund": {
-        "pts": 17,
+        "pts": 18,
         "gd": 8,
-        "played": 7
+        "played": 8
       },
       "Hamburg": {
         "pts": 9,
-        "gd": -10,
-        "played": 7
+        "gd": -12,
+        "played": 8
       },
       "Mainz 05": {
         "pts": 10,
-        "gd": 3,
-        "played": 7
+        "gd": 0,
+        "played": 8
       },
       "Paderborn": {
-        "pts": 8,
+        "pts": 9,
         "gd": -3,
-        "played": 7
+        "played": 8
       },
       "RB Leipzig": {
-        "pts": 12,
-        "gd": 9,
-        "played": 7
+        "pts": 15,
+        "gd": 11,
+        "played": 8
       },
       "Borussia Monchengladbach": {
-        "pts": 3,
+        "pts": 4,
         "gd": -11,
-        "played": 7
+        "played": 8
       },
       "Union Berlin": {
-        "pts": 6,
+        "pts": 7,
         "gd": -12,
-        "played": 7
+        "played": 8
       },
       "Eintracht Frankfurt": {
-        "pts": 8,
-        "gd": -7,
-        "played": 7
+        "pts": 11,
+        "gd": -5,
+        "played": 8
       },
       "FC Augsburg": {
         "pts": 9,
-        "gd": 4,
-        "played": 7
+        "gd": 3,
+        "played": 8
       },
       "Schalke 04": {
         "pts": 6,
-        "gd": -3,
-        "played": 7
+        "gd": -5,
+        "played": 8
       },
       "SC Freiburg": {
-        "pts": 13,
-        "gd": 7,
-        "played": 7
+        "pts": 16,
+        "gd": 8,
+        "played": 8
       },
       "Werder Bremen": {
-        "pts": 12,
-        "gd": 1,
-        "played": 7
+        "pts": 15,
+        "gd": 3,
+        "played": 8
       }
     }
   },
