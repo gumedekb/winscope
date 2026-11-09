@@ -1,9 +1,9 @@
 {
   "Fulham|Newcastle United": {
-    "t1_win_rate": 0.3571,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.1429,
-    "matches": 14
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.4667,
+    "draw_rate": 0.2,
+    "matches": 15
   },
   "Nijmegen|Zwolle": {
     "t1_win_rate": 0.5455,
@@ -660,10 +660,10 @@
     "matches": 12
   },
   "Bristol City|Norwich City": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 16
+    "t1_win_rate": 0.2353,
+    "t2_win_rate": 0.5294,
+    "draw_rate": 0.2353,
+    "matches": 17
   },
   "Derby County|Preston North End": {
     "t1_win_rate": 0.5625,
@@ -1020,10 +1020,10 @@
     "matches": 12
   },
   "Angers|Nice": {
-    "t1_win_rate": 0.2222,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.2778,
-    "matches": 18
+    "t1_win_rate": 0.2105,
+    "t2_win_rate": 0.5263,
+    "draw_rate": 0.2632,
+    "matches": 19
   },
   "Dijon|Lille": {
     "t1_win_rate": 0.2,
@@ -1134,10 +1134,10 @@
     "matches": 21
   },
   "Fiorentina|Juventus": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 20
+    "t1_win_rate": 0.2381,
+    "t2_win_rate": 0.4762,
+    "draw_rate": 0.2857,
+    "matches": 21
   },
   "Ipswich Town|Norwich City": {
     "t1_win_rate": 0.2,
@@ -1296,10 +1296,10 @@
     "matches": 8
   },
   "Braga|Rio Ave": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.2222,
-    "draw_rate": 0.2778,
-    "matches": 18
+    "t1_win_rate": 0.5263,
+    "t2_win_rate": 0.2105,
+    "draw_rate": 0.2632,
+    "matches": 19
   },
   "Bayern Munchen|Werder Bremen": {
     "t1_win_rate": 0.8889,
@@ -1506,10 +1506,10 @@
     "matches": 4
   },
   "Bolton Wanderers|Charlton Athletic": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.3,
-    "draw_rate": 0.2,
-    "matches": 10
+    "t1_win_rate": 0.5455,
+    "t2_win_rate": 0.2727,
+    "draw_rate": 0.1818,
+    "matches": 11
   },
   "Chesterfield|Millwall": {
     "t1_win_rate": 0.0,
@@ -2010,10 +2010,10 @@
     "matches": 16
   },
   "Brentford|Brighton & Hove Albion": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.4167,
-    "draw_rate": 0.3333,
-    "matches": 12
+    "t1_win_rate": 0.2308,
+    "t2_win_rate": 0.4615,
+    "draw_rate": 0.3077,
+    "matches": 13
   },
   "Derby County|Newcastle United": {
     "t1_win_rate": 0.0,
@@ -2208,16 +2208,16 @@
     "matches": 6
   },
   "FC Porto|Vitoria Guimaraes": {
-    "t1_win_rate": 0.8,
-    "t2_win_rate": 0.1,
-    "draw_rate": 0.1,
-    "matches": 20
+    "t1_win_rate": 0.8095,
+    "t2_win_rate": 0.0952,
+    "draw_rate": 0.0952,
+    "matches": 21
   },
   "Moreirense|Sporting CP": {
-    "t1_win_rate": 0.0556,
-    "t2_win_rate": 0.7778,
-    "draw_rate": 0.1667,
-    "matches": 18
+    "t1_win_rate": 0.0526,
+    "t2_win_rate": 0.7895,
+    "draw_rate": 0.1579,
+    "matches": 19
   },
   "Angers|Dijon": {
     "t1_win_rate": 0.7778,
@@ -2931,7 +2931,7 @@
     "t1_win_rate": 1.0,
     "t2_win_rate": 0.0,
     "draw_rate": 0.0,
-    "matches": 2
+    "matches": 3
   },
   "Burnley|Leicester City": {
     "t1_win_rate": 0.25,
@@ -3276,10 +3276,10 @@
     "matches": 19
   },
   "Atletico Madrid|Barcelona": {
-    "t1_win_rate": 0.15,
-    "t2_win_rate": 0.6,
-    "draw_rate": 0.25,
-    "matches": 20
+    "t1_win_rate": 0.1429,
+    "t2_win_rate": 0.619,
+    "draw_rate": 0.2381,
+    "matches": 21
   },
   "Celta Vigo|Sp Gijon": {
     "t1_win_rate": 0.5,
@@ -3792,10 +3792,10 @@
     "matches": 4
   },
   "Celtic|Kilmarnock": {
-    "t1_win_rate": 0.7742,
-    "t2_win_rate": 0.0968,
-    "draw_rate": 0.129,
-    "matches": 31
+    "t1_win_rate": 0.7812,
+    "t2_win_rate": 0.0938,
+    "draw_rate": 0.125,
+    "matches": 32
   },
   "Heart of Midlothian|Ross County": {
     "t1_win_rate": 0.3636,
@@ -3834,10 +3834,10 @@
     "matches": 16
   },
   "1899 Hoffenheim|Schalke 04": {
-    "t1_win_rate": 0.5833,
-    "t2_win_rate": 0.1667,
-    "draw_rate": 0.25,
-    "matches": 12
+    "t1_win_rate": 0.6154,
+    "t2_win_rate": 0.1538,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "Feyenoord|Roda": {
     "t1_win_rate": 0.75,
@@ -4152,10 +4152,10 @@
     "matches": 5
   },
   "FC Augsburg|RB Leipzig": {
-    "t1_win_rate": 0.05,
-    "t2_win_rate": 0.6,
-    "draw_rate": 0.35,
-    "matches": 20
+    "t1_win_rate": 0.0476,
+    "t2_win_rate": 0.619,
+    "draw_rate": 0.3333,
+    "matches": 21
   },
   "ADO Den Haag|Zwolle": {
     "t1_win_rate": 0.4,
@@ -4302,10 +4302,10 @@
     "matches": 8
   },
   "Excelsior|Go Ahead Eagles": {
-    "t1_win_rate": 0.125,
-    "t2_win_rate": 0.625,
-    "draw_rate": 0.25,
-    "matches": 8
+    "t1_win_rate": 0.1111,
+    "t2_win_rate": 0.6667,
+    "draw_rate": 0.2222,
+    "matches": 9
   },
   "Heerenveen|PSV": {
     "t1_win_rate": 0.1,
@@ -4344,10 +4344,10 @@
     "matches": 6
   },
   "Deportivo Alaves|Sevilla": {
-    "t1_win_rate": 0.2222,
-    "t2_win_rate": 0.3889,
-    "draw_rate": 0.3889,
-    "matches": 18
+    "t1_win_rate": 0.2105,
+    "t2_win_rate": 0.3684,
+    "draw_rate": 0.4211,
+    "matches": 19
   },
   "Bolton Wanderers|Oxford United": {
     "t1_win_rate": 0.5556,
@@ -4836,10 +4836,10 @@
     "matches": 20
   },
   "Borussia Monchengladbach|Hamburg": {
-    "t1_win_rate": 0.1667,
-    "t2_win_rate": 0.3333,
-    "draw_rate": 0.5,
-    "matches": 6
+    "t1_win_rate": 0.1429,
+    "t2_win_rate": 0.4286,
+    "draw_rate": 0.4286,
+    "matches": 7
   },
   "Bayern Munchen|Eintracht Frankfurt": {
     "t1_win_rate": 0.65,
@@ -5244,10 +5244,10 @@
     "matches": 9
   },
   "Middlesbrough|Watford": {
-    "t1_win_rate": 0.3333,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.1667,
-    "matches": 12
+    "t1_win_rate": 0.3077,
+    "t2_win_rate": 0.4615,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "Burnley|Southampton": {
     "t1_win_rate": 0.4167,
@@ -5856,10 +5856,10 @@
     "matches": 19
   },
   "AZ Alkmaar|Groningen": {
-    "t1_win_rate": 0.4706,
-    "t2_win_rate": 0.2353,
-    "draw_rate": 0.2941,
-    "matches": 17
+    "t1_win_rate": 0.5,
+    "t2_win_rate": 0.2222,
+    "draw_rate": 0.2778,
+    "matches": 18
   },
   "Heerenveen|Heracles Almelo": {
     "t1_win_rate": 0.5,
@@ -5952,10 +5952,10 @@
     "matches": 16
   },
   "Dundee|St Johnstone": {
-    "t1_win_rate": 0.3913,
-    "t2_win_rate": 0.3913,
-    "draw_rate": 0.2174,
-    "matches": 23
+    "t1_win_rate": 0.375,
+    "t2_win_rate": 0.4167,
+    "draw_rate": 0.2083,
+    "matches": 24
   },
   "AS Roma|Palermo": {
     "t1_win_rate": 1.0,
@@ -6024,10 +6024,10 @@
     "matches": 15
   },
   "AC Milan|Genoa": {
-    "t1_win_rate": 0.6111,
-    "t2_win_rate": 0.1111,
-    "draw_rate": 0.2778,
-    "matches": 18
+    "t1_win_rate": 0.6316,
+    "t2_win_rate": 0.1053,
+    "draw_rate": 0.2632,
+    "matches": 19
   },
   "Dundee|Partick": {
     "t1_win_rate": 0.2857,
@@ -6102,10 +6102,10 @@
     "matches": 2
   },
   "AS Roma|Sassuolo": {
-    "t1_win_rate": 0.5556,
-    "t2_win_rate": 0.1111,
-    "draw_rate": 0.3333,
-    "matches": 18
+    "t1_win_rate": 0.5789,
+    "t2_win_rate": 0.1053,
+    "draw_rate": 0.3158,
+    "matches": 19
   },
   "Palermo|Udinese": {
     "t1_win_rate": 0.0,
@@ -6426,10 +6426,10 @@
     "matches": 17
   },
   "Crystal Palace|Liverpool": {
-    "t1_win_rate": 0.15,
-    "t2_win_rate": 0.7,
-    "draw_rate": 0.15,
-    "matches": 20
+    "t1_win_rate": 0.1429,
+    "t2_win_rate": 0.7143,
+    "draw_rate": 0.1429,
+    "matches": 21
   },
   "Burnley|Manchester United": {
     "t1_win_rate": 0.0625,
@@ -6504,16 +6504,16 @@
     "matches": 11
   },
   "Feyenoord|Heerenveen": {
-    "t1_win_rate": 0.65,
-    "t2_win_rate": 0.1,
-    "draw_rate": 0.25,
-    "matches": 20
+    "t1_win_rate": 0.619,
+    "t2_win_rate": 0.1429,
+    "draw_rate": 0.2381,
+    "matches": 21
   },
   "Nijmegen|Utrecht": {
-    "t1_win_rate": 0.1667,
-    "t2_win_rate": 0.5833,
-    "draw_rate": 0.25,
-    "matches": 12
+    "t1_win_rate": 0.2308,
+    "t2_win_rate": 0.5385,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "Go Ahead Eagles|Zwolle": {
     "t1_win_rate": 0.3636,
@@ -6522,10 +6522,10 @@
     "matches": 11
   },
   "Athletic Club|Osasuna": {
-    "t1_win_rate": 0.4375,
-    "t2_win_rate": 0.1875,
-    "draw_rate": 0.375,
-    "matches": 16
+    "t1_win_rate": 0.4118,
+    "t2_win_rate": 0.1765,
+    "draw_rate": 0.4118,
+    "matches": 17
   },
   "Eibar|Villarreal": {
     "t1_win_rate": 0.4,
@@ -6948,10 +6948,10 @@
     "matches": 4
   },
   "Lazio|Napoli": {
-    "t1_win_rate": 0.3,
-    "t2_win_rate": 0.55,
-    "draw_rate": 0.15,
-    "matches": 20
+    "t1_win_rate": 0.2857,
+    "t2_win_rate": 0.5238,
+    "draw_rate": 0.1905,
+    "matches": 21
   },
   "Cagliari|Torino": {
     "t1_win_rate": 0.3333,
@@ -7800,10 +7800,10 @@
     "matches": 14
   },
   "Derby County|Norwich City": {
-    "t1_win_rate": 0.4167,
-    "t2_win_rate": 0.3333,
-    "draw_rate": 0.25,
-    "matches": 12
+    "t1_win_rate": 0.3846,
+    "t2_win_rate": 0.3846,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "Ipswich Town|Queens Park Rangers": {
     "t1_win_rate": 0.4,
@@ -7896,10 +7896,10 @@
     "matches": 2
   },
   "Charlton Athletic|Sheffield United": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.6,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "Bristol Rvs|Chesterfield": {
     "t1_win_rate": 0.5,
@@ -8328,10 +8328,10 @@
     "matches": 4
   },
   "Bayern Munchen|Mainz 05": {
-    "t1_win_rate": 0.7,
-    "t2_win_rate": 0.2,
-    "draw_rate": 0.1,
-    "matches": 20
+    "t1_win_rate": 0.7143,
+    "t2_win_rate": 0.1905,
+    "draw_rate": 0.0952,
+    "matches": 21
   },
   "Newcastle United|Nottingham Forest": {
     "t1_win_rate": 0.7,
@@ -8940,10 +8940,10 @@
     "matches": 12
   },
   "Willem II|Zwolle": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.2857,
-    "draw_rate": 0.2143,
-    "matches": 14
+    "t1_win_rate": 0.4667,
+    "t2_win_rate": 0.2667,
+    "draw_rate": 0.2667,
+    "matches": 15
   },
   "Las Palmas|Leganes": {
     "t1_win_rate": 0.0,
@@ -9168,10 +9168,10 @@
     "matches": 13
   },
   "Ajax|Twente": {
-    "t1_win_rate": 0.4706,
-    "t2_win_rate": 0.2941,
-    "draw_rate": 0.2353,
-    "matches": 17
+    "t1_win_rate": 0.4444,
+    "t2_win_rate": 0.2778,
+    "draw_rate": 0.2778,
+    "matches": 18
   },
   "Heracles Almelo|Utrecht": {
     "t1_win_rate": 0.1765,
@@ -9330,10 +9330,10 @@
     "matches": 21
   },
   "Fiorentina|Sassuolo": {
-    "t1_win_rate": 0.3333,
-    "t2_win_rate": 0.3889,
-    "draw_rate": 0.2778,
-    "matches": 18
+    "t1_win_rate": 0.3684,
+    "t2_win_rate": 0.3684,
+    "draw_rate": 0.2632,
+    "matches": 19
   },
   "Birmingham City|Ipswich Town": {
     "t1_win_rate": 0.2,
@@ -9450,10 +9450,10 @@
     "matches": 9
   },
   "Chelsea|Sunderland": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.6,
     "draw_rate": 0.0,
-    "matches": 4
+    "matches": 5
   },
   "Hull City|Tottenham Hotspur": {
     "t1_win_rate": 0.0,
@@ -9846,10 +9846,10 @@
     "matches": 6
   },
   "ADO Den Haag|Sparta Rotterdam": {
-    "t1_win_rate": 0.375,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.125,
-    "matches": 8
+    "t1_win_rate": 0.4444,
+    "t2_win_rate": 0.4444,
+    "draw_rate": 0.1111,
+    "matches": 9
   },
   "Ajax|PSV": {
     "t1_win_rate": 0.3333,
@@ -9882,10 +9882,10 @@
     "matches": 16
   },
   "Deportivo La Coruna|Osasuna": {
-    "t1_win_rate": 0.5,
+    "t1_win_rate": 0.6667,
     "t2_win_rate": 0.0,
-    "draw_rate": 0.5,
-    "matches": 2
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Eibar|Leganes": {
     "t1_win_rate": 0.625,
@@ -10056,10 +10056,10 @@
     "matches": 12
   },
   "1. FC Koln|Bayer Leverkusen": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5625,
-    "draw_rate": 0.1875,
-    "matches": 16
+    "t1_win_rate": 0.2353,
+    "t2_win_rate": 0.5882,
+    "draw_rate": 0.1765,
+    "matches": 17
   },
   "1899 Hoffenheim|Werder Bremen": {
     "t1_win_rate": 0.5789,
@@ -10116,10 +10116,10 @@
     "matches": 8
   },
   "Lille|Rennes": {
-    "t1_win_rate": 0.4,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.35,
-    "matches": 20
+    "t1_win_rate": 0.4286,
+    "t2_win_rate": 0.2381,
+    "draw_rate": 0.3333,
+    "matches": 21
   },
   "Guingamp|Metz": {
     "t1_win_rate": 0.5,
@@ -10302,10 +10302,10 @@
     "matches": 14
   },
   "Bristol City|Wolverhampton Wanderers": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.6,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "Bolton Wanderers|Shrewsbury Town": {
     "t1_win_rate": 0.6364,
@@ -10560,10 +10560,10 @@
     "matches": 2
   },
   "Southampton|West Bromwich Albion": {
-    "t1_win_rate": 0.7,
-    "t2_win_rate": 0.2,
-    "draw_rate": 0.1,
-    "matches": 10
+    "t1_win_rate": 0.6364,
+    "t2_win_rate": 0.1818,
+    "draw_rate": 0.1818,
+    "matches": 11
   },
   "Bournemouth|Swansea City": {
     "t1_win_rate": 0.625,
@@ -10585,9 +10585,9 @@
   },
   "Deportivo La Coruna|Espanyol": {
     "t1_win_rate": 0.0,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.5,
-    "matches": 4
+    "t2_win_rate": 0.4,
+    "draw_rate": 0.6,
+    "matches": 5
   },
   "Atletico Madrid|Eibar": {
     "t1_win_rate": 0.7,
@@ -11010,10 +11010,10 @@
     "matches": 6
   },
   "Real Madrid|Valencia": {
-    "t1_win_rate": 0.6,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.15,
-    "matches": 20
+    "t1_win_rate": 0.619,
+    "t2_win_rate": 0.2381,
+    "draw_rate": 0.1429,
+    "matches": 21
   },
   "Metz|Olympique Lyonnais": {
     "t1_win_rate": 0.1429,
@@ -11310,10 +11310,10 @@
     "matches": 4
   },
   "Bolton Wanderers|Derby County": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.625,
-    "draw_rate": 0.125,
-    "matches": 8
+    "t1_win_rate": 0.2222,
+    "t2_win_rate": 0.6667,
+    "draw_rate": 0.1111,
+    "matches": 9
   },
   "Bristol City|Millwall": {
     "t1_win_rate": 0.2632,
@@ -12276,10 +12276,10 @@
     "matches": 7
   },
   "Getafe|Villarreal": {
-    "t1_win_rate": 0.1667,
-    "t2_win_rate": 0.5556,
-    "draw_rate": 0.2778,
-    "matches": 18
+    "t1_win_rate": 0.1579,
+    "t2_win_rate": 0.5789,
+    "draw_rate": 0.2632,
+    "matches": 19
   },
   "Aves|Rio Ave": {
     "t1_win_rate": 0.3333,
@@ -12708,10 +12708,10 @@
     "matches": 12
   },
   "Aberdeen|Hibernian": {
-    "t1_win_rate": 0.4,
-    "t2_win_rate": 0.3714,
-    "draw_rate": 0.2286,
-    "matches": 35
+    "t1_win_rate": 0.3889,
+    "t2_win_rate": 0.3889,
+    "draw_rate": 0.2222,
+    "matches": 36
   },
   "PSV|VVV Venlo": {
     "t1_win_rate": 0.875,
@@ -12828,10 +12828,10 @@
     "matches": 15
   },
   "Birmingham City|Millwall": {
-    "t1_win_rate": 0.1875,
-    "t2_win_rate": 0.4375,
-    "draw_rate": 0.375,
-    "matches": 16
+    "t1_win_rate": 0.2353,
+    "t2_win_rate": 0.4118,
+    "draw_rate": 0.3529,
+    "matches": 17
   },
   "Reading|Sheffield United": {
     "t1_win_rate": 0.125,
@@ -13734,10 +13734,10 @@
     "matches": 4
   },
   "Paris Saint Germain|Troyes": {
-    "t1_win_rate": 0.7143,
+    "t1_win_rate": 0.75,
     "t2_win_rate": 0.0,
-    "draw_rate": 0.2857,
-    "matches": 7
+    "draw_rate": 0.25,
+    "matches": 8
   },
   "Arsenal|Huddersfield Town": {
     "t1_win_rate": 1.0,
@@ -13764,10 +13764,10 @@
     "matches": 4
   },
   "VfB Stuttgart|Werder Bremen": {
-    "t1_win_rate": 0.4286,
-    "t2_win_rate": 0.2857,
-    "draw_rate": 0.2857,
-    "matches": 14
+    "t1_win_rate": 0.4667,
+    "t2_win_rate": 0.2667,
+    "draw_rate": 0.2667,
+    "matches": 15
   },
   "Barnsley|Bolton Wanderers": {
     "t1_win_rate": 0.2,
@@ -14076,10 +14076,10 @@
     "matches": 8
   },
   "Everton|Newcastle United": {
-    "t1_win_rate": 0.3889,
-    "t2_win_rate": 0.3889,
-    "draw_rate": 0.2222,
-    "matches": 18
+    "t1_win_rate": 0.4211,
+    "t2_win_rate": 0.3684,
+    "draw_rate": 0.2105,
+    "matches": 19
   },
   "Brighton & Hove Albion|Tottenham Hotspur": {
     "t1_win_rate": 0.3333,
@@ -14118,10 +14118,10 @@
     "matches": 19
   },
   "Preston North End|Sheffield United": {
-    "t1_win_rate": 0.3333,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.1667,
-    "matches": 12
+    "t1_win_rate": 0.3077,
+    "t2_win_rate": 0.5385,
+    "draw_rate": 0.1538,
+    "matches": 13
   },
   "Fulham|Sunderland": {
     "t1_win_rate": 0.6,
@@ -14184,10 +14184,10 @@
     "matches": 2
   },
   "Strasbourg|Toulouse": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.2143,
-    "draw_rate": 0.2857,
-    "matches": 14
+    "t1_win_rate": 0.4667,
+    "t2_win_rate": 0.2667,
+    "draw_rate": 0.2667,
+    "matches": 15
   },
   "Amiens|Troyes": {
     "t1_win_rate": 0.0,
@@ -14466,10 +14466,10 @@
     "matches": 6
   },
   "Celta Vigo|Levante": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.3333,
-    "draw_rate": 0.1667,
-    "matches": 12
+    "t1_win_rate": 0.4615,
+    "t2_win_rate": 0.3077,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "Blackburn Rovers|Walsall": {
     "t1_win_rate": 1.0,
@@ -14670,16 +14670,16 @@
     "matches": 11
   },
   "Rangers|St Mirren": {
-    "t1_win_rate": 0.8148,
-    "t2_win_rate": 0.0741,
-    "draw_rate": 0.1111,
-    "matches": 27
+    "t1_win_rate": 0.8214,
+    "t2_win_rate": 0.0714,
+    "draw_rate": 0.1071,
+    "matches": 28
   },
   "Birmingham City|Swansea City": {
-    "t1_win_rate": 0.2857,
-    "t2_win_rate": 0.1429,
-    "draw_rate": 0.5714,
-    "matches": 14
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.1333,
+    "draw_rate": 0.5333,
+    "matches": 15
   },
   "Girona|Valladolid": {
     "t1_win_rate": 0.5,
@@ -15360,16 +15360,16 @@
     "matches": 2
   },
   "Blackburn Rovers|Stoke City": {
-    "t1_win_rate": 0.3125,
-    "t2_win_rate": 0.4375,
-    "draw_rate": 0.25,
-    "matches": 16
+    "t1_win_rate": 0.2941,
+    "t2_win_rate": 0.4706,
+    "draw_rate": 0.2353,
+    "matches": 17
   },
   "Millwall|West Bromwich Albion": {
-    "t1_win_rate": 0.2857,
-    "t2_win_rate": 0.1429,
-    "draw_rate": 0.5714,
-    "matches": 14
+    "t1_win_rate": 0.2667,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.5333,
+    "matches": 15
   },
   "Fortuna Sittard|Willem II": {
     "t1_win_rate": 0.3636,
@@ -15480,10 +15480,10 @@
     "matches": 4
   },
   "Rayo Vallecano|Real Sociedad": {
-    "t1_win_rate": 0.1667,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.5833,
-    "matches": 12
+    "t1_win_rate": 0.1538,
+    "t2_win_rate": 0.3077,
+    "draw_rate": 0.5385,
+    "matches": 13
   },
   "Borussia Dortmund|Nurnberg": {
     "t1_win_rate": 0.5,
@@ -15660,10 +15660,10 @@
     "matches": 5
   },
   "Burnley|Cardiff City": {
-    "t1_win_rate": 0.8333,
-    "t2_win_rate": 0.0,
-    "draw_rate": 0.1667,
-    "matches": 6
+    "t1_win_rate": 0.7143,
+    "t2_win_rate": 0.1429,
+    "draw_rate": 0.1429,
+    "matches": 7
   },
   "Livingston|Rangers": {
     "t1_win_rate": 0.0455,
@@ -16260,10 +16260,10 @@
     "matches": 24
   },
   "Atalanta|Parma": {
-    "t1_win_rate": 0.8,
-    "t2_win_rate": 0.1,
-    "draw_rate": 0.1,
-    "matches": 10
+    "t1_win_rate": 0.7273,
+    "t2_win_rate": 0.1818,
+    "draw_rate": 0.0909,
+    "matches": 11
   },
   "Eintracht Frankfurt|Nurnberg": {
     "t1_win_rate": 0.5,
@@ -16842,10 +16842,10 @@
     "matches": 11
   },
   "Cagliari|Frosinone": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.6,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "Bayer Leverkusen|Nurnberg": {
     "t1_win_rate": 0.5,
@@ -16860,10 +16860,10 @@
     "matches": 4
   },
   "Cardiff City|West Ham United": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.0,
-    "matches": 2
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.3333,
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Caen|Nimes": {
     "t1_win_rate": 0.0,
@@ -17280,10 +17280,10 @@
     "matches": 2
   },
   "Bologna|Parma": {
-    "t1_win_rate": 0.4,
-    "t2_win_rate": 0.2,
-    "draw_rate": 0.4,
-    "matches": 10
+    "t1_win_rate": 0.4545,
+    "t2_win_rate": 0.1818,
+    "draw_rate": 0.3636,
+    "matches": 11
   },
   "Frosinone|Udinese": {
     "t1_win_rate": 0.0,
@@ -17760,10 +17760,10 @@
     "matches": 2
   },
   "Huddersfield Town|Luton Town": {
-    "t1_win_rate": 0.2,
-    "t2_win_rate": 0.4,
-    "draw_rate": 0.4,
-    "matches": 10
+    "t1_win_rate": 0.1818,
+    "t2_win_rate": 0.3636,
+    "draw_rate": 0.4545,
+    "matches": 11
   },
   "Charlton Athletic|Reading": {
     "t1_win_rate": 0.3333,
@@ -17988,10 +17988,10 @@
     "matches": 14
   },
   "Lecce|Torino": {
-    "t1_win_rate": 0.4,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.1,
-    "matches": 10
+    "t1_win_rate": 0.3636,
+    "t2_win_rate": 0.4545,
+    "draw_rate": 0.1818,
+    "matches": 11
   },
   "Ipswich Town|MK Dons": {
     "t1_win_rate": 0.4286,
@@ -18132,10 +18132,10 @@
     "matches": 12
   },
   "Brest|Olympique Lyonnais": {
-    "t1_win_rate": 0.2308,
-    "t2_win_rate": 0.3846,
-    "draw_rate": 0.3846,
-    "matches": 13
+    "t1_win_rate": 0.2857,
+    "t2_win_rate": 0.3571,
+    "draw_rate": 0.3571,
+    "matches": 14
   },
   "Lecce|Spal": {
     "t1_win_rate": 1.0,
@@ -18252,10 +18252,10 @@
     "matches": 9
   },
   "Gil Vicente|Santa Clara": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 12
+    "t1_win_rate": 0.3077,
+    "t2_win_rate": 0.4615,
+    "draw_rate": 0.2308,
+    "matches": 13
   },
   "AS Roma|Lecce": {
     "t1_win_rate": 0.8182,
@@ -18408,10 +18408,10 @@
     "matches": 2
   },
   "SC Freiburg|Union Berlin": {
-    "t1_win_rate": 0.1429,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.3571,
-    "matches": 14
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.4667,
+    "draw_rate": 0.3333,
+    "matches": 15
   },
   "Barnsley|Swansea City": {
     "t1_win_rate": 0.0,
@@ -19056,10 +19056,10 @@
     "matches": 14
   },
   "Aston Villa|Manchester United": {
-    "t1_win_rate": 0.2143,
-    "t2_win_rate": 0.5714,
-    "draw_rate": 0.2143,
-    "matches": 14
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.5333,
+    "draw_rate": 0.2667,
+    "matches": 15
   },
   "Arsenal|Norwich City": {
     "t1_win_rate": 0.75,
@@ -19272,10 +19272,10 @@
     "matches": 12
   },
   "Gil Vicente|Vitoria Guimaraes": {
-    "t1_win_rate": 0.3571,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.1429,
-    "matches": 14
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.4667,
+    "draw_rate": 0.2,
+    "matches": 15
   },
   "1899 Hoffenheim|Union Berlin": {
     "t1_win_rate": 0.4286,
@@ -19356,10 +19356,10 @@
     "matches": 2
   },
   "Eintracht Frankfurt|Paderborn": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.0,
-    "matches": 2
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.3333,
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Bologna|Lecce": {
     "t1_win_rate": 0.7273,
@@ -19500,10 +19500,10 @@
     "matches": 15
   },
   "Dundee United|Motherwell": {
-    "t1_win_rate": 0.35,
-    "t2_win_rate": 0.45,
-    "draw_rate": 0.2,
-    "matches": 20
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.4286,
+    "draw_rate": 0.2381,
+    "matches": 21
   },
   "Dundee United|Hibernian": {
     "t1_win_rate": 0.2941,
@@ -19656,10 +19656,10 @@
     "matches": 6
   },
   "Brest|Lorient": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.4,
-    "draw_rate": 0.1,
-    "matches": 10
+    "t1_win_rate": 0.5455,
+    "t2_win_rate": 0.3636,
+    "draw_rate": 0.0909,
+    "matches": 11
   },
   "1. FC Koln|Bielefeld": {
     "t1_win_rate": 0.5,
@@ -20130,10 +20130,10 @@
     "matches": 2
   },
   "Elche|Real Betis": {
-    "t1_win_rate": 0.125,
-    "t2_win_rate": 0.625,
-    "draw_rate": 0.25,
-    "matches": 8
+    "t1_win_rate": 0.1111,
+    "t2_win_rate": 0.6667,
+    "draw_rate": 0.2222,
+    "matches": 9
   },
   "Juventus|Spezia": {
     "t1_win_rate": 1.0,
@@ -20922,10 +20922,10 @@
     "matches": 2
   },
   "Leeds United|Tottenham Hotspur": {
-    "t1_win_rate": 0.125,
-    "t2_win_rate": 0.75,
-    "draw_rate": 0.125,
-    "matches": 8
+    "t1_win_rate": 0.2222,
+    "t2_win_rate": 0.6667,
+    "draw_rate": 0.1111,
+    "matches": 9
   },
   "Athletic Club|Elche": {
     "t1_win_rate": 0.4444,
@@ -21066,10 +21066,10 @@
     "matches": 4
   },
   "Lens|Olympique Marseille": {
-    "t1_win_rate": 0.5833,
-    "t2_win_rate": 0.3333,
-    "draw_rate": 0.0833,
-    "matches": 12
+    "t1_win_rate": 0.5385,
+    "t2_win_rate": 0.3846,
+    "draw_rate": 0.0769,
+    "matches": 13
   },
   "AS Roma|Spezia": {
     "t1_win_rate": 0.8333,
@@ -21312,10 +21312,10 @@
     "matches": 8
   },
   "Arouca|Famalicao": {
-    "t1_win_rate": 0.4,
-    "t2_win_rate": 0.3,
-    "draw_rate": 0.3,
-    "matches": 10
+    "t1_win_rate": 0.3636,
+    "t2_win_rate": 0.3636,
+    "draw_rate": 0.2727,
+    "matches": 11
   },
   "Baroka|TT Madzivhandila": {
     "t1_win_rate": 1.0,
@@ -21372,10 +21372,10 @@
     "matches": 4
   },
   "Cambuur|PSV": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.75,
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.8,
     "draw_rate": 0.0,
-    "matches": 4
+    "matches": 5
   },
   "Burton|Cambridge": {
     "t1_win_rate": 0.3333,
@@ -21432,10 +21432,10 @@
     "matches": 6
   },
   "Udinese|Venezia": {
-    "t1_win_rate": 0.75,
-    "t2_win_rate": 0.25,
+    "t1_win_rate": 0.6,
+    "t2_win_rate": 0.4,
     "draw_rate": 0.0,
-    "matches": 4
+    "matches": 5
   },
   "1. FC Koln|Bochum": {
     "t1_win_rate": 0.3333,
@@ -23508,10 +23508,10 @@
     "matches": 7
   },
   "Manchester City|Nottingham Forest": {
-    "t1_win_rate": 0.625,
-    "t2_win_rate": 0.125,
-    "draw_rate": 0.25,
-    "matches": 8
+    "t1_win_rate": 0.5556,
+    "t2_win_rate": 0.2222,
+    "draw_rate": 0.2222,
+    "matches": 9
   },
   "Chippa United|Golden Arrows": {
     "t1_win_rate": 0.2857,
@@ -23649,7 +23649,7 @@
     "t1_win_rate": 1.0,
     "t2_win_rate": 0.0,
     "draw_rate": 0.0,
-    "matches": 6
+    "matches": 7
   },
   "Cape Town City|Sekhukhune United": {
     "t1_win_rate": 0.1667,
@@ -24703,9 +24703,9 @@
   },
   "Auxerre|Paris Saint Germain": {
     "t1_win_rate": 0.0,
-    "t2_win_rate": 0.8333,
-    "draw_rate": 0.1667,
-    "matches": 6
+    "t2_win_rate": 0.8571,
+    "draw_rate": 0.1429,
+    "matches": 7
   },
   "Monza|Salernitana": {
     "t1_win_rate": 0.75,
@@ -24768,10 +24768,10 @@
     "matches": 2
   },
   "Burnley|Queens Park Rangers": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.4,
+    "matches": 5
   },
   "Bolton Wanderers|Exeter": {
     "t1_win_rate": 0.75,
@@ -25365,7 +25365,7 @@
     "t1_win_rate": 1.0,
     "t2_win_rate": 0.0,
     "draw_rate": 0.0,
-    "matches": 6
+    "matches": 7
   },
   "Brest|Le Havre": {
     "t1_win_rate": 0.8571,
@@ -25530,10 +25530,10 @@
     "matches": 2
   },
   "Le Havre|Lorient": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.0,
-    "draw_rate": 0.5,
-    "matches": 4
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.4,
+    "matches": 5
   },
   "Cambridge|Reading": {
     "t1_win_rate": 0.4,
@@ -26016,10 +26016,10 @@
     "matches": 2
   },
   "Preston North End|Southampton": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.4,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "Orlando Pirates|Polokwane City": {
     "t1_win_rate": 0.75,
@@ -26490,10 +26490,10 @@
     "matches": 4
   },
   "Oxford United|Reading": {
-    "t1_win_rate": 0.0,
+    "t1_win_rate": 0.3333,
     "t2_win_rate": 0.0,
-    "draw_rate": 1.0,
-    "matches": 2
+    "draw_rate": 0.6667,
+    "matches": 3
   },
   "Ajax Cape Town|Mamelodi Sundowns": {
     "t1_win_rate": 0.0,
@@ -27228,10 +27228,10 @@
     "matches": 2
   },
   "Portsmouth|Stoke City": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.6,
     "draw_rate": 0.0,
-    "matches": 4
+    "matches": 5
   },
   "Almere City|Willem II": {
     "t1_win_rate": 0.5,
@@ -27414,10 +27414,10 @@
     "matches": 4
   },
   "Mansfield Town|Wigan Athletic": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.25,
-    "draw_rate": 0.5,
-    "matches": 4
+    "t1_win_rate": 0.2,
+    "t2_win_rate": 0.2,
+    "draw_rate": 0.6,
+    "matches": 5
   },
   "Huddersfield Town|Wrexham": {
     "t1_win_rate": 0.0,
@@ -27762,10 +27762,10 @@
     "matches": 2
   },
   "Portsmouth|Swansea City": {
-    "t1_win_rate": 0.25,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.25,
-    "matches": 4
+    "t1_win_rate": 0.4,
+    "t2_win_rate": 0.4,
+    "draw_rate": 0.2,
+    "matches": 5
   },
   "Almere City|NAC Breda": {
     "t1_win_rate": 0.0,
@@ -27876,10 +27876,10 @@
     "matches": 4
   },
   "Bournemouth|Ipswich Town": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
+    "t1_win_rate": 0.6667,
+    "t2_win_rate": 0.3333,
     "draw_rate": 0.0,
-    "matches": 2
+    "matches": 3
   },
   "Como|Venezia": {
     "t1_win_rate": 0.3333,
@@ -28047,7 +28047,7 @@
     "t1_win_rate": 0.0,
     "t2_win_rate": 1.0,
     "draw_rate": 0.0,
-    "matches": 4
+    "matches": 5
   },
   "Cardiff City|Oxford United": {
     "t1_win_rate": 0.0,
@@ -28479,7 +28479,7 @@
     "t1_win_rate": 0.0,
     "t2_win_rate": 1.0,
     "draw_rate": 0.0,
-    "matches": 2
+    "matches": 3
   },
   "Metz|Paris": {
     "t1_win_rate": 0.0,
@@ -28548,10 +28548,10 @@
     "matches": 3
   },
   "Fortuna Sittard|Telstar": {
-    "t1_win_rate": 0.5,
-    "t2_win_rate": 0.5,
-    "draw_rate": 0.0,
-    "matches": 2
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.3333,
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Brest|Paris": {
     "t1_win_rate": 0.0,
@@ -28656,10 +28656,10 @@
     "matches": 3
   },
   "Falkirk|Heart of Midlothian": {
-    "t1_win_rate": 0.2,
-    "t2_win_rate": 0.8,
+    "t1_win_rate": 0.3333,
+    "t2_win_rate": 0.6667,
     "draw_rate": 0.0,
-    "matches": 5
+    "matches": 6
   },
   "Como|Cremonese": {
     "t1_win_rate": 0.5,
@@ -28843,9 +28843,9 @@
   },
   "Middlesbrough|Wrexham": {
     "t1_win_rate": 0.0,
-    "t2_win_rate": 0.0,
-    "draw_rate": 1.0,
-    "matches": 2
+    "t2_win_rate": 0.3333,
+    "draw_rate": 0.6667,
+    "matches": 3
   },
   "Sparta Rotterdam|Telstar": {
     "t1_win_rate": 0.6667,
@@ -29142,10 +29142,10 @@
     "matches": 2
   },
   "Alverca|Casa Pia": {
-    "t1_win_rate": 1.0,
+    "t1_win_rate": 0.6667,
     "t2_win_rate": 0.0,
-    "draw_rate": 0.0,
-    "matches": 2
+    "draw_rate": 0.3333,
+    "matches": 3
   },
   "Auxerre|Paris": {
     "t1_win_rate": 0.0,
@@ -30597,6 +30597,60 @@
     "t1_win_rate": 1.0,
     "t2_win_rate": 0.0,
     "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Lincoln City|Watford": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Coventry City|Everton": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "07 Elversberg|Borussia Dortmund": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Blackburn Rovers|West Ham United": {
+    "t1_win_rate": 1.0,
+    "t2_win_rate": 0.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Lincoln City|Queens Park Rangers": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Wolverhampton Wanderers|Wrexham": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 0.0,
+    "draw_rate": 1.0,
+    "matches": 1
+  },
+  "Malaga|Real Racing Club de Santander": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Acad\u00e9mico de Viseu|Nacional": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 1.0,
+    "draw_rate": 0.0,
+    "matches": 1
+  },
+  "Le Mans|Monaco": {
+    "t1_win_rate": 0.0,
+    "t2_win_rate": 0.0,
+    "draw_rate": 1.0,
     "matches": 1
   }
 }
